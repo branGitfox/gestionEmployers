@@ -49,13 +49,38 @@ $wrkrs->changeWorker();
 
     .container-lg{
         position: absolute;
+        top: 3rem;
+        right: 0;
+    }
+
+    .plaque {
+        width: 84.25%;
+        height: 8.7vh;
+        position: absolute;
         top: 0;
         right: 0;
+    }
+
+    .moreAdd {
+        position: absolute;
+        right: 2rem;
     }
 </style>
 
 <body>
     <?php include '../sections/navbars.php'?>
+    <div class="plaque bg-light shadow d-flex align-items-center justify-content-left p-3"> <svg
+                class="me-1  text-primary" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                class="bi bi-person-bounding-box" viewBox="0 0 16 16">
+                <path
+                    d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5M.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5m15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5" />
+                <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+            </svg>
+            <h5 class="fs-6 mt-2 fw-bold text-primary ls">EMPLOYES</h5>
+            <a href="listeemployer.php" class="moreAdd" title="Retour" ><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-arrow-right-circle-fill" viewBox="0 0 16 16">
+  <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z"/>
+</svg></a>
+        </div>
     <div class="container-lg p-5">
         <h1 class="text-center mb-3">Modifier un employer</h1>
         <form method="post" enctype="multipart/form-data">
@@ -182,7 +207,7 @@ $wrkrs->changeWorker();
     <script>
         const succes = document.querySelector('.succes')
     
-            
+
         setTimeout(() => {
             succes.remove()
         }, 5000)

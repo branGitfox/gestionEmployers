@@ -16,7 +16,7 @@ if($query->rowCount() > 0){
                         <td>{$data['firstname']}</td>
                         <td>{$data['salaire_base']}</td>
                         <td>{$data['avances']}</td>
-                        <td><a href='abs.php?worker_id={$data['w_id']}'>{$data['nbr_absence']}</a></td>
+                        <td><a href='abs.php?worker_id={$data['w_id']}&d={$data['date_s']}'>{$data['nbr_absence']}</a></td>
                         <td>{$data['salaire_reel']}</td>
 ";
     }

@@ -260,8 +260,8 @@ $salaire->createSalaire();
                             <div class="d-flex align-items-center">
                                 <div>
                                     <p class="mb-0 text-secondary">Total Salaires </p>
-                                    <h4 class="my-1 text-info"><?= number_format($salaire->sommeOfAllSalaryBase())?> Ar</h4>
-                                    <p class="mb-0 font-13"><?= date('Y-m')?></p>
+                                    <h4 id="base" class="my-1 text-info"><?= number_format($salaire->sommeOfAllSalaryBase())?> Ar</h4>
+                                    <p class="mb-0 font-13 cycle"><?= date('Y-m')?></p>
                                 </div>
                             </div>
                         </div>
@@ -273,8 +273,8 @@ $salaire->createSalaire();
                             <div class="d-flex align-items-center">
                                 <div>
                                     <p class="mb-0 text-secondary">Total Avances</p>
-                                    <h4 class="my-1 text-danger"><?= number_format($salaire->sumOfAllAvances())?> Ar</h4>
-                                    <p class="mb-0 font-13"><?= date('Y-m')?></p>
+                                    <h4 id="avance" class="my-1 text-danger"><?= number_format($salaire->sumOfAllAvances())?> Ar</h4>
+                                    <p class="mb-0 font-13 cycle"><?= date('Y-m')?></p>
                                 </div>
                             </div>
                         </div>
@@ -287,7 +287,7 @@ $salaire->createSalaire();
                                 <div>
                                     <p class="mb-0 text-secondary">Reste à Payer</p>
                                     <h4 class="my-1 text-success" id="total"><?= number_format($salaire->sommeOfAllSalary()) ?> Ar</h4>
-                                    <p class="mb-0 font-13"><?= date('Y-m')?></p>
+                                    <p class="mb-0 font-13 cycle"><?= date('Y-m')?></p>
 
                                 </div>
                             </div>
@@ -300,8 +300,8 @@ $salaire->createSalaire();
                             <div class="d-flex align-items-center">
                                 <div>
                                     <p class="mb-0 text-secondary">Total Absences</p>
-                                    <h4 class="my-1 text-warning"><?= number_format($salaire->sumOfAllAbsences()) ?></h4>
-                                    <p class="mb-0 font-13"><?= date('Y-m')?></p>
+                                    <h4 id="abs" class="my-1 text-warning"><?= number_format($salaire->sumOfAllAbsences()) ?></h4>
+                                    <p class="mb-0 font-13 cycle"><?= date('Y-m')?></p>
                                 </div>
                             </div>
                         </div>
@@ -402,6 +402,43 @@ $salaire->createSalaire();
                         data: { date: date },
                         success: function (data) {
                             $('#total').html(data)
+                        }
+                    })
+
+                    $.ajax({
+                        url: 'live_salaire_3.php',
+                        type: 'POST',
+                        data: { date: date },
+                        success: function (data) {
+                            $('#avance').html(data)
+                        }
+                    })
+
+                    
+                    $.ajax({
+                        url: 'live_salaire_4.php',
+                        type: 'POST',
+                        data: { date: date },
+                        success: function (data) {
+                            $('#base').html(data)
+                        }
+                    })
+
+                    $.ajax({
+                        url: 'live_salaire_5.php',
+                        type: 'POST',
+                        data: { date: date },
+                        success: function (data) {
+                            $('#abs').html(data)
+                        }
+                    })
+
+                    $.ajax({
+                        url: 'live_salaire_n.php',
+                        type: 'POST',
+                        data: { date: date },
+                        success: function (data) {
+                            $('.cycle').html(data)
                         }
                     })
                 })

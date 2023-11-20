@@ -13,4 +13,4 @@ foreach($data as $salaire){
     $salaire_total += $salaire['salaire_reel'];
 }
 
-echo number_format($salaire_total)." "."Ar";
+echo number_format($salaire_total)." Ar";
