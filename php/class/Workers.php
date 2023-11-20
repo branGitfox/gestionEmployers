@@ -146,7 +146,7 @@ class Workers
         $query = $this->getPdo()
             ->prepare('DELETE FROM workers WHERE w_id = ?');
         $query->execute([$this->getWorkerId()]);
-        $_SESSION['succes'] = 'Succès !!';
+        $_SESSION['succes'] = 'Suppression reussi';
         header('location:listeemployer.php');
     }
 
@@ -204,7 +204,8 @@ class Workers
                 $sexe = htmlentities(htmlspecialchars($_POST['sexe']));
                 if ($_FILES['image']['name'] == '') {
                     $this->updateWorker($name, $firstname, $fonction, $cin, $adresse, $origine, $salaire, $responsable, $contact, null, $departement, $date_entree, $sexe, $this->getWorkerId());
-                    $this->getSucces('Employé bien modifié');
+                    $_SESSION['succes']='Employé bien modifié';
+                    header('location:listeemployer.php');
 
                 }
 
@@ -219,7 +220,8 @@ class Workers
                         $new_image_name = time() . '.' . $image_ext;
                         if (move_uploaded_file($image_tmp, '../images/' . $new_image_name)) {
                             $this->updateWorker($name, $firstname, $fonction, $cin, $adresse, $origine, $salaire, $responsable, $contact, $new_image_name, $departement, $date_entree, $sexe, $this->getWorkerId());
-                            $this->getSucces('Employé bien modifié');
+                            $_SESSION['succes']='Employé bien modifié';
+                            header('location:listeemployer.php');
                         }
 
                     }
@@ -292,7 +294,7 @@ class Workers
                         $this->insertInfotoSalaryTable($this->sessionID(), $pointage->nbrOfAbsence()['nbr_absence'], $this->sumofAvance($this->sessionID()),$this->salarybase($this->sessionID())['salaire_base']);
                         $this->getSucces('Avance reussi');
                 }else{
-                    $this->getError('Les avances ne doiveent pas depasser le salaire de base');
+                    $this->getError('Les avances ne doivent pas depasser le salaire de base');
                 }
               
             }

@@ -241,7 +241,7 @@ $salaire->createSalaire();
     #container {
         width: 65%;
         position: absolute;
-        top: 0;
+        top: 5px;
         left: 0;
         right: 0;
     }
@@ -310,7 +310,7 @@ $salaire->createSalaire();
             </div>
         </div>
         <div class="body">
-            <div class="container mt-1" style="position:relative;left:7%; height:92vh;overflow:auto;">
+            <div class="container mt-1" style="position:relative;left:7%; height:90vh;overflow:auto;">
                 <table class="table ">
                     <thead class="bg-light">
                         <tr>

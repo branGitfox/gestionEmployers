@@ -25,11 +25,6 @@ $ptg = new Pointage();
     <title>STE TAVARATRA</title>
 </head>
 <style>
-
-
-
-
-
     /* tbody {
         height: 61vh;
     } */
@@ -62,10 +57,10 @@ $ptg = new Pointage();
     }
 
 
-    td > a  {
+    td>a {
         padding: 0 30px 0 30px;
     }
-    
+
     /* .supbtn{
         border: none;
         background-color: transparent;
@@ -147,27 +142,9 @@ $ptg = new Pointage();
 
 
     .succes {
-        position: absolute;
-        bottom: 05rem;
-        right: -20rem;
-        width: 200px;
-        height: 50px;
-        border-radius: 10px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 10px;
-        background-color: green;
-        color: white;
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         animation-name: fade;
         animation-duration: 15s;
         transition: .5s;
-    }
-
-    .mouve {
-
-        transform: translate(-30rem, -2.5rem);
     }
 
     @keyframes fade {
@@ -188,14 +165,14 @@ $ptg = new Pointage();
 
     .card {
         position: absolute;
-        top: 2px;
+        top: 6.5rem;
         right: 5px;
     }
 
     #left-cont {
         position: absolute;
-        top: 0;
-        right: 0;
+        top: 5rem;
+        right: -10px;
     }
 
     body {
@@ -205,20 +182,59 @@ $ptg = new Pointage();
     .refresh {
         position: absolute;
         top: 4.38rem;
-       right: 16rem;
+        right: 14.5rem;
+    }
+
+
+    .plaque {
+        width: 84.25%;
+        height: 8.7vh;
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+    .ls {
+        letter-spacing: 1px;
+    }
+
+    #ajouter {
+        position: absolute;
+        top: 0;
     }
 </style>
 
 <body>
     <nav>
         <?php include '../sections/navbars.php' ?>
-        <div id="left-cont"  class="container body">
+        <div class="plaque bg-light shadow d-flex align-items-center justify-content-left p-3"> <svg
+                class="me-1  text-primary" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                class="bi bi-person-bounding-box" viewBox="0 0 16 16">
+                <path
+                    d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5M.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5m15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5" />
+                <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+            </svg>
+            <h5 class="fs-6 mt-2 fw-bold text-primary ls">EMPLOYES</h5>
+        </div>
+        <div id="left-cont" class="container body">
             <h2 class="text-center mt-2">LISTE DES EMPLOYES</h2>
             <div class="p-3 w-75 list">
                 <input type="text" class="form-control" placeholder="Rechercher un Employer...." id="searchField">
-                <button class="btn btn-primary  refresh">Actualiser</button>
+                <button class="btn btn-primary  refresh"> <svg class="me-2" xmlns="http://www.w3.org/2000/svg"
+                        width="16" height="16" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2z" />
+                        <path
+                            d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466" />
+                    </svg>Actualiser</button>
+                <a id="ajouter" href="ajouterunemployer.php" class="btn btn-success ls"><svg class="me-2" xmlns="http://www.w3.org/2000/svg"
+                        width="20" height="20" fill="currentColor" class="bi bi-person-plus" viewBox="0 0 16 16">
+                        <path
+                            d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664z" />
+                        <path fill-rule="evenodd"
+                            d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5" />
+                    </svg>Ajouter</a>
             </div>
-            <div class="container" style="max-height: 600px; overflow: auto;" id="table-container">
+            <div class="container" style="height: 72.5vh; overflow: auto;" id="table-container">
                 <table class="table">
                     <thead>
                         <tr>
@@ -229,7 +245,7 @@ $ptg = new Pointage();
                             <th>Sexes</th>
                             <th>Departement</th>
                             <th>Telephones</td>
-                            <th>Modifier / Suprrimer / Profil</th>
+                            <th>Modifier / Supprimer / Profil</th>
                         </tr>
                     </thead>
                     <tbody id="workersList">
@@ -286,7 +302,9 @@ $ptg = new Pointage();
         <div class="card text-center" style="width: 12rem;">
             <ul class="list-group list-group-flush">
                 <li class="list-group-item bg-light">Nombre d'employé</li>
-                <li class="list-group-item"><?= $wrkrs->getNumberOfWorkers()['nbrW'] ?></li>
+                <li class="list-group-item">
+                    <?= $wrkrs->getNumberOfWorkers()['nbrW'] ?>
+                </li>
             </ul>
         </div>
         </div>
@@ -357,8 +375,19 @@ $ptg = new Pointage();
 
             <?php endif ?>
             <?php if (!empty($_SESSION['succes'])): ?>
-                <div class="succes">
-                    <?= $_SESSION['succes'] ?>
+                <div class="position-fixed bottom-0 end-0 p-3 succes" style="z-index: 11">
+                    <div id="liveToast" class="toast show text-success" role="alert" aria-live="assertive"
+                        aria-atomic="true">
+                        <div class="toast-header">
+
+                            <strong class="me-auto"> Ste TAVARATRA</strong>
+                            <small>Maintenant</small>
+                            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                        </div>
+                        <div class="toast-body">
+                            <?= $_SESSION['succes'] ?>
+                        </div>
+                    </div>
                 </div>
             <?php endif ?>
             <?php unset($_SESSION['succes']); ?>
@@ -400,13 +429,10 @@ $ptg = new Pointage();
             })
 
             const succes = document.querySelector('.succes')
-            setTimeout(() => {
-                succes.classList.add('mouve')
-            }, 1)
 
             setTimeout(() => {
                 succes.remove()
-            }, 3000)
+            }, 5000)
 
             const refresh = document.querySelector('.refresh')
 

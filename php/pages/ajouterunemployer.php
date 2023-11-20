@@ -30,29 +30,11 @@ $wrkrs->newWorker();
     }
 
     .succes {
-        position: absolute;
-        bottom: 05rem;
-        right: -20rem;
-        width: 200px;
-        height: 50px; 
-         border-radius: 10px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 10px;
-        background-color: green;
-        color: white;
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         animation-name: fade;
-        animation-duration: 15s;
+        animation-duration: 5s;
         transition: .5s;
     }
-
-    .mouve {
-
-        transform: translate(-30rem, -2.5rem);
-    }
-
+    
     @keyframes fade {
         from {
             opacity: 1;
@@ -77,13 +59,37 @@ $wrkrs->newWorker();
 
     .container-lg{
         position: absolute;
+        top: 3rem;
+        right: 0;
+    }
+
+    .plaque {
+        width: 84.25%;
+        height: 8.7vh;
+        position: absolute;
         top: 0;
         right: 0;
+    }
+
+    .moreAdd {
+        position: absolute;
+        right: 2rem;
     }
 </style>
 
 <body>
     <?php include '../sections/navbars.php' ?>
+    <div class="plaque bg-light shadow d-flex align-items-center justify-content-left p-3"><svg class="me-1  text-primary" xmlns="http://www.w3.org/2000/svg"
+                        width="20" height="20" fill="currentColor" class="bi bi-person-plus" viewBox="0 0 16 16">
+                        <path
+                            d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664z" />
+                        <path fill-rule="evenodd"
+                            d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5" />
+                    </svg><h5 class="fs-6 mt-2 fw-bold text-primary ls">AJOUTER</h5>
+                <a href="listeemployer.php" class="moreAdd" title="Retour" ><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-arrow-right-circle-fill" viewBox="0 0 16 16">
+  <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z"/>
+</svg></a>
+    </div>   
     <div class="container-lg p-5">
         <h1 class="text-center mb-3">Ajouter un employer</h1>
         <form method="post" enctype="multipart/form-data">
@@ -187,17 +193,26 @@ $wrkrs->newWorker();
             </svg> -->
         </form>
         <?php if (!empty($wrkrs->succes())): ?>
-            <div class="succes"><?= $wrkrs->succes()?></div>
+            <div class="position-fixed bottom-0 end-0 p-3 succes" style="z-index: 11">
+        <div id="liveToast" class="toast show text-success" role="alert" aria-live="assertive" aria-atomic="true">
+          <div class="toast-header">
+         
+            <strong class="me-auto"> Ste TAVARATRA</strong>
+            <small>Maintenant</small>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>
+          <div class="toast-body">
+            <?= $wrkrs->succes() ?>
+          </div>
+        </div>
+      </div>
         <?php endif ?>
     <script>
         const succes = document.querySelector('.succes')
-        setTimeout(() => {
-            succes.classList.add('mouve')
-        }, 1)
 
         setTimeout(() => {
             succes.remove()
-        }, 3000)
+        }, 5000)
 
         // const close =document.querySelector('.close')
         // close.addEventListener('click', () => {

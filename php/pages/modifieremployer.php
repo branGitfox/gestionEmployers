@@ -30,27 +30,10 @@ $wrkrs->changeWorker();
     }
 
     .succes {
-        position: absolute;
-        bottom: 05rem;
-        right: -20rem;
-        width: 200px;
-        height: 50px;
-        border-radius: 10px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 10px;
-        background-color: green;
-        color: white;
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+       
         animation-name: fade;
-        animation-duration: 15s;
+        animation-duration: 4s;
         transition: .5s;
-    }
-
-    .mouve {
-
-        transform: translate(-30rem, -2.5rem);
     }
 
     @keyframes fade {
@@ -62,6 +45,12 @@ $wrkrs->changeWorker();
 
             opacity: 0;
         }
+    }
+
+    .container-lg{
+        position: absolute;
+        top: 0;
+        right: 0;
     }
 </style>
 
@@ -175,18 +164,28 @@ $wrkrs->changeWorker();
             </div>
         </form>
         <?php if (!empty($wrkrs->succes())): ?>
-            <div class="succes"><?= $wrkrs->succes() ?></div>
+            <div class="position-fixed bottom-0 end-0 p-3 succes" style="z-index: 11">
+        <div id="liveToast" class="toast show text-success" role="alert" aria-live="assertive" aria-atomic="true">
+          <div class="toast-header">
+         
+            <strong class="me-auto"> Ste TAVARATRA</strong>
+            <small>Maintenant</small>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>
+          <div class="toast-body">
+            <?= $wrkrs->succes() ?>
+          </div>
+        </div>
+      </div>
         <?php endif ?>
     </div>
     <script>
         const succes = document.querySelector('.succes')
-        setTimeout(() => {
-            succes.classList.add('mouve')
-        }, 1)
-
+    
+            
         setTimeout(() => {
             succes.remove()
-        }, 3000)
+        }, 5000)
     </script>
 </body>
 

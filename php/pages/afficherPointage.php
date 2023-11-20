@@ -25,28 +25,16 @@ $pointages = new Pointage();
         overflow-x: hidden;
     }
 
-    .succes {
+    .body {
         position: absolute;
-        bottom: 05rem;
-        right: -20rem;
-        width: 200px;
-        height: 50px;
-        border-radius: 10px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 10px;
-        background-color: green;
-        color: white;
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        top: 5rem;
+        width: 84%;
+        right: 0rem;
+    }
+    .succes {
         animation-name: fade;
         animation-duration: 15s;
         transition: .5s;
-    }
-
-    .mouve {
-
-        transform: translate(-30rem, -2.5rem);
     }
 
     @keyframes fade {
@@ -59,9 +47,29 @@ $pointages = new Pointage();
             opacity: 0;
         }
     }
+
+    .plaque {
+        width: 84.25%;
+        height: 8.7vh;
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+    .ls {
+        letter-spacing: 1px;
+    }
 </style>
 <body>
     <?php include '../sections/navbars.php'?>
+    <div class="plaque bg-light shadow d-flex align-items-center justify-content-left p-3"><svg class="me-1  text-primary" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-journal-bookmark" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M6 8V1h1v6.117L8.743 6.07a.5.5 0 0 1 .514 0L11 7.117V1h1v7a.5.5 0 0 1-.757.429L9 7.083 6.757 8.43A.5.5 0 0 1 6 8"/>
+            <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2"/>
+            <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1z"/>
+          </svg><h5 class="fs-6 mt-2 fw-bold text-primary ls">RAPPORT POINTAGES</h5>
+                
+    </div> 
+    <div class="body">
     <div class="container w-50">
         <div class="row">
             <div class="col-2">
@@ -80,7 +88,7 @@ $pointages = new Pointage();
             </div>
         </div>
     </div>
-    <div class="container mt-3 bg-light">
+    <div class="container mt-3" style="height:81vh; overflow:auto;">
         <table class="table">
             <thead>
                 <tr>
@@ -121,12 +129,24 @@ $pointages = new Pointage();
             </tbody>
         </table>
         <?php if (!empty($_SESSION['succes'])): ?>
-        <div class="succes">
+            <div class="position-fixed bottom-0 end-0 p-3 succes" style="z-index: 11">
+        <div id="liveToast" class="toast show text-success" role="alert" aria-live="assertive" aria-atomic="true">
+          <div class="toast-header">
+         
+            <strong class="me-auto"> Ste TAVARATRA</strong>
+            <small>Maintenant</small>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>
+          <div class="toast-body">
             <?= $_SESSION['succes'] ?>
+          </div>
         </div>
+      </div>
     <?php endif ?>
     <?php unset($_SESSION['succes']); ?>
     </div>
+    </div>
+    
     <script src="../../assets/js/jquery.min.js"></script>
     <script>
         $(document).ready(function () {
@@ -168,13 +188,11 @@ $pointages = new Pointage();
         }
 
         const succes = document.querySelector('.succes')
-        setTimeout(() => {
-            succes.classList.add('mouve')
-        }, 1)
+   
 
         setTimeout(() => {
             succes.remove()
-        }, 3000)
+        }, 5000)
 
         const close =document.querySelector('.close')
         close.addEventListener('click', () => {
