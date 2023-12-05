@@ -22,7 +22,7 @@
    }
 </style>
 <body>
-    <div class="container w p-5 d-none">
+    <div class="container w-75 p-5 ">
         <h1 class="text-center mb-3">Modifier le Salaire</h1>
         <a href="" class="btn btn-info mb-3">Annuler</a>
         <div class="mb-3">
@@ -31,36 +31,7 @@
         <div class="mb-3">
             <input type="submit" class="form-control bg-primary text-light" value="Modifier le Salaire" id="changeSalary">
         </div>
-        <div class="comfirmation d-none">
-            <div class="warning">
-                Attention
-            </div>
-            <div class="message">
-                vous voulez vraiment modifier?
-            </div>
-            <a href="" class="btn btn-warning">OUI</a>
-            <p class="nochoice" class="btn btn-danger">NON</p>
-        </div>
     </div>
-    <button class="btn btn-primary">modifier docum</button>
     <script src="./js/bootstrap.min.js"></script>
-    <script>
-        const container = document.querySelector('.container')
-        const btn = document.querySelector('button')
-        btn.addEventListener('click', () => {
-            container.classList.toggle('d-none')
-        })
-
-        const change = document.querySelector('#changeSalary')
-        const conf = document.querySelector('.comfirmation')
-        change.addEventListener('click', () => {
-            conf.classList.toggle('d-none')
-        })
-        const nochoice = document.querySelector('.nochoice')
-        nochoice.addEventListener('click', () => {
-            conf.classList.toggle('d-none')
-        })
-
-    </script>
 </body>
 </html>
