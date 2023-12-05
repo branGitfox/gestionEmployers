@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="container w-50 p-5">
+    <div class="container w-25 p-5 bg-light ">
         <h1 class="text-center mb-3">Modifier le Salaire</h1>
         <a href="" class="btn btn-info mb-3">Annuler</a>
         <div class="mb-3">
@@ -16,8 +16,16 @@
         <div class="mb-3">
             <input type="submit" class="form-control bg-primary text-light" value="Modifier le Salaire" >
         </div>
-    
     </div>
+    <button class="btn btn-primary">modifier le salaire</button>
     <script src="./js/bootstrap.min.js"></script>
+    <script>
+        const container = document.querySelector('.container')
+        const btn = document.querySelector('button')
+        btn.addEventListener('click', () => {
+            container.classList.toggle('d-none')
+        })
+        
+    </script>
 </body>
 </html>
