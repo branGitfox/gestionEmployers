@@ -72,6 +72,11 @@
         top: 11rem;
         left: 0.5px;
     }
+    #date {
+        position: absolute;
+        top: 17.5rem;
+        left: 0.5px;
+    }
 
     .card-header {
         font-size: 13px;
@@ -101,7 +106,7 @@
             </div>
         </nav>
         <h2 class="text-center mt-5">Salaire des Employers</h2>
-        <div class="container-sm mt-3">
+        <div class="container-sm mt-3 ">
             <table class="table">
                 <thead>
                     <tr>
@@ -109,6 +114,7 @@
                         <th>PRENOMS</th>
                         <th>FONCTIONS</th>
                         <th>SALAIRES</th>
+                        <th>Infos</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -117,19 +123,28 @@
                         <td>Brandon Fidelin</td>
                         <td>Facturier</td>
                         <td>2000000 Ar</td>
+                        <td><a href=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="blue" class="bi bi-info-circle-fill" viewBox="0 0 16 16">
+                            <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2"/>
+                          </svg></a></td>
                     </tr>
                 </tbody>
             </table>
         </div>
         <div class="btn-group-vertical" role="group" aria-label="Basic checkbox toggle button group" id="filtres">
             <a href="" class="btn btn-primary" >Ste TAVARATRA</a>
-            <a href="" class="btn btn-primary">Annexe Shop</a>
-            <a href="" class="btn btn-primary"> Mahambolo</a>
+            <a href="" class="btn btn-light">Annexe Shop</a>
+            <a href="" class="btn btn-light"> Mahambolo</a>
           </div>
           <div class="card border-primary mb-3" style="max-width: 10rem;" id="totalSalaire">
             <div class="card-header">TOTAL SALAIRES</div>
             <div class="card-body">
               <p class="card-text">100000000 Ar</p>
+            </div>
+          </div>
+          <div class="card border-primary mb-3" style="max-width: 10rem;" id="date">
+            <div class="card-header">DATE DU JOUR</div>
+            <div class="card-body">
+              <p class="card-text">2023/12/06</p>
             </div>
           </div>
     </div>
