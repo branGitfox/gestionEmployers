@@ -72,6 +72,7 @@ h1 {
     transition: .3s;
     font-weight: 400;
     text-transform: uppercase;
+    letter-spacing: 4px;
 }
 
 .menu-container > div a:hover{
