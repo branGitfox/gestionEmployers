@@ -71,6 +71,11 @@ h1 {
     transition: .3s;
 }
 
+/* .menu-container > div .logout:hover{
+    background-color: red;
+    transition: .3s;
+} */
+
 .menu-container > div a svg {
     position: absolute;
     left: 2rem;
