@@ -6,31 +6,29 @@
     <link rel="stylesheet" href="./css/bootstrap.min.css">
     <title>Ajoutez un employer</title>
 </head>
+<style>
+    body{
+      background-color: #b8b9ba;
+        
+    }
+
+    label {
+        color: white;
+    }
+</style>
 <body>
-    <div class="container p-5">
-        <h1 class="text-center mb-3">Ajoutez un employer</h1>
+    <div class="container-lg p-5">
+        <h1 class="text-center mb-3 text-light">Ajoutez un employer</h1>
         <div class="row justify-content-center mt-5">
             <div class="col-4">
                 <label for="Nom">Nom</label>
-                <input type="text" class="form-control"id="Nom" placeholder="Entrez le nom du nouveau employer">
+                <input type="text" class="form-control"id="Nom" placeholder="Nom">
             </div>
             <div class="col-4">
                 <label for="Prenom">Prenom</label>
-                <input type="text" class="form-control" id="Prenom" placeholder="Entrez le prenom du nouveau employer">
+                <input type="text" class="form-control" id="Prenom" placeholder="Prenom">
             </div>
-        </div>
-        <div class="row justify-content-center mt-5">
-            <div class="col-4">
-                <label for="cin">N° de CIN</label>
-                <input type="number" class="form-control"id="cin" placeholder="####-####-####-####">
-            </div>
-            <div class="col-4">
-                <label for="adresse">Adresse</label>
-                <input type="text" class="form-control" id="adresse" placeholder="Entrez l'adresse du nouveau employer">
-            </div>
-        </div>
-        <div class="row justify-content-center mt-5">
-            <div class="col-4">
+            <div class="col-3">
                 <label for="fonctions">Fonctions</label>
                 <select name="" id="fonctions" class="form-select">
                     <option  value="">Magasinier</option>
@@ -39,9 +37,34 @@
                     <option value="">Superviseur</option>
                 </select>
             </div>
+        </div>
+        <div class="row justify-content-center mt-5">
+            <div class="col-4">
+                <label for="cin">N° de CIN</label>
+                <input type="number" class="form-control"id="cin" placeholder="################">
+            </div>
+            <div class="col-4">
+                <label for="adresse">Adresse</label>
+                <input type="text" class="form-control" id="adresse" placeholder="Adresse">
+            </div>
+            <div class="col-3">
+                <label for="Origine">Origine</label>
+                <input type="text" class="form-control" id="Origine" placeholder="Origine">
+            </div>
+        </div>
+        <div class="row justify-content-center mt-5">
+         
             <div class="col-4">
                 <label for="salaire">Salaire</label>
-                <input type="number" class="form-control" id="salaire" placeholder="Entrez le salaire en Ar">
+                <input type="number" class="form-control" id="salaire" placeholder="Le salaire en Ar">
+            </div>
+            <div class="col-4">
+                <label for="responsable">Premier Responsable</label>
+                <input type="text" class="form-control" id="responsable" placeholder="Le premier responsble">
+            </div>
+            <div class="col-3">
+                <label for="photo">Contacts</label>
+                <input type="text" class="form-control " id="photo" placeholder="Contact (xxx/xxx)">
             </div>
         </div>
         <div class="row mt-3 justify-content-center">
@@ -50,14 +73,33 @@
                 <input type="file" class="form-control " id="photo">
             </div>
             <div class="col-4">
-                <label for="photo">Contacts</label>
-                <input type="text" class="form-control " id="photo" placeholder="Entrez les contact de l'employer (xxx/xxx)">
-            </div>
-        </div>
+                <label for="departement">Departement</label>
+              <select name="" id="departement" class="form-select">
+                    <option value="">STE TAVARATRA</option>
+                    <option value="">ANNEXE SHOP</option>
+                    <option value="">MAHAMBOLO</option>
+              </select>
 
+            </div>
+         
+        </div>
         <div class="row mt-3 justify-content-center">
-            <div class="col-8">
-                <input type="submit" class="form-control bg-primary text-light" id="photo" value="Ajouter Employer" >
+            <div class="col-1">
+                <div class="form-check">
+                    <input type="radio" class="form-check-input" id="homme" value="homme" name="sexe">
+                    <label class="form-check-label" for="homme">Homme</label>
+                    <input type="radio" class="form-check-input" id="Femme" value="femme" name="sexe">
+                    <label class="form-check-label" for="femme">Femme</label>
+                </div> 
+            </div>
+            </div>
+        <div class="row mt-3 justify-content-center">
+            <div class="col-8" style="position: relative;">
+                <svg style="position: absolute;top:10px;left:40%;" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" class="bi bi-floppy" viewBox="0 0 16 16">
+                    <path d="M11 2H9v3h2z"/>
+                    <path d="M1.5 0h11.586a1.5 1.5 0 0 1 1.06.44l1.415 1.414A1.5 1.5 0 0 1 16 2.914V14.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13A1.5 1.5 0 0 1 1.5 0M1 1.5v13a.5.5 0 0 0 .5.5H2v-4.5A1.5 1.5 0 0 1 3.5 9h9a1.5 1.5 0 0 1 1.5 1.5V15h.5a.5.5 0 0 0 .5-.5V2.914a.5.5 0 0 0-.146-.353l-1.415-1.415A.5.5 0 0 0 13.086 1H13v4.5A1.5 1.5 0 0 1 11.5 7h-7A1.5 1.5 0 0 1 3 5.5V1H1.5a.5.5 0 0 0-.5.5m3 4a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5V1H4zM3 15h10v-4.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5z"/>
+                  </svg>
+                <input type="submit" class="form-control bg-primary text-light" id="photo" value="Enregistrer" style="border: none;">
             </div>
         </div>
     </div>
