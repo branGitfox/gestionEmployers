@@ -8,17 +8,15 @@
 </head>
 <style>
     body{
-      background-color: #b8b9ba;
+  background-color: #f0f8ff;
+
         
     }
 
-    label {
-        color: white;
-    }
 </style>
 <body>
     <div class="container-lg p-5">
-        <h1 class="text-center mb-3 text-light">Ajoutez un employer</h1>
+        <h1 class="text-center mb-3">Ajoutez un employer</h1>
         <div class="row justify-content-center mt-5">
             <div class="col-4">
                 <label for="Nom">Nom</label>
@@ -81,6 +79,11 @@
               </select>
 
             </div>
+            <div class="col-3">
+                <label for="date">Date d'entrée</label>
+                <input type="date" class="form-control">    
+            </div>
+            
          
         </div>
         <div class="row mt-3 justify-content-center">
@@ -88,7 +91,7 @@
                 <div class="form-check">
                     <input type="radio" class="form-check-input" id="homme" value="homme" name="sexe">
                     <label class="form-check-label" for="homme">Homme</label>
-                    <input type="radio" class="form-check-input" id="Femme" value="femme" name="sexe">
+                    <input type="radio" class="form-check-input" id="femme" value="femme" name="sexe">
                     <label class="form-check-label" for="femme">Femme</label>
                 </div> 
             </div>
