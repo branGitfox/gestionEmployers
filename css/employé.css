@@ -73,9 +73,8 @@ h1 {
     letter-spacing:3px;
     box-shadow: 7px 5px 5px 0px rgba(27, 27, 27, 0.91);
     position: relative;
-
- 
 }
+
 .menu-container>div a:hover{
     transform: translateY(-10px);
     transition: .5s;

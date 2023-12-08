@@ -95,7 +95,16 @@
 
    .footer > div {
     border: solid;
+    display: grid;
+    grid-template-rows: 1fr 3fr;
    }
+
+   .footer > div .title {
+    border: solid;
+    text-align: center;
+   }
+
+ 
    .sary {
     width: 100%;
     height: 100%;
@@ -397,8 +406,12 @@
                 <div class="anarana"></div>
            </div>
            <div class="footer">
-            <div class="left-info"></div>
-            <div class="right-info"></div>
+            <div class="left-info">
+                <div class="title"><h3>Professionnelle</h3></div>
+            </div>
+            <div class="right-info">
+                <div class="title"><h3>Contacts</h3></div>
+            </div>
         </div>
         </div>
     </div>
