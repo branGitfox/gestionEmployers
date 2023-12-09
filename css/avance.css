@@ -1,0 +1,108 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.search-container{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    left: 32%;
+    top: 15%;
+    border: solid 0.1px gray;
+    border-radius: 5px;
+    background-color: whitesmoke;
+    display: none;
+    z-index: 100;
+}
+
+#search-icon {
+    position: absolute;
+    right: 20px;
+    top: 55%;
+    cursor: pointer;
+}
+
+
+h4{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: center;
+    position: absolute;
+    top: 0;
+    left: 30%;
+}
+.search-header{
+    width: 100%;
+    height: 20px;
+    margin-bottom: 10px;
+    position: relative;
+}
+.search-container #close {
+    fill: red;
+    position: absolute;
+    right: 0.5px;
+    top: 0.5px;
+}
+
+.search-input input{
+    padding: 10px;
+    width: 500px;
+    border: solid 1px gray;
+    border-radius: 3px;
+    transition: .1s all ease;
+}
+.search-input {
+    display: flex;
+    justify-content: center;
+    width: 500px;
+    margin-bottom: 5px;
+    transition: .1s;
+
+}
+
+.search-input input:focus{
+   outline:solid 2px;
+   outline-color: rgb(41, 41, 247);
+}
+
+.result-container {
+    width: 500px;
+    max-height: 300px;
+    overflow: auto;
+    border: solid 0.1px gray;
+    border-radius: 5px;
+}
+
+.result-div {
+    width: 100%;
+    height: 50px;
+    border: solid 0.1px gray;
+    /* padding: 10px; */
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+     
+
+}
+
+.result-div a {
+    width: 100%;
+    background-color: #f0f8ff;
+    padding-top: .78rem;
+    padding-bottom: .78rem;
+    border-radius: 3px;
+    text-decoration: none;
+    color: black;
+    position: relative;
+
+}
+
+.result-div a svg{
+    position: absolute;
+    left: 10px;
+    top: 30%;
+}
+
+
