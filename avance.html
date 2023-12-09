@@ -18,7 +18,7 @@
             </div>
            
             <div class="search-input">
-                <input type="text" placeholder="Recherche">
+                <input type="text" placeholder="Recherche" id="search-field">
             </div>
             <div class="result-container">
                 <div class="result-div"><a href=""><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
@@ -56,6 +56,27 @@
                     <input type="date" class="form-control">
                 </div>
             </div>
+            <div class="row mt-2 justify-content-center">
+                <div class="col-4"> 
+                <label for="AvanceE" class="form-label">Avance Espece</label>
+                <input type="number" class="form-control" id="avanceE">
+                </div>
+                <div class="col-4"> 
+                    <label for="AvanceN" class="form-label">Avance Nature</label>
+                    <input type="number" class="form-control" id="AvanceN">
+                    </div>
+            </div>
+            <div class="row mt-2 justify-content-center">
+                <div class="col-8">
+                    <label for="description" class="form-label">Description de l'Avance</label>
+                    <textarea name="" id="description" class="form-control" aria-placeholder="La raison de l'avance ici...""></textarea>
+                </div>
+            </div>
+            <div class="row mt-2 justify-content-center">
+                <div class="col-8">
+                    <input type="submit" class="form-control bg-primary text-light" value="Enregistrer">
+                </div>
+            </div>
         </div>
         <script src="./js/bootstrap.min.js"></script>
     <script>
@@ -65,6 +86,10 @@
         document.querySelector('#search-icon').addEventListener('click', () => {
             document.querySelector('.search-container').style.display='block'
 
+        })
+
+        document.querySelector('#search-field').addEventListener('keyup', () => {
+            alert(document.querySelector('#search-field').value)
         })
     </script>
 </body>
