@@ -107,10 +107,14 @@ h4{
 
 }
 
+.result-div a:hover{
+    background-color: rgba(103, 103, 254, 0.389);
+}
+
 .result-div a svg{
     position: absolute;
     left: 10px;
     top: 30%;
 }
 
-F
+
