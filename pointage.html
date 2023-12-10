@@ -42,7 +42,7 @@
             </div>
         </div>
         <div class="container w-50 bg-light shadow rounded">
-            <h3 class="text-center mt-5">Donner une Avance</h3>
+            <h3 class="text-center mt-5">pointer un employé</h3>
             <div class="row mt-3 justify-content-center">
                 <div class="col-6" style="position: relative;">
                     <svg id="search-icon" xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="blue" class="bi bi-search" viewBox="0 0 16 16">
@@ -58,17 +58,23 @@
             </div>
             <div class="row mt-2 justify-content-center">
                 <div class="col-4"> 
-                <label for="AvanceE" class="form-label">Avance Espece</label>
-                <input type="number" class="form-control" id="avanceE">
+                    
+                        <input type="radio" class="form-check-input" value="justify" name="excuse" id="justify">
+                        <label class="form-label" for="justify">Justifié</label>
+                        <input type="radio" class="form-check-input" value="n" name="excuse" id="nonJustify">
+                        <label class="form-label" for="nonJustify">Non Justifié</label>
+              
                 </div>
                 <div class="col-4"> 
-                    <label for="AvanceN" class="form-label">Avance Nature</label>
-                    <input type="number" class="form-control" id="AvanceN">
-                    </div>
+                    <input type="radio" class="form-check-input" value="malade" name="anomalie" id="malade">
+                    <label class="form-label" for="malade">Malade</label>
+                    <input type="radio" class="form-check-input" value="Autre" name="anomalie" id="autre">
+                    <label class="form-label" for="autre">Autres</label>
+                </div>
             </div>
             <div class="row mt-2 justify-content-center">
                 <div class="col-8">
-                    <label for="description" class="form-label">Description de l'Avance</label>
+                    <label for="description" class="form-label">Description de l'absence</label>
                     <textarea name="" id="description" class="form-control" aria-placeholder="La raison de l'avance ici...""></textarea>
                 </div>
             </div>

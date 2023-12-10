@@ -94,6 +94,12 @@ h1 {
     left: 3.4rem;
 }
 
+.menu-container>div .imp svg{
+    position: absolute;
+    top: 1.8rem;
+    left: 2.5rem;
+}
+
 .retour {
     position: absolute;
     bottom: 0;
