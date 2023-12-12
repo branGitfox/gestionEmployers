@@ -1,9 +1,8 @@
 <?php 
 session_start();
 require '../class/Workers.php';
-
 $workers = new Workers();
-
+$workers->newAvance();
 ?>
 
 
@@ -20,6 +19,45 @@ $workers = new Workers();
     .noResult {
         text-align: center;
         font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+
+    body {
+        overflow-x:hidden ;
+    }
+
+    .succes {
+        position: absolute;
+        bottom: 05rem;
+        right: -20rem;
+        width: 200px;
+        height: 50px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+        background-color: green;
+        color:white;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        animation-name:fade;
+        animation-duration:15s;
+        transition: .5s;
+    }
+
+    .mouve {
+        
+        transform:translate(-30rem, -2.5rem);
+    }
+
+    @keyframes fade {
+        from {
+            opacity: 1;
+        }
+
+        to{
+            
+            opacity: 0;
+        }
     }
 </style>
 <body>
@@ -43,6 +81,7 @@ $workers = new Workers();
                   <?php endforeach ?>
             </div>
         </div>
+        <form action="" method="POST">
         <div class="container w-50 bg-light shadow rounded">
             <h3 class="text-center mt-5">Donner une Avance</h3>
             <div class="row mt-3 justify-content-center">
@@ -53,25 +92,26 @@ $workers = new Workers();
                     <label for="employé" class="form-label">Employé</label>
                     <input type="text" class="form-control" disabled  value="<?= is_numeric($workers->sessionID())?$workers->nameFistname()['name'].' '.$workers->nameFistname()['firstname']:'Aucun employé'?>">
                 </div>
+               
                 <div class="col-3">
                     <label for="date" class="form-label">Date d'avance</label>
-                    <input type="date" class="form-control">
+                    <input type="date" class="form-control" name="a_date">
                 </div>
             </div>
             <div class="row mt-2 justify-content-center">
                 <div class="col-4"> 
                 <label for="AvanceE" class="form-label">Avance Espece</label>
-                <input type="number" class="form-control" id="avanceE">
+                <input type="number" class="form-control" id="avanceE" name="a_espece">
                 </div>
                 <div class="col-4"> 
                     <label for="AvanceN" class="form-label">Avance Nature</label>
-                    <input type="number" class="form-control" id="AvanceN">
+                    <input type="number" class="form-control" id="AvanceN" name="a_nature">
                     </div>
             </div>
             <div class="row mt-2 justify-content-center">
                 <div class="col-8">
                     <label for="description" class="form-label">Description de l'Avance</label>
-                    <textarea name="" id="description" class="form-control" aria-placeholder="La raison de l'avance ici...""></textarea>
+                    <textarea name="a_desc" id="description" class="form-control" aria-placeholder="La raison de l'avance ici..."></textarea>
                 </div>
             </div>
             <div class="row mt-2 justify-content-center ">
@@ -79,6 +119,10 @@ $workers = new Workers();
                     <input type="submit" class="form-control bg-primary text-light" value="Enregistrer">
                 </div>
             </div>
+            </form>
+            <?php if(!empty($workers->succes())):?>
+        <div class="succes"><?=$workers->succes()?></div>
+    <?php endif?>
         </div>
         <script src="../../assets/js/jquery.min.js"></script>
         <script src="../../assets/js/bootstrap.min.js"></script>
@@ -105,6 +149,15 @@ $workers = new Workers();
             document.querySelector('.search-container').style.display='block'
 
         })
+
+        const succes = document.querySelector('.succes')
+        setTimeout(() => {
+            succes.classList.add('mouve')  
+        }, 1)
+
+        setTimeout(() => {
+            succes.remove()
+        },3000)
     </script>
 
 </body>

@@ -247,5 +247,28 @@ class Workers {
             $_SESSION['worker_id']=$this->getWorkerId();
             return $_SESSION['worker_id'];
            }
+
+           /**
+            * Ajoute les avances dans la base de donnée
+            */
+
+            private function insertAvance($a_date, $a_nature, $a_espece, $a_desc, $w_id) {
+                $query = $this->getPdo()
+                ->prepare('INSERT INTO avances (`a_date`, `a_nature`, `a_espece`, `a_desc`, `id_worker`) VALUES (?, ?, ?, ?, ?)');
+                $query->execute([$a_date, $a_nature, $a_espece, $a_desc, $w_id]);
+            }
+
+            public function newAvance() {
+                if(isset($_POST['a_date'], $_POST['a_nature'], $_POST['a_espece'], $_POST['a_desc']) && !empty($_POST['a_date']) && !empty($_POST['a_desc'])){
+                    if($_POST['a_nature']!= 0 || $_POST['a_espece'] != 0){
+                        $a_date = $_POST['a_date'];
+                        $a_nature= (int)($_POST['a_nature']);
+                        $a_espece= (int)($_POST['a_espece']);
+                        $a_desc= htmlentities(htmlspecialchars($_POST['a_desc']));
+                        $this->insertAvance($a_date, $a_nature, $a_espece, $a_desc, $this->sessionID());
+                        $this->getSucces('success');
+                    }
+                }
+            }
     
 }       

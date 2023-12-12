@@ -2,10 +2,10 @@
 require '../class/Workers.php';
 $wrkrs = new Workers();
 // echo $_POST['worker']; 
-$sql = "SELECT * FROM workers JOIN fonctions ON fonctions.id=workers.id_fonction JOIN departements ON departements.id=workers.id_depart";   
+// $sql = "SELECT * FROM workers JOIN fonctions ON fonctions.id=workers.id_fonction JOIN departements ON departements.id=workers.id_depart";   
 if(isset($_POST['worker']) && !empty($_POST['worker'])){
     $value = $_POST['worker'];
-    $sql= "SELECT * FROM workers JOIN fonctions ON fonctions.id=workers.id_fonction JOIN departements ON departements.id=workers.id_depart WHERE workers.w_id LIKE '%{$value}%' OR  workers.name LIKE '%{$value}%' OR workers.firstname LIKE '%{$value}%' OR fonctions.name_fonction LIKE '%{$value}%' OR workers.sexe LIKE '%{$value}%'";
+    $sql= "SELECT * FROM workers JOIN fonctions ON fonctions.id=workers.id_fonction JOIN departements ON departements.id=workers.id_depart WHERE workers.w_id LIKE '%{$value}%' OR  workers.name LIKE '%{$value}%' OR workers.firstname LIKE '%{$value}%' OR fonctions.name_fonction LIKE '%{$value}%' OR workers.sexe LIKE '%{$value}%' OR departements.name_depart LIKE '%{$value}%'";
 }
  
 
@@ -28,7 +28,7 @@ if($query->rowCount() > 0) {
                 <td>{$data['sexe']}</td>
                 <td>{$data['name_depart']}</td>
                 <td>{$data['contact']}</td>
-                <td><a href='' ><svg id='look' xmlns='http://www.w3.org/2000/svg' width='25' height='25' fill='black' class='bi bi-pencil-square' viewBox='0 0 16 16'>
+                <td><a href='modifieremployer.php?worker_id={$data['w_id']}' ><svg id='look' xmlns='http://www.w3.org/2000/svg' width='25' height='25' fill='black' class='bi bi-pencil-square' viewBox='0 0 16 16'>
                 <path d='M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z'/>
                 <path fill-rule='evenodd' d='M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z'/>
               </svg></a> <span class='supbtn' onclick='confirmer({$data['w_id']})'><svg id='delete' xmlns='http://www.w3.org/2000/svg' width='25' height='25' fill='red' class='bi bi-trash' viewBox='0 0 16 16'>
