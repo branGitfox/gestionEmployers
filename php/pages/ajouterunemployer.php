@@ -6,6 +6,7 @@ $fct= new Fonctions();
 $dpt= new Departements(); 
 $wrkrs = new Workers();
 $wrkrs->newWorker();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,8 +19,42 @@ $wrkrs->newWorker();
 <style>
     body{
         background-color: #f0f8ff;
+        overflow: hidden;
+    }
+    .succes {
+        position: absolute;
+        bottom: 05rem;
+        right: -20rem;
+        width: 200px;
+        height: 50px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+        background-color: green;
+        color:white;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        animation-name:fade;
+        animation-duration:15s;
+        transition: .5s;
     }
 
+    .mouve {
+        
+        transform:translate(-30rem, -2.5rem);
+    }
+
+    @keyframes fade {
+        from {
+            opacity: 1;
+        }
+
+        to{
+            
+            opacity: 0;
+        }
+    }
 </style>
 <body>
     <div class="container-lg p-5 bg-light shadow rounded">
@@ -90,8 +125,6 @@ $wrkrs->newWorker();
                 <label for="date">Date d'entrée</label>
                 <input type="date" class="form-control" name="date_entree" required>    
             </div>
-            
-         
         </div>
         <div class="row mt-3 justify-content-center">
             <div class="col-1">
@@ -113,7 +146,20 @@ $wrkrs->newWorker();
             </div>
         </div>
     </form>
+    <?php if(!empty($wrkrs->succes())):?>
+        <div class="succes"><?=$wrkrs->succes()?></div>
+    <?php endif?>
     </div>
     <script src="../../assets/js/bootstrap.min.js"></script>
+    <script>
+        const succes = document.querySelector('.succes')
+        setTimeout(() => {
+            succes.classList.add('mouve')  
+        }, 1)
+
+        setTimeout(() => {
+            succes.remove()
+        },3000)
+    </script>
 </body>
 </html>

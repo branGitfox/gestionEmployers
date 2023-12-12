@@ -5,8 +5,9 @@ class Workers {
     private $db='tavaratra';
     private $user='root';
     private $pdo = null;
+    private $succes;
 
-    private function connect(){
+    public function connect(){
         return new PDO('mysql:host='.$this->host.';dbname='.$this->db.';',$this->user,'');
     }
 
@@ -50,6 +51,8 @@ class Workers {
                 if(in_array(strtolower($image_ext), $allowed_ext)){
                     move_uploaded_file($image_tmp, '../images/'.$new_image_name);
                     $this->insertWorker($name, $firstname, $fonction, $cin, $adresse, $origine, $salaire, $responsable,$contact,$new_image_name, $departement, $date_entree, $sexe);
+                    $this->getSucces('Succès !!');
+
                 }
             }
 
@@ -65,6 +68,50 @@ class Workers {
         $query = $this->getPdo()
         ->prepare('INSERT INTO workers(`name`, `firstname`, `id_fonction`, `cin`, `adresse`, `origine`, `salaire_base`, `responsable`, `contact`, `image`, `id_depart`, `date_entree`, `sexe`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
         $query->execute([$name, $firstname, $id_fonction, $cin, $adresse, $origine, $salaire_base, $responsable, $contact, $image, $id_depart, $date_entree, $sexe]);
-      }
+      }     
 
-}
+       /**
+        * retourne liste des employées sans contraintes
+        */
+
+        public function listOfWorker(){
+            $query= $this->getPdo()  
+            ->prepare("SELECT * FROM workers JOIN fonctions ON fonctions.id=workers.id_fonction JOIN departements ON departements.id=workers.id_depart");
+            $query->execute();
+            return $query->fetchAll();
+        }
+
+        /**
+         * Affiche les informations de l'employé dans la box
+         */
+        public function showWorkerInfo() {
+            if(isset($_GET['worker_id'])){
+                $w_id = $_GET['worker_id'];
+                $query = $this->getPdo()
+                ->prepare('SELECT * FROM workers JOIN fonctions ON fonctions.id=workers.id_fonction JOIN departements ON departements.id=workers.id_depart WHERE workers.w_id = ?');
+                $query->execute([$w_id]);
+                return $query->fetch();
+            }
+        }
+        /**
+         * Prend les erreur en paramètre
+         */
+        private function getSucces($succes) {
+            $this->succes = $succes;
+        }
+
+        /**
+         * retourne lùerreuer 
+         */
+        public function succes(){
+            return $this->succes;
+        }
+
+    
+
+
+
+       
+
+    
+}       
