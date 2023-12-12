@@ -150,9 +150,72 @@ class Workers {
 
          }
 
+         /**
+          * Modification des info d'un employé dans la base de donnée
+          */
 
-         
+          private function updateWorker($name, $firstname, $id_fonction, $cin, $adresse, $origine, $salaire_base, $responsable, $contact, $image=null, $id_depart, $date_entree, $sexe, $w_id){
+            if($image == null) {
+                $query = $this->getPdo()
+                ->prepare('UPDATE workers SET name= ?,  firstname =?, id_fonction =?,  cin = ?, adresse = ?, origine = ?, salaire_base = ?, responsable = ?, contact = ?, id_depart = ?, date_entree = ?, sexe = ? WHERE w_id = ?');
+                $query->execute([$name, $firstname, $id_fonction, $cin, $adresse, $origine, $salaire_base, $responsable, $contact,$id_depart, $date_entree, $sexe, $w_id]);
+            }else {
+                $query = $this->getPdo()
+                ->prepare('UPDATE workers SET name= ?,  firstname =?, id_fonction =?,  cin = ?, adresse = ?, origine = ?, salaire_base = ?, responsable = ?, contact = ?, image = ?, id_depart = ?, date_entree = ?, sexe = ? WHERE w_id = ?');
+                $query->execute([$name, $firstname, $id_fonction, $cin, $adresse, $origine, $salaire_base, $responsable, $contact, $image, $id_depart, $date_entree, $sexe, $w_id]);
+            }
 
+
+            
+          }   
+
+          /**
+           * Gere le processus de modification
+           */
+
+           public function changeWorker(){
+            if(isset($_POST['envoyer'])){
+                if(isset($_POST['name'], $_POST['firstname'], $_POST['fonctions'], $_POST['cin'], $_POST['adresse'], $_POST['origine'], $_POST['salaire'], $_POST['responsable'], $_POST['contact'], $_POST['departements'], $_POST['date_entree'], $_POST['sexe'])){
+                    $name= htmlentities(htmlspecialchars($_POST['name']));
+                    $firstname= htmlentities(htmlspecialchars($_POST['firstname']));
+                    $fonction= htmlentities(htmlspecialchars($_POST['fonctions']));
+                    $cin= htmlentities(htmlspecialchars($_POST['cin']));
+                    $adresse= htmlentities(htmlspecialchars($_POST['adresse']));
+                    $origine= htmlentities(htmlspecialchars($_POST['origine']));
+                    $salaire= htmlentities(htmlspecialchars($_POST['salaire']));
+                    $responsable= htmlentities(htmlspecialchars($_POST['responsable']));
+                    $contact= htmlentities(htmlspecialchars($_POST['contact']));
+                    $departement= htmlentities(htmlspecialchars($_POST['departements']));
+                    $date_entree= htmlentities(htmlspecialchars($_POST['date_entree']));
+                    $sexe= htmlentities(htmlspecialchars($_POST['sexe']));
+                    if($_FILES['image']['name']==''){
+                        $this->updateWorker($name, $firstname, $fonction, $cin, $adresse, $origine, $salaire, $responsable,$contact,null, $departement, $date_entree, $sexe, $this->getWorkerId());
+                        $this->getSucces('Succèss');
+                       
+                    }
+    
+                    if(isset($_FILES['image']) && !empty($_FILES['image'])){
+                        $image = $_FILES['image'];
+                        $image_name= $image['name'];
+                        $image_tmp = $image['tmp_name'];
+                        $explode_image_name = explode('.', $image_name);
+                        $image_ext = end($explode_image_name);
+                        $allowed_ext= ['jpg', 'png', 'gif', 'jpeg'];
+                        if(in_array(strtolower($image_ext), $allowed_ext)){
+                             $new_image_name= time().'.'.$image_ext;
+                            if(move_uploaded_file($image_tmp, '../images/'.$new_image_name)){
+                                $this->updateWorker($name, $firstname, $fonction, $cin, $adresse, $origine, $salaire, $responsable,$contact,$new_image_name, $departement, $date_entree, $sexe, $this->getWorkerId());
+                                $this->getSucces('Succès');
+                            }
+                           
+                        }
+                    }
+                       
+                   
+                }
+            }
+           
+         }
 
        
 

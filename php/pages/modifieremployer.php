@@ -5,7 +5,7 @@ require '../class/Departements.php';
 $fct= new Fonctions();
 $dpt= new Departements(); 
 $wrkrs = new Workers();
-$wrkrs->newWorker();
+$wrkrs->changeWorker();
 
 ?>
 <!DOCTYPE html>
