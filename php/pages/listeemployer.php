@@ -1,4 +1,5 @@
 <?php 
+session_start();
 require '../class/Workers.php';
 $wrkrs = new Workers();
 
@@ -142,7 +143,40 @@ $wrkrs = new Workers();
    }
 
 
-  
+   .succes {
+        position: absolute;
+        bottom: 05rem;
+        right: -20rem;
+        width: 200px;
+        height: 50px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+        background-color: green;
+        color:white;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        animation-name:fade;
+        animation-duration:15s;
+        transition: .5s;
+    }
+
+    .mouve {
+        
+        transform:translate(-30rem, -2.5rem);
+    }
+
+    @keyframes fade {
+        from {
+            opacity: 1;
+        }
+
+        to{
+            
+            opacity: 0;
+        }
+    }
 </style>
 <body>
     <div class="container-xxl ">
@@ -211,7 +245,7 @@ $wrkrs = new Workers();
                   <p>Fonctions: <?=$wrkrs->showWorkerInfo()['name_fonction']?>:</p>
                   <p>Departement: <?=$wrkrs->showWorkerInfo()['name_depart']?></p>
                   <p>Date d'Entrée: <?=$wrkrs->showWorkerInfo()['date_entree']?></p>
-                  <p>Salaire de Base: <?=$wrkrs->showWorkerInfo()['salaire_base']?></p>
+                  <p>Salaire de Base: <?=$wrkrs->showWorkerInfo()['salaire_base']?> Ar</p>
                 </div>
             </div>
             <div class="right-info">
@@ -220,11 +254,17 @@ $wrkrs = new Workers();
                   <p>N° Matricules: <?=$wrkrs->showWorkerInfo()['w_id']?></p>
                   <p>Teléphone: <?=$wrkrs->showWorkerInfo()['contact']?></p>
                   <p>Premier Responsable: <?=$wrkrs->showWorkerInfo()['responsable']?></p>
+                  <p style="text-decoration:underline red;">Nombre d'absence ce mois: <?=$wrkrs->showWorkerInfo()['nbr_absence']?></p>
                 </div>
             </div>
         </div>
         </div>
         <?php endif ?>
+        <?php if(!empty($_SESSION['succes'])):?>
+        <div class="succes"><?=$_SESSION['success']?></div>
+      
+    <?php endif?>
+    <?php   unset($_SESSION['succes']);?>
     </div>
     <script src="../../assets/js/jquery.min.js"></script>
     <script>
@@ -254,10 +294,21 @@ $wrkrs = new Workers();
         
         document.querySelectorAll('.delete').forEach(Element => {
             Element.addEventListener('click', () => {
-                confirm('Vous etes de vouloir supperimer cet employé')
+                if(confirm('Vous etes sure de vouloir supperimer cet employé')){
+                    
+                }
+                
             })
         })
+        
+             const succes = document.querySelector('.succes')
+        setTimeout(() => {
+            succes.classList.add('mouve')  
+        }, 1)
 
+        setTimeout(() => {
+            succes.remove()
+        },3000)
  
     </script>
    
