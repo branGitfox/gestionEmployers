@@ -1,3 +1,11 @@
+<?php
+session_start();
+unset($_SERVER['worker_id']);
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
