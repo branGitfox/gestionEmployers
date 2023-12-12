@@ -217,7 +217,35 @@ class Workers {
            
          }
 
+        /**
+         * Liste des employés dans la partie avance
+         */
        
+         public function getList() {
+            $query = $this->getPdo()
+            ->query('SELECT * FROM workers');
+            $query->execute();
+            return $query->fetchAll();
+         }
 
+         /**
+          * Recupere le nom et prenom de l'employé selectionné
+          */
+
+          public function nameFistname(){
+            $query= $this->getPdo()
+            ->prepare('SELECT w_id, name, firstname FROM workers WHERE w_id = ?');
+            $query->execute([$_SESSION['worker_id']]);
+            return $query->fetch();
+          }
+
+          /**
+           * Mettre l'id de l'employé dans la session
+           */
+
+           public function sessionID() {
+            $_SESSION['worker_id']=$this->getWorkerId();
+            return $_SESSION['worker_id'];
+           }
     
 }       
