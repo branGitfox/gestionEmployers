@@ -1,9 +1,18 @@
+<?php
+require '../class/Workers.php';
+require '../class/Fonctions.php';
+require '../class/Departements.php';
+$fct= new Fonctions();
+$dpt= new Departements(); 
+$wrkrs = new Workers();
+$wrkrs->newWorker();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
     <title>Ajoutez un employer</title>
 </head>
 <style>
@@ -19,68 +28,67 @@
         <div class="row justify-content-center mt-5">
             <div class="col-4">
                 <label for="Nom">Nom</label>
-                <input type="text" class="form-control"id="Nom" placeholder="Nom" name="name">
+                <input type="text" class="form-control"id="Nom" placeholder="Nom" name="name" required>
             </div>
             <div class="col-4">
                 <label for="Prenom">Prenom</label>
-                <input type="text" class="form-control" id="Prenom" placeholder="Prenom" name="firstname">
+                <input type="text" class="form-control" id="Prenom" placeholder="Prenom" name="firstname" required>
             </div>
             <div class="col-3">
                 <label for="fonctions">Fonctions</label>
                 <select name="fonctions" id="fonctions" class="form-select">
-                    <option  value="">Magasinier</option>
-                    <option selected value="">Facturier</option>
-                    <option value="">Caissier</option>
-                    <option value="">Superviseur</option>
+                   <?php foreach($fct->getListOfFonctions() as $fonc):?>
+                    <option value="<?= $fonc['id'] ?>"><?= $fonc['name_fonction'] ?></option>
+                    <?php endforeach ?>
                 </select>
             </div>
         </div>
         <div class="row justify-content-center mt-5">
             <div class="col-4">
                 <label for="cin">N° de CIN</label>
-                <input type="number" class="form-control"id="cin" placeholder="################">
+                <input type="text" class="form-control"id="cin" placeholder="################" name="cin" required>
             </div>
             <div class="col-4">
                 <label for="adresse">Adresse</label>
-                <input type="text" class="form-control" id="adresse" placeholder="Adresse">
+                <input type="text" class="form-control" id="adresse" placeholder="Adresse" name="adresse" required>
             </div>
             <div class="col-3">
                 <label for="Origine">Origine</label>
-                <input type="text" class="form-control" id="Origine" placeholder="Origine">
+                <input type="text" class="form-control" id="Origine" placeholder="Origine" name="origine" required>
             </div>
         </div>
         <div class="row justify-content-center mt-5">
          
             <div class="col-4">
                 <label for="salaire">Salaire</label>
-                <input type="number" class="form-control" id="salaire" placeholder="Le salaire en Ar">
+                <input type="number" class="form-control" id="salaire" placeholder="Le salaire en Ar" name="salaire" required>
             </div>
             <div class="col-4">
                 <label for="responsable">Premier Responsable</label>
-                <input type="text" class="form-control" id="responsable" placeholder="Le premier responsble">
+                <input type="text" class="form-control" id="responsable" placeholder="Le premier responsble" name="responsable" required>
             </div>
             <div class="col-3">
-                <label for="photo">Contacts</label>
-                <input type="text" class="form-control " id="photo" placeholder="Contact (xxx/xxx)">
+                <label for="contact">Contacts</label>
+                <input type="text" class="form-control " id="contact" placeholder="Contact (xxx/xxx)" name="contact" required>
             </div>
         </div>
         <div class="row mt-3 justify-content-center">
             <div class="col-4">
                 <label for="photo">Photo 4x4</label>
-                <input type="file" class="form-control " id="photo">
+                <input type="file" class="form-control " id="photo" name="image" required>
             </div>
             <div class="col-4">
                 <label for="departement">Departement</label>
-              <select name="" id="departement" class="form-select">
-                    <option value="">STE TAVARATRA</option>
-                    <option value="">ANNEXE SHOP</option>
-                    <option value="">MAHAMBOLO</option>
+              <select name="departements" id="departement" class="form-select">
+                    <?php foreach($dpt->getListOfDepartement() as $depart):?>
+                        <option value="<?= $depart['id']?>"><?= $depart['name_depart']?></option>
+                    <?php endforeach ?>
               </select>
 
             </div>
             <div class="col-3">
                 <label for="date">Date d'entrée</label>
-                <input type="date" class="form-control">    
+                <input type="date" class="form-control" name="date_entree" required>    
             </div>
             
          
@@ -88,9 +96,9 @@
         <div class="row mt-3 justify-content-center">
             <div class="col-1">
                 <div class="form-check">
-                    <input type="radio" class="form-check-input" id="homme" value="homme" name="sexe" >
+                    <input type="radio" class="form-check-input" id="homme" value="homme" name="sexe" required >
                     <label class="form-check-label" for="homme">Homme</label>
-                    <input type="radio" class="form-check-input" id="femme" value="femme" name="sexe" >
+                    <input type="radio" class="form-check-input" id="femme" value="femme" name="sexe" required>
                     <label class="form-check-label" for="femme">Femme</label>
                 </div> 
             </div>
@@ -106,6 +114,6 @@
         </div>
     </form>
     </div>
-    <script src="./assets/js/bootstrap.min.js"></script>
+    <script src="../../assets/js/bootstrap.min.js"></script>
 </body>
 </html>
