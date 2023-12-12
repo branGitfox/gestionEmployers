@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
-    <link rel="stylesheet" href="./css/avance.css">
+    <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/avance.css">
     <title>Avance</title>
 </head>
 <body>
@@ -42,7 +42,7 @@
             </div>
         </div>
         <div class="container w-50 bg-light shadow rounded">
-            <h3 class="text-center mt-5">Donner un Avance</h3>
+            <h3 class="text-center mt-5">Donner une Avance</h3>
             <div class="row mt-3 justify-content-center">
                 <div class="col-6" style="position: relative;">
                     <svg id="search-icon" xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="blue" class="bi bi-search" viewBox="0 0 16 16">
@@ -78,7 +78,7 @@
                 </div>
             </div>
         </div>
-        <script src="./js/bootstrap.min.js"></script>
+        <script src="../../assets/js/bootstrap.min.js"></script>
     <script>
         document.querySelector('#close').addEventListener('click', () => {
             document.querySelector('.search-container').style.display='none'

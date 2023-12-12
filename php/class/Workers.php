@@ -39,7 +39,7 @@ class Workers {
                 $departement= htmlentities(htmlspecialchars($_POST['departements']));
                 $date_entree= htmlentities(htmlspecialchars($_POST['date_entree']));
                 $sexe= htmlentities(htmlspecialchars($_POST['sexe']));
-                if($_FILES['image']['name']=='') {
+                if($_FILES['image']['name']==''){
                     $new_image_name = 'default.png';
                     $this->insertWorker($name, $firstname, $fonction, $cin, $adresse, $origine, $salaire, $responsable,$contact,$new_image_name, $departement, $date_entree, $sexe);
                     $this->getSucces('Succèss');
@@ -111,7 +111,7 @@ class Workers {
         }
 
         /**
-         * retourne lùerreuer 
+         * retourne les succès
          */
         public function succes(){
             return $this->succes;
@@ -128,6 +128,9 @@ class Workers {
             }
          }
 
+         /**
+          * Supprime un employé par son ID
+          */
          public function deleteWorkerById(){
             $query = $this->getPdo() 
             ->prepare('DELETE FROM workers WHERE w_id = ?');
@@ -136,8 +139,19 @@ class Workers {
             header('location:listeemployer.php');
          }
 
-    
+         /**
+          * autocompletera le formulaire de modification avec les infos de l'employé à modifier
+          */
+         public function autoCompleteInputByWorkerId() {
+            $query= $this->getPdo()
+            ->prepare('SELECT * FROM workers JOIN fonctions ON fonctions.id=workers.id_fonction JOIN departements ON departements.id=workers.id_depart WHERE workers.w_id = ?');
+            $query->execute([$this->getWorkerId()]);
+            return $query->fetch();
 
+         }
+
+
+         
 
 
        

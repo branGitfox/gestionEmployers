@@ -63,17 +63,17 @@ $wrkrs->newWorker();
         <div class="row justify-content-center mt-5">
             <div class="col-4">
                 <label for="Nom">Nom</label>
-                <input type="text" class="form-control"id="Nom" placeholder="Nom" name="name" required>
+                <input type="text" class="form-control"id="Nom" placeholder="Nom" name="name" required value="<?= $wrkrs->autoCompleteInputByWorkerId()['name']?>">
             </div>
             <div class="col-4">
                 <label for="Prenom">Prenom</label>
-                <input type="text" class="form-control" id="Prenom" placeholder="Prenom" name="firstname" required>
+                <input type="text" class="form-control" id="Prenom" placeholder="Prenom" name="firstname" required value="<?= $wrkrs->autoCompleteInputByWorkerId()['firstname']?>">
             </div>
             <div class="col-3">
                 <label for="fonctions">Fonctions</label>
                 <select name="fonctions" id="fonctions" class="form-select">
                    <?php foreach($fct->getListOfFonctions() as $fonc):?>
-                    <option value="<?= $fonc['id'] ?>"><?= $fonc['name_fonction'] ?></option>
+                    <option value="<?= $fonc['id'] ?>" <?php if($wrkrs->autoCompleteInputByWorkerId()['name_fonction']==$fonc['name_fonction']):?>selected<?php endif?>><?= $fonc['name_fonction'] ?></option>
                     <?php endforeach ?>
                 </select>
             </div>
@@ -81,57 +81,57 @@ $wrkrs->newWorker();
         <div class="row justify-content-center mt-5">
             <div class="col-4">
                 <label for="cin">N° de CIN</label>
-                <input type="text" class="form-control"id="cin" placeholder="################" name="cin" required>
+                <input type="text" class="form-control"id="cin" placeholder="################" name="cin" required value="<?= $wrkrs->autoCompleteInputByWorkerId()['cin']?>">
             </div>
             <div class="col-4">
                 <label for="adresse">Adresse</label>
-                <input type="text" class="form-control" id="adresse" placeholder="Adresse" name="adresse" required>
+                <input type="text" class="form-control" id="adresse" placeholder="Adresse" name="adresse" required value="<?= $wrkrs->autoCompleteInputByWorkerId()['adresse']?>">
             </div>
             <div class="col-3">
                 <label for="Origine">Origine</label>
-                <input type="text" class="form-control" id="Origine" placeholder="Origine" name="origine" required>
+                <input type="text" class="form-control" id="Origine" placeholder="Origine" name="origine" required value="<?= $wrkrs->autoCompleteInputByWorkerId()['origine']?>">
             </div>
         </div>
         <div class="row justify-content-center mt-5">
          
             <div class="col-4">
                 <label for="salaire">Salaire</label>
-                <input type="number" class="form-control" id="salaire" placeholder="Le salaire en Ar" name="salaire" required>
+                <input type="number" class="form-control" id="salaire" placeholder="Le salaire en Ar" name="salaire" required value="<?= $wrkrs->autoCompleteInputByWorkerId()['salaire_base']?>">
             </div>
             <div class="col-4">
                 <label for="responsable">Premier Responsable</label>
-                <input type="text" class="form-control" id="responsable" placeholder="Le premier responsble" name="responsable" required>
+                <input type="text" class="form-control" id="responsable" placeholder="Le premier responsble" name="responsable" required value="<?= $wrkrs->autoCompleteInputByWorkerId()['responsable']?>">
             </div>
             <div class="col-3">
                 <label for="contact">Contacts</label>
-                <input type="text" class="form-control " id="contact" placeholder="Contact (xxx/xxx)" name="contact" required>
+                <input type="text" class="form-control " id="contact" placeholder="Contact (xxx/xxx)" name="contact" required value="<?= $wrkrs->autoCompleteInputByWorkerId()['contact']?>">
             </div>
         </div>
         <div class="row mt-3 justify-content-center">
             <div class="col-4">
                 <label for="photo">Photo 4x4</label>
-                <input type="file" class="form-control " id="photo" name="image">
+                <input type="file" class="form-control " id="photo" name="image"  value="<?= $wrkrs->autoCompleteInputByWorkerId()['image']?>" >
             </div>
             <div class="col-4">
                 <label for="departement">Departement</label>
               <select name="departements" id="departement" class="form-select">
                     <?php foreach($dpt->getListOfDepartement() as $depart):?>
-                        <option value="<?= $depart['id']?>"><?= $depart['name_depart']?></option>
+                        <option value="<?= $depart['id']?>" <?php if($wrkrs->autoCompleteInputByWorkerId()['name_depart'] ==$depart['name_depart']):?> selected <?php endif ?>><?= $depart['name_depart']?></option>
                     <?php endforeach ?>
               </select>
 
             </div>
             <div class="col-3">
                 <label for="date">Date d'entrée</label>
-                <input type="date" class="form-control" name="date_entree" required>    
+                <input type="date" class="form-control" name="date_entree" required value="<?= $wrkrs->autoCompleteInputByWorkerId()['date_entree']?>">    
             </div>
         </div>
         <div class="row mt-3 justify-content-center">
             <div class="col-1">
                 <div class="form-check">
-                    <input type="radio" class="form-check-input" id="homme" value="homme" name="sexe" required >
+                    <input type="radio" class="form-check-input" id="homme" value="homme" name="sexe" required <?php if($wrkrs->autoCompleteInputByWorkerId()['sexe'] == 'homme'):?> checked <?php endif?>>
                     <label class="form-check-label" for="homme">Homme</label>
-                    <input type="radio" class="form-check-input" id="femme" value="femme" name="sexe" required>
+                    <input type="radio" class="form-check-input" id="femme" value="femme" name="sexe" required <?php if($wrkrs->autoCompleteInputByWorkerId()['sexe'] == 'femme'):?> checked <?php endif?>>
                     <label class="form-check-label" for="femme">Femme</label>
                 </div> 
             </div>
