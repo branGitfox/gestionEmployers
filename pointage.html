@@ -66,10 +66,12 @@
               
                 </div>
                 <div class="col-4"> 
-                    <input type="radio" class="form-check-input" value="malade" name="anomalie" id="malade">
+                    <form action="">
+                    <input type="radio" class="form-check-input" value="malade" name="anomalie" id="malade" required>
                     <label class="form-label" for="malade">Malade</label>
-                    <input type="radio" class="form-check-input" value="Autre" name="anomalie" id="autre">
+                    <input type="radio" class="form-check-input" value="Autre" name="anomalie" id="autre" required>
                     <label class="form-label" for="autre">Autres</label>
+                
                 </div>
             </div>
             <div class="row mt-2 justify-content-center">
@@ -83,6 +85,7 @@
                     <input type="submit" class="form-control bg-primary text-light" value="Enregistrer">
                 </div>
             </div>
+        </form>
         </div>
         <script src="./js/bootstrap.min.js"></script>
     <script>
