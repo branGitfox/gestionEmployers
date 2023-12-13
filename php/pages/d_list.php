@@ -17,20 +17,27 @@ if($query->rowCount() > 0){
         ";
         if($data['a_espece']==0){
             $outPut.="<td>".number_format($data['a_nature'])." Ar</td>";
-        }
-        if($data['a_nature']==0){
+        }elseif($data['a_nature']==0){
             $outPut.="<td>".number_format($data['a_espece'])." Ar</td>";
+        }else{
+            $outPut.="<td>".number_format($data['a_espece']+$data['a_nature'])." Ar</td>";
         }
+       
 
         if($data['a_espece']==0){
             $outPut.="<td>Nature</td>";
-        }
-        if($data['a_nature']==0){
+        }elseif($data['a_nature']==0)
+        {
             $outPut.="<td>Espece</td>";
+        }else{
+            $outPut.="<td>Mixte</td>";
+
         }
 
         $outPut.="<td>{$data['a_desc']}</td>
                 <td>{$data['a_date']}</td>
+                <td><a href='' class='btn btn-danger p-0 '>Annuler</a></td>
+
         ";
     }
 }else {

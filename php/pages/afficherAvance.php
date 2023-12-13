@@ -12,14 +12,18 @@ $avances = new Avance();
     <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
     <title>Afficher les avances</title>
 </head>
-
+<style>
+    .btn-danger {
+        font-size:12px;
+    }
+</style>
 <body>
     <div class="container w-50">
         <div class="row">
             <div class="col-2">
                 <h3 class="text-center">Date: </h3>
             </div>
-            <div class="col-3 mt-1">
+            <div class="col-5 mt-1">
                 <input type="date" class="form-control" id="date-field">
             </div>
             <div class="col-3 mx-2 mt-1">
@@ -57,17 +61,21 @@ $avances = new Avance();
                             <td>
                                 <?= number_format($avance['a_nature']) ?> Ar
                             </td>
-                        <?php endif ?>
-                        <?php if ($avance['a_nature'] == 0): ?>
+                        <?php elseif (($avance['a_nature'] == 0)): ?>
                             <td>
                                 <?= number_format($avance['a_espece']) ?> Ar
+                            </td>
+                        <?php else: ?>
+                            <td>
+                                <?= number_format($avance['a_espece'] + $avance['a_nature']) ?> Ar
                             </td>
                         <?php endif ?>
                         <?php if ($avance['a_espece'] == 0): ?>
                             <td> Nature</td>
-                        <?php endif ?>
-                        <?php if ($avance['a_nature'] == 0): ?>
+                        <?php elseif ($avance['a_nature'] == 0): ?>
                             <td>Espece</td>
+                        <?php else: ?>
+                            <td>Mixte</td>
                         <?php endif ?>
                         <td>
                             <?= $avance['a_desc'] ?>
@@ -75,6 +83,7 @@ $avances = new Avance();
                         <td>
                             <?= $avance['a_date'] ?>
                         </td>
+                        <td><span class="btn btn-danger p-1" onclick="confirmer(<?= $avance['a_id'] ?>)">Annuler</span></td>
                     </tr>
                 <?php endforeach ?>
             </tbody>
@@ -98,9 +107,27 @@ $avances = new Avance();
     </script>
     <script>
         const printBtn = document.querySelector('button')
-        printBtn.addEventListener('click', () => {
+        printBtn.addEventListener('click', () => {  
+            document.querySelectorAll('.btn-danger').forEach(a=>{
+                a.style.display = 'none'
+                
+            })    
+            printBtn.style.display='none'  
             window.print()
         })
+
+        window.addEventListener('mousemove', () => {
+            document.querySelectorAll('.btn-danger').forEach(a=>{
+                a.style.display = 'inline'
+            })
+            printBtn.style.display='block'
+        })
+     
+        function confirmer(id) {
+            if (confirm('Vous voulez vraiment supprimer cet employé ?')) {
+                location.href = 'suppravance.php?a_id=' + id
+            }
+        }
     </script>
 </body>
 
