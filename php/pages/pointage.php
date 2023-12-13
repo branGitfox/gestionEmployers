@@ -2,6 +2,7 @@
 session_start();
 require '../class/Workers.php';
 $workers = new Workers();
+$workers->newPointage();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,9 +11,47 @@ $workers = new Workers();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../assets/css/avance.css">
-    <title>Avance</title>
+    <title>Pointage</title>
 </head>
+<style>
+    body {
+        overflow-x:hidden;
+    }
+    .succes {
+        position: absolute;
+        bottom: 05rem;
+        right: -20rem;
+        width: 200px;
+        height: 50px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+        background-color: green;
+        color:white;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        animation-name:fade;
+        animation-duration:15s;
+        transition: .5s;
+    }
 
+    .mouve {
+        
+        transform:translate(-30rem, -2.5rem);
+    }
+
+    @keyframes fade {
+        from {
+            opacity: 1;
+        }
+
+        to{
+            
+            opacity: 0;
+        }
+    }
+</style>
 <body>
 
     <div class="search-container shadow">
@@ -37,6 +76,7 @@ $workers = new Workers();
              
         </div>
     </div>
+    <form method="post">
     <div class="container w-50 bg-light shadow rounded">
         <h3 class="text-center mt-5">pointer un employé</h3>
         <div class="row mt-3 justify-content-center">
@@ -51,23 +91,22 @@ $workers = new Workers();
             </div>
             <div class="col-3">
                 <label for="date" class="form-label">Date d'avance</label>
-                <input type="date" class="form-control">
+                <input type="date" class="form-control" name="date_ab">
             </div>
         </div>
         <div class="row mt-2 justify-content-center">
             <div class="col-4">
 
-                <input type="radio" class="form-check-input" value="justify" name="excuse" id="justify">
+                <input type="radio" class="form-check-input" value="justifié" name="status" id="justify" >
                 <label class="form-label" for="justify">Justifié</label>
-                <input type="radio" class="form-check-input" value="n" name="excuse" id="nonJustify">
+                <input type="radio" class="form-check-input" value="non justifié" name="status" id="nonJustify">
                 <label class="form-label" for="nonJustify">Non Justifié</label>
 
             </div>
             <div class="col-4">
-                <form action="">
-                    <input type="radio" class="form-check-input" value="malade" name="anomalie" id="malade" required>
+                    <input type="radio" class="form-check-input" value="maladie" name="anomalie" id="malade" required>
                     <label class="form-label" for="malade">Malade</label>
-                    <input type="radio" class="form-check-input" value="Autre" name="anomalie" id="autre" required>
+                    <input type="radio" class="form-check-input" value="engagement particulier" name="anomalie" id="autre" required>
                     <label class="form-label" for="autre">Autres</label>
 
             </div>
@@ -75,7 +114,7 @@ $workers = new Workers();
         <div class="row mt-2 justify-content-center">
             <div class="col-8">
                 <label for="description" class="form-label">Description de l'absence</label>
-                <textarea name="" id="description" class="form-control" aria-placeholder="La raison de l'avance ici...""></textarea>
+                <textarea name="ab_desc" id="description" class="form-control" placeholder="Details ici..."></textarea>
                 </div>
             </div>
             <div class=" row mt-2 justify-content-center ">
@@ -84,6 +123,9 @@ $workers = new Workers();
                 </div>
             </div>
         </form>
+        <?php if(!empty($workers->succes())):?>
+                <div class="succes"><?=$workers->succes()?></div>
+            <?php endif?>
         </div>
         <script src="../../assets/js/jquery.min.js"></script>
         <script src="../../assets/js/bootstrap.min.js"></script>
@@ -111,9 +153,14 @@ $workers = new Workers();
 
         })
 
-        document.querySelector('#search-field').addEventListener('keyup', () => {
-            console.log(document.querySelector('#search-field').value)
-        })
+        const succes = document.querySelector('.succes')
+        setTimeout(() => {
+            succes.classList.add('mouve')  
+        }, 1)
+
+        setTimeout(() => {
+            succes.remove()
+        },3000)
     </script>
 </body>
 </html>

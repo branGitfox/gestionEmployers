@@ -257,7 +257,9 @@ class Workers {
                 ->prepare('INSERT INTO avances (`a_date`, `a_nature`, `a_espece`, `a_desc`, `id_worker`) VALUES (?, ?, ?, ?, ?)');
                 $query->execute([$a_date, $a_nature, $a_espece, $a_desc, $w_id]);
             }
-
+            /**
+             * Gere la creation d'une nouvelle avance
+             */
             public function newAvance() {
                 if(isset($_POST['a_date'], $_POST['a_nature'], $_POST['a_espece'], $_POST['a_desc']) && !empty($_POST['a_date']) && !empty($_POST['a_desc'])){
                     if($_POST['a_nature']!= 0 || $_POST['a_espece'] != 0){
@@ -270,5 +272,32 @@ class Workers {
                     }
                 }
             }
+            /**
+             * Ajoute les information de pointage dans la base de donnée
+             */
+            private function insertPointage($date_ab, $id_worker, $status, $anomalie, $ab_desc){
+                $query = $this->getPdo()
+                ->prepare('INSERT INTO absences (`date_ab`, `id_worker`, `status`, `anomalie`, `ab_desc`) VALUES (?, ?, ?, ?, ?)');
+                $query->execute([$date_ab, $id_worker, $status, $anomalie, $ab_desc]);
+            }
+
+            /**
+             * Gere le pointage d'un employé
+             */
+
+             public function newPointage() {
+                if(isset($_POST['date_ab'], $_POST['status'], $_POST['anomalie'], $_POST['ab_desc']) 
+                && !empty($_POST['date_ab'])
+                && !empty($_POST['status'])
+                && !empty($_POST['anomalie'])
+                && !empty($_POST['ab_desc'])){
+                    $date_ab = $_POST['date_ab'];
+                    $status = $_POST['status'];
+                    $anomalie = $_POST['anomalie'];
+                    $ab_desc =htmlentities(htmlspecialchars($_POST['ab_desc']));
+                    $this->insertPointage($date_ab, $this->sessionID(), $status, $anomalie, $ab_desc);
+                    $this->getSucces('Succès !!');
+                }
+             }
     
 }       

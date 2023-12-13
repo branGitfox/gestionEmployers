@@ -111,7 +111,7 @@ $workers->newAvance();
             <div class="row mt-2 justify-content-center">
                 <div class="col-8">
                     <label for="description" class="form-label">Description de l'Avance</label>
-                    <textarea name="a_desc" id="description" class="form-control" aria-placeholder="La raison de l'avance ici..."></textarea>
+                    <textarea name="a_desc" id="description" class="form-control" placeholder="La raison de l'avance ici..."></textarea>
                 </div>
             </div>
             <div class="row mt-2 justify-content-center ">
@@ -121,8 +121,8 @@ $workers->newAvance();
             </div>
             </form>
             <?php if(!empty($workers->succes())):?>
-        <div class="succes"><?=$workers->succes()?></div>
-    <?php endif?>
+                <div class="succes"><?=$workers->succes()?></div>
+            <?php endif?>
         </div>
         <script src="../../assets/js/jquery.min.js"></script>
         <script src="../../assets/js/bootstrap.min.js"></script>
