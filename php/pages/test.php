@@ -4,4 +4,6 @@ require '../class/Workers.php';
 
 $workers = new Workers();
 $workers->calculateRealSalaire();
-echo $workers->showSalaryReel()['salaire_reel'];
+foreach($workers->AllSum() as $total){
+    echo $total['total'];
+}

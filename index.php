@@ -18,7 +18,7 @@
     </header>
     <div class="main-container">
       <div class="menu-container">
-        <div><a href="./php/pages/employerActions.php"><svg class="left-svg" xmlns="http://www.w3.org/2000/svg" width="40" height="40"
+        <div><a class="top" href="./php/pages/employerActions.php"><svg class="left-svg" xmlns="http://www.w3.org/2000/svg" width="40" height="40"
               fill="currentColor" class="bi bi-person-bounding-box" viewBox="0 0 16 16">
               <path
                 d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5M.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5m15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5" />
@@ -62,7 +62,7 @@
               <path fill-rule="evenodd"
                 d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8" />
             </svg></a></div>
-        <div><a class="logout left" href="#"><svg class="left-svg" xmlns="http://www.w3.org/2000/svg" width="40" height="40"
+        <div><a class="logout left bottom" href="#"><svg class="left-svg" xmlns="http://www.w3.org/2000/svg" width="40" height="40"
               fill="red" left-svg"" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
               <path fill-rule="evenodd"
                 d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0z" />

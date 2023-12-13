@@ -467,11 +467,10 @@ class Workers
                 $salaire_by_day = $user['salaire_base'] / $max_day;
                 $day_valide =$max_day- $user['nbr_absence'];
                 $avance = $this->sumOfNatureSalary($user['w_id'])['nature'] + $this->sumOfEspeceSalary($user['w_id'])['espece'];
-                $salaire_reel = ceil((float)(($salaire_by_day * $day_valide) - $avance)/(float)5) * 5;
+                $salaire_reel = ($salaire_by_day * $day_valide) - $avance;
                 $query = $this->getPdo()
                 ->prepare('UPDATE workers SET salaire_reel = ? WHERE w_id = ?');
                 $query->execute([$salaire_reel, $user['w_id']]);
-                
             }
          }
 
@@ -483,6 +482,17 @@ class Workers
             $query->execute();
             return $query->fetch();
          }
+
+         /**
+          * Somme total du salaire du mois
+          */
+
+          public function AllSum() {
+            $query = $this->getPdo()
+            ->prepare('SELECT SUM(salaire_reel) as total FROM workers');
+            $query->execute();
+            return $query->fetchAll();
+          }
 
 
 
