@@ -350,10 +350,16 @@ class Workers
         return $query->fetch();
     }
 
+    /**
+     * Capture les erreurs
+     */
     private function getError($error) {
         $this->error = $error;
     }
 
+    /**
+     * Retourne les erreurs
+     */
     public function error() {
         return $this->error;
     }

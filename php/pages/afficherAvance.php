@@ -1,4 +1,5 @@
 <?php
+session_start();
 require '../class/Workers.php';
 require '../class/Avance.php';
 $avances = new Avance();
@@ -15,6 +16,45 @@ $avances = new Avance();
 <style>
     .btn-danger {
         font-size:12px;
+    }
+
+    body {
+        overflow-x: hidden;
+    }
+
+    .succes {
+        position: absolute;
+        bottom: 05rem;
+        right: -20rem;
+        width: 200px;
+        height: 50px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+        background-color: green;
+        color: white;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        animation-name: fade;
+        animation-duration: 15s;
+        transition: .5s;
+    }
+
+    .mouve {
+
+        transform: translate(-30rem, -2.5rem);
+    }
+
+    @keyframes fade {
+        from {
+            opacity: 1;
+        }
+
+        to {
+
+            opacity: 0;
+        }
     }
 </style>
 <body>
@@ -88,6 +128,12 @@ $avances = new Avance();
                 <?php endforeach ?>
             </tbody>
         </table>
+        <?php if (!empty($_SESSION['succes'])): ?>
+        <div class="succes">
+            <?= $_SESSION['succes'] ?>
+        </div>
+    <?php endif ?>
+    <?php unset($_SESSION['succes']); ?>
     </div>
     <script src="../../assets/js/jquery.min.js"></script>
     <script>
@@ -128,6 +174,15 @@ $avances = new Avance();
                 location.href = 'suppravance.php?a_id=' + id
             }
         }
+
+        const succes = document.querySelector('.succes')
+        setTimeout(() => {
+            succes.classList.add('mouve')
+        }, 1)
+
+        setTimeout(() => {
+            succes.remove()
+        }, 3000)
     </script>
 </body>
 

@@ -36,7 +36,7 @@ if($query->rowCount() > 0){
 
         $outPut.="<td>{$data['a_desc']}</td>
                 <td>{$data['a_date']}</td>
-                <td><a href='' class='btn btn-danger p-0 '>Annuler</a></td>
+                <td><span class='btn btn-danger p-1' onclick='confirmer({$data['a_id']})'>Annuler</span</td>
 
         ";
     }
