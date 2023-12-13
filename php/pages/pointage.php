@@ -19,7 +19,7 @@ $workers->newPointage();
     }
     .succes {
         position: absolute;
-        bottom: 05rem;
+        bottom: 5rem;
         right: -20rem;
         width: 200px;
         height: 50px;
@@ -91,15 +91,15 @@ $workers->newPointage();
             </div>
             <div class="col-3">
                 <label for="date" class="form-label">Date d'avance</label>
-                <input type="date" class="form-control" name="date_ab">
+                <input type="date" class="form-control" name="date_ab" required>
             </div>
         </div>
         <div class="row mt-2 justify-content-center">
             <div class="col-4">
 
-                <input type="radio" class="form-check-input" value="justifié" name="status" id="justify" >
+                <input type="radio" class="form-check-input" value="justifié" name="status" id="justify"required >
                 <label class="form-label" for="justify">Justifié</label>
-                <input type="radio" class="form-check-input" value="non justifié" name="status" id="nonJustify">
+                <input type="radio" class="form-check-input" value="non justifié" name="status" id="nonJustify" required>
                 <label class="form-label" for="nonJustify">Non Justifié</label>
 
             </div>
@@ -114,7 +114,7 @@ $workers->newPointage();
         <div class="row mt-2 justify-content-center">
             <div class="col-8">
                 <label for="description" class="form-label">Description de l'absence</label>
-                <textarea name="ab_desc" id="description" class="form-control" placeholder="Details ici..."></textarea>
+                <textarea name="ab_desc" id="description" class="form-control" placeholder="Details ici..." required></textarea>
                 </div>
             </div>
             <div class=" row mt-2 justify-content-center ">
