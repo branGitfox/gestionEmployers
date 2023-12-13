@@ -8,7 +8,10 @@
 <body>
     <?php $id = 10;?>
      <button onclick="confirmer(<?=$id ?>)">supprimer <p style="display: none;"><?= 1 ?></p></button>
+   <?php 
+    echo date('Y-m');
    
+   ?>
     <script>
         function confirmer (id) {
             if(confirm('hello')){

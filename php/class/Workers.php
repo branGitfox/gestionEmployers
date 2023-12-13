@@ -296,8 +296,20 @@ class Workers {
                     $anomalie = $_POST['anomalie'];
                     $ab_desc =htmlentities(htmlspecialchars($_POST['ab_desc']));
                     $this->insertPointage($date_ab, $this->sessionID(), $status, $anomalie, $ab_desc);
+                    $query = $this->getPdo()->prepare('UPDATE workers SET nbr_absence = ? WHERE w_id = ?');
+                    $query->execute([$this->countAbsence()['abs'], $this->sessionID()]);
                     $this->getSucces('Succès !!');
                 }
+             }
+             /**
+              * Compte le nombre d'absence du mois actuel en comptant que ceux qui sont no justifié
+              */
+             private function countAbsence() {
+                $date = date('Y-m');
+                $query = $this->getPdo()
+                ->prepare("SELECT count(id_ab) as abs FROM absences WHERE status = 'non justifié' AND id_worker = ? AND date_ab LIKE '{$date}%'");
+                $query->execute([$this->sessionID()]);
+                return $query->fetch();
              }
     
 }       
