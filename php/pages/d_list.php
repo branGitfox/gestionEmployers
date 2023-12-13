@@ -16,10 +16,10 @@ if($query->rowCount() > 0){
         
         ";
         if($data['a_espece']==0){
-            $outPut.="<td>".number_format($data['a_nature'])."</td>";
+            $outPut.="<td>".number_format($data['a_nature'])." Ar</td>";
         }
         if($data['a_nature']==0){
-            $outPut.="<td>".number_format($data['a_espece'])."</td>";
+            $outPut.="<td>".number_format($data['a_espece'])." Ar</td>";
         }
 
         if($data['a_espece']==0){
