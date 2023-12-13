@@ -13,7 +13,7 @@ class Workers
         return new PDO('mysql:host=' . $this->host . ';dbname=' . $this->db . ';', $this->user, '');
     }
 
-    //retourne la singleton de la connexion à la base de donnée
+    //retourne le singleton de la connexion à la base de donnée
 
     public function getPdo()
     {
@@ -24,7 +24,7 @@ class Workers
     }
 
     /**
-     * Gere la formulaire d'ajout d'employer
+     * Gere le formulaire d'ajout d'employer
      */
 
     public function newWorker()
