@@ -40,7 +40,7 @@
 
     .link-box>div>a {
         width: 100%;
-        background-color: #04969bcf;
+        background-color: blue;
         text-align: center;
         padding: 25px 0;
         font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -91,6 +91,8 @@
         text-decoration: none;
         color: white;
         font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        font-weight: 400;
+        letter-spacing: 2px;
     }
 
 
@@ -99,13 +101,14 @@
         align-items: center;
         border: solid;
         justify-content: center;
-        width: 102px;
+        width: 117px;
         position: absolute;
         /* padding: 10px; */
         border: solid .1px rgba(0, 0, 255, 0.753);
         background-color: blue;
         border-bottom-left-radius: 3px;
         border-bottom-right-radius: 3px;
+        z-index: 100;
         /* box-shadow: 0px 0px 1px; */
     }
 
@@ -143,6 +146,8 @@
         font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         font-size: 15px;
         color: white;
+        font-weight: 400;
+        letter-spacing: 2px;
     }
 
     .btn-w:hover {
@@ -169,6 +174,10 @@
         font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         color: whitesmoke;
     }
+
+    #active-a {
+        background-color: blueviolet;
+    }
 </style>
 
 <body>
@@ -192,8 +201,8 @@
             <span class="worker-hide-menu hide">
                 <a href="ajouterunemployer.php">NOUVEAU</a>
                 <a href="listeemployer.php">LISTE</a>
-                <a href="">AVANCE</a>
-                <a href="">POINTAGE</a>
+                <a href="avance.php">AVANCE</a>
+                <a href="pointage.php">POINTAGE</a>
                 <a href="">FONCTION</a>
             </span>
             <a href=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
@@ -203,7 +212,7 @@
                     <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
                     <path d="M8 13.5a5.5 5.5 0 1 1 0-11 5.5 5.5 0 0 1 0 11m0 .5A6 6 0 1 0 8 2a6 6 0 0 0 0 12" />
                 </svg>SALAIRES</a>
-            <a href=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+            <a id="active-a" href=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                     class="bi bi-journals" viewBox="0 0 16 16">
                     <path
                         d="M5 0h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2 2 2 0 0 1-2 2H3a2 2 0 0 1-2-2h1a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1H1a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v9a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1H3a2 2 0 0 1 2-2" />
@@ -219,7 +228,7 @@
                 </svg>DECONNEXION</a>
         </div>
     </nav>
-    <div class="container">
+    <div class="containers">
         <div class="link-box">
             <div class="link-cont"><a href="afficherAvance.php"><svg xmlns="http://www.w3.org/2000/svg" width="25"
                         height="25" fill="currentColor" class="bi bi-cash-coin" viewBox="0 0 16 16">

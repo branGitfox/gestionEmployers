@@ -70,6 +70,8 @@ $workers->newPointage(new Pointage);
         text-decoration: none;
         color: white;
         font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        font-weight: 400;
+        letter-spacing: 2px;
     }
 
 
@@ -78,7 +80,7 @@ $workers->newPointage(new Pointage);
         align-items: center;
         border: solid;
         justify-content: center;
-        width:102px;
+        width:117px;
         position: absolute;
         /* padding: 10px; */
         border: solid .1px rgba(0, 0, 255, 0.753);
@@ -122,6 +124,8 @@ $workers->newPointage(new Pointage);
         font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         font-size: 15px;
         color: white;
+        font-weight:400;
+        letter-spacing: 2px;
     }
 
     .btn-w:hover{
@@ -151,6 +155,20 @@ $workers->newPointage(new Pointage);
         position: absolute;
         left: 21rem;
     }
+
+    body{
+        overflow-y: hidden
+    }
+
+    .body {
+        width: 100%;
+        height: 100vh;
+
+    }
+
+    #active-a {
+        background-color: blueviolet;
+    }
 </style>
 
 <body>
@@ -169,15 +187,15 @@ $workers->newPointage(new Pointage);
                     <a href="ajouterunemployer.php">NOUVEAU</a>
                     <a href="listeemployer.php">LISTE</a>
                     <a href="avance.php">AVANCE</a>
-                    <a href="pointage.php">POINTAGE</a>
+                    <a id="active-a" href="pointage.php">POINTAGE</a>
                     <a href="">FONCTION</a>
                 </span>
-                <a href=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-coin" viewBox="0 0 16 16">
+                <a href="salaires.php"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-coin" viewBox="0 0 16 16">
                     <path d="M5.5 9.511c.076.954.83 1.697 2.182 1.785V12h.6v-.709c1.4-.098 2.218-.846 2.218-1.932 0-.987-.626-1.496-1.745-1.76l-.473-.112V5.57c.6.068.982.396 1.074.85h1.052c-.076-.919-.864-1.638-2.126-1.716V4h-.6v.719c-1.195.117-2.01.836-2.01 1.853 0 .9.606 1.472 1.613 1.707l.397.098v2.034c-.615-.093-1.022-.43-1.114-.9H5.5zm2.177-2.166c-.59-.137-.91-.416-.91-.836 0-.47.345-.822.915-.925v1.76h-.005zm.692 1.193c.717.166 1.048.435 1.048.91 0 .542-.412.914-1.135.982V8.518z"/>
                     <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
                     <path d="M8 13.5a5.5 5.5 0 1 1 0-11 5.5 5.5 0 0 1 0 11m0 .5A6 6 0 1 0 8 2a6 6 0 0 0 0 12"/>
                   </svg>SALAIRES</a>
-                <a href=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-journals" viewBox="0 0 16 16">
+                <a href="rapports.php"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-journals" viewBox="0 0 16 16">
                     <path d="M5 0h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2 2 2 0 0 1-2 2H3a2 2 0 0 1-2-2h1a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1H1a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v9a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1H3a2 2 0 0 1 2-2"/>
                     <path d="M1 6v-.5a.5.5 0 0 1 1 0V6h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0V9h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 2.5v.5H.5a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1H2v-.5a.5.5 0 0 0-1 0"/>
                   </svg>RAPPORTS</a>
@@ -187,8 +205,8 @@ $workers->newPointage(new Pointage);
                   </svg>DECONNEXION</a>
             </div>
         </nav>
-
-    <div class="search-container shadow">
+<div class="body">
+<div class="search-container shadow">
         <div class="search-header">
             <h4>Rechercher un employé</h4>
             <svg id="close" xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
@@ -266,6 +284,8 @@ $workers->newPointage(new Pointage);
                 </div>
             </div>
     </form>
+</div>
+
     <?php if (!empty($workers->succes())): ?>
         <div class="succes"><?= $workers->succes() ?></div>
     <?php endif ?>
@@ -313,6 +333,11 @@ $workers->newPointage(new Pointage);
             btn.addEventListener('click', () => {
                 linkList.classList.toggle('flex')
                 linkList.classList.toggle('hide')
+            })
+
+            document.querySelector('.body').addEventListener('click', () => {
+                linkList.classList.add('hide')
+                linkList.classList.remove('flex')
             })
         </script> 
 </body>
