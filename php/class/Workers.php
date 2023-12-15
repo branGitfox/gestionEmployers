@@ -358,7 +358,7 @@ class Workers
             $new_salary_info->execute([$nbr_absence, $avances, $salaire_reel2, $id_worker]);
         }
     }
-    
+
     /**
      * La somme des avances d'un employé
      */
@@ -483,5 +483,43 @@ class Workers
             return $_GET['id_worker'];
         }
        }
-      
+       
+       /**
+        * Cette fonctions va creer automatiquement la salaire d'un employé qui n'a été ni pointé ni avancé
+        */
+       public function createSalaire() {
+            $query = $this->getPdo()
+            ->prepare('SELECT * FROM workers');
+            $query->execute();
+            $workers= $query->fetchAll();
+            $date = date('Y-m');
+            foreach($workers as $worker){
+                $query = $this->getPdo()
+                ->prepare('SELECT * FROM salaires WHERE id_worker = ? AND date_s = ?');
+                $query->execute([$worker['w_id'], $date]);
+                if($query->rowCount() == 0){
+                    $insert = $this->getPdo()
+                    ->prepare('INSERT INTO salaires (`id_worker`, `date_s`, `salaire_base`, `salaire_reel`) VALUES (?, ?, ?, ?)');
+                    $insert->execute([$worker['w_id'], $date, $this->salarybase($worker['w_id'])['salaire_base'], $this->salarybase($worker['w_id'])['salaire_base']]);
+                }
+                
+            }
+       }
+
+       /**
+        * Calcule la somme totale de tout les salaires du mois courant
+        */
+
+        public function sommeOfAllSalary() {
+            $query = $this->getPdo()
+            ->prepare('SELECT * FROM salaires WHERE date_s = "2023-12"');
+            $query->execute();
+            $data = $query->fetchAll();
+            $salaire_total = 0;
+            foreach($data as $salaire){
+                $salaire_total += $salaire['salaire_reel'];
+            }
+
+            return $salaire_total;
+        }
 }

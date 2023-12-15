@@ -1,3 +1,8 @@
+<?php
+require './php/class/Workers.php';
+$worker = new Workers();
+$worker->createSalaire();
+?>
 <!DOCTYPE html>
 <html lang="en">
 

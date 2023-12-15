@@ -7,8 +7,8 @@
     display: flex;
     flex-direction: column;
     position: absolute;
-    left: 32%;
-    top: 15%;
+    left: 34%;
+    top: 17%;
     /* border: solid 0.1px gray; */
     border-radius: 5px;
     background-color: white;
@@ -46,8 +46,8 @@ h4{
 .search-container #close {
     fill: red;
     position: absolute;
-    right: 0.5px;
-    top: 0.5px;
+    left: 29.7rem;
+    top: 2px;
 }
 
 .search-input input{
