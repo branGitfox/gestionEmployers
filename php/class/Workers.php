@@ -278,7 +278,7 @@ class Workers
     /**
      * Gere la creation d'une nouvelle avance
      */
-    public function newAvance()
+    public function newAvance(Pointage $pointage)
     {
         if (isset($_POST['a_date'], $_POST['a_nature'], $_POST['a_espece'], $_POST['a_desc']) && !empty($_POST['a_date']) && !empty($_POST['a_desc'])) {
             if ($_POST['a_nature'] != 0 || $_POST['a_espece'] != 0) {
@@ -287,8 +287,10 @@ class Workers
                 $a_espece = (int) ($_POST['a_espece']);
                 $a_desc = htmlentities(htmlspecialchars($_POST['a_desc']));
                 if(($a_nature + $a_espece) <= $this->getWorkerSalary()['salaire_base']){
-                    $this->insertAvance($a_date, $a_nature, $a_espece, $a_desc, $this->sessionID());
-                    $this->getSucces('success');
+               
+                        $this->insertAvance($a_date, $a_nature, $a_espece, $a_desc, $this->sessionID());
+                        $this->insertInfotoSalaryTable($this->sessionID(), $pointage->nbrOfAbsence()['nbr_absence'], $this->sumofAvance($this->sessionID()),$this->salarybase($this->sessionID())['salaire_base']);
+                        $this->getSucces('success');
                 }else{
                     $this->getError('Erreur !!');
                 }
@@ -311,7 +313,7 @@ class Workers
      * Gere le pointage d'un employé
      */
 
-    public function newPointage()
+    public function newPointage(Pointage $pointage)
     {
         if (
             isset($_POST['date_ab'], $_POST['status'], $_POST['anomalie'], $_POST['ab_desc'])
@@ -325,6 +327,7 @@ class Workers
             $anomalie = $_POST['anomalie'];
             $ab_desc = $_POST['ab_desc'];
             $this->insertPointage($date_ab, $this->sessionID(), $status, $anomalie, $ab_desc);
+            $this->insertInfotoSalaryTable($this->sessionID(), $pointage->nbrOfAbsence()['nbr_absence'], $this->sumofAvance($this->sessionID()),$this->salarybase($this->sessionID())['salaire_base']);
             $this->getSucces('Succès !!');
         }
     }
@@ -332,19 +335,80 @@ class Workers
     /**
      * inserer ou modifier les informations dans la table salaire
      */
-    private function insertInfotoSalaryTable($id_worker) {
+    private function insertInfotoSalaryTable($id_worker, $nbr_absence, $avances, $salaire_base) 
+    {
         $date = date('Y-m');
         $query = $this->getPdo()
         ->prepare("SELECT * FROM salaires WHERE id_worker = ? AND date_s LIKE '%{$date}%'");
         $query->execute([$id_worker]);
         if($query->rowCount() == 0)
         {
+            $salaire = (($salaire_base / 30) * (30 - $nbr_absence)) - $avances;
             $new_salary_info = $this->getPdo()
-            ->prepare('INSERT INTO salaires (`id_worker`, `date_s`) VALUES (?, ?, ?)');
-            $new
+            ->prepare('INSERT INTO salaires (`id_worker`, `nbr_absence`, `date_s`, `avances`, `salaire_base`, `salaire_reel`) VALUES (?, ?, ?, ?, ?, ?)');
+            $new_salary_info->execute([$id_worker,$nbr_absence, $date, $avances, $salaire_base, $salaire]);
+        }else {
+           $salaire_reel = $this->realSalary($id_worker);
+            $new_salary_info = $this->getPdo()
+            ->prepare("UPDATE salaires SET nbr_absence = ? , avances = ?, salaire_reel = ? WHERE id_worker = ? AND date_s LIKE '%{$date}%'");
+            $new_salary_info->execute([$nbr_absence, $avances, $salaire_reel, $id_worker]);
+            $salaire_reel2 = $this->realSalary($id_worker);   
+            $new_salary_info = $this->getPdo()
+            ->prepare("UPDATE salaires SET nbr_absence = ? , avances = ?, salaire_reel = ? WHERE id_worker = ? AND date_s LIKE '%{$date}%'");
+            $new_salary_info->execute([$nbr_absence, $avances, $salaire_reel2, $id_worker]);
         }
     }
     
+    /**
+     * La somme des avances d'un employé
+     */
+    private function sumofAvance($id_worker) 
+    {
+        $date = date('Y-m');
+        $query = $this->getPdo()
+        ->prepare("SELECT * FROM avances WHERE id_worker = ? AND a_date LIKE '%{$date}%'");
+        $query->execute([$id_worker]);
+        $datas = $query->fetchAll();
+        $avance_espece=0;
+        $avance_nature=0;
+        foreach($datas as $data) {
+            $avance_nature += $data['a_nature'];
+            $avance_espece += $data['a_espece'];
+        }
+        $somme_des_avances = $avance_espece + $avance_nature;
+        echo $somme_des_avances;
+        return $somme_des_avances;
+    }
+    
+    /**
+     * Calcul le salaire reel d'un employé
+     */
+    private function realSalary($id_worker)  
+    {
+        $date = date('Y-m');
+        $query = $this->getPdo()
+        ->prepare("SELECT * FROM salaires WHERE id_worker = ? AND date_s LIKE '%{$date}%'");
+        $query->execute([$id_worker]);
+        $data = $query->fetch();
+        $day = 30;
+        $salary_by_day = $this->salarybase($id_worker)['salaire_base'] / $day;
+        $day_worked =30 - $data['nbr_absence'];
+        $real_salary = ($salary_by_day * $day_worked) - $data['avances'];
+        return $real_salary;
+
+    }
+
+
+    /**
+     * Recupere le salaire  de base d'un employé
+     */
+    private function salarybase($id_worker)
+    {
+        $query = $this->getPdo()
+        ->prepare('SELECT salaire_base FROM workers WHERE w_id = ?');
+        $query->execute([$id_worker]);
+        return $query->fetch();
+    }
     /**
      * Compte le nombre d'absence du mois actuel en comptant que ceux qui sont no justifié
      */

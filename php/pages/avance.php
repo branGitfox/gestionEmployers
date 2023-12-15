@@ -1,8 +1,9 @@
 <?php
 session_start();
 require '../class/Workers.php';
+require '../class/Pointage.php';
 $workers = new Workers();
-$workers->newAvance();
+$workers->newAvance(new Pointage());
 ?>
 
 
