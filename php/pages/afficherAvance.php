@@ -134,6 +134,7 @@ $avances = new Avance();
         </div>
     <?php endif ?>
     <?php unset($_SESSION['succes']); ?>
+    
     </div>
     <script src="../../assets/js/jquery.min.js"></script>
     <script>
