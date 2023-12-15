@@ -13,7 +13,7 @@ class Workers
         return new PDO('mysql:host=' . $this->host . ';dbname=' . $this->db . ';', $this->user, '');
     }
 
-    //retourne le singleton de la connexion à la base de donnée
+    //retourne la singleton de la connexion à la base de donnée
 
     public function getPdo()
     {
@@ -24,7 +24,7 @@ class Workers
     }
 
     /**
-     * Gere le formulaire d'ajout d'employer
+     * Gere la formulaire d'ajout d'employer
      */
 
     public function newWorker()
@@ -130,7 +130,7 @@ class Workers
      * recupere l'id d'un employé
      */
 
-    private function getWorkerId()
+    protected function getWorkerId()
     {
 
         if (isset($_GET['worker_id'])) {
@@ -304,6 +304,7 @@ class Workers
         $query = $this->getPdo()
             ->prepare('INSERT INTO absences (`date_ab`, `id_worker`, `status`, `anomalie`, `ab_desc`) VALUES (?, ?, ?, ?, ?)');
         $query->execute([$date_ab, $id_worker, $status, $anomalie, $ab_desc]);
+    
     }
 
     /**
@@ -324,25 +325,41 @@ class Workers
             $anomalie = $_POST['anomalie'];
             $ab_desc = $_POST['ab_desc'];
             $this->insertPointage($date_ab, $this->sessionID(), $status, $anomalie, $ab_desc);
-            $query = $this->getPdo()->prepare('UPDATE workers SET nbr_absence = ? WHERE w_id = ?');
-            $query->execute([$this->countAbsence($this->sessionID())['abs'], $this->sessionID()]);
             $this->getSucces('Succès !!');
         }
     }
+
+    /**
+     * inserer ou modifier les informations dans la table salaire
+     */
+    private function insertInfotoSalaryTable($id_worker) {
+        $date = date('Y-m');
+        $query = $this->getPdo()
+        ->prepare("SELECT * FROM salaires WHERE id_worker = ? AND date_s LIKE '%{$date}%'");
+        $query->execute([$id_worker]);
+        if($query->rowCount() == 0)
+        {
+            $new_salary_info = $this->getPdo()
+            ->prepare('INSERT INTO salaires (`id_worker`, `date_s`) VALUES (?, ?, ?)');
+            $new
+        }
+    }
+    
     /**
      * Compte le nombre d'absence du mois actuel en comptant que ceux qui sont no justifié
      */
-    private function countAbsence($id_worker)
-    {
-        $date = date('Y-m');
-        $query = $this->getPdo()
-            ->prepare("SELECT count(id_ab) as abs FROM absences WHERE status = 'non justifié' AND id_worker = ? AND date_ab LIKE '{$date}%'");
-        $query->execute([$id_worker]);
-        return $query->fetch();
-    }
+    // private function countAbsence($id_worker)
+    // {
+    //     $date = date('Y-m');
+    //     $query = $this->getPdo()
+    //         ->prepare("SELECT count(id_ab) as abs FROM absences WHERE status = 'non justifié' AND id_worker = ? AND date_ab LIKE '{$date}%'");
+    //     $query->execute([$id_worker]);
+    //     return $query->fetch();
+    // }
     /**
      * Recupere la salaire de base d'un employé
      */
+
     private function getWorkerSalary() 
     {
         $query = $this->getPdo()
@@ -376,8 +393,6 @@ class Workers
         $query= $this->getPdo()
         ->prepare('DELETE FROM absences WHERE id_ab = ?');
         $query->execute([$this->getPointageId()]);
-        $update = $this->getPdo()->prepare('UPDATE workers SET nbr_absence = ? WHERE w_id = ?');
-        $update->execute([$this->countAbsence($this->getIdWorker())['abs'], $this->getIdWorker()]);
         $_SESSION['succes']='Succès !!';
         header('location:afficherPointage.php');
      }
@@ -405,95 +420,4 @@ class Workers
         }
        }
       
-       /**
-        * Retourne la somme de tout les avance de type nature d'un employé spécifique
-        */
-
-        private function sumOfNatureSalary($w_id)
-        {
-        $date = date('Y-m');    
-        $query = $this->getPdo()->
-        prepare("SELECT SUM(a_nature) as nature FROM avances WHERE id_worker = ? AND a_date LIKE '{$date}%'");
-        $query->execute([$w_id]);
-        return $query->fetch();
-
-
-        }
-
-         /**
-        * Retourne la somme de tout les avance de type espèce d'un employé spécifique
-        */
-
-        private function sumOfEspeceSalary($w_id)
-        {
-            $date = date('Y-m');    
-            $query = $this->getPdo()->
-            prepare("SELECT SUM(a_espece) as espece FROM avances WHERE id_worker = ? AND a_date LIKE '{$date}%'");
-            $query->execute([$w_id]);
-            return $query->fetch();
-    
-        }
-
-        /**
-         * Retourne la liste *simplifié des employés
-         */
-        private function getAllUser() 
-        {
-            $query = $this->getPdo()
-            ->query('SELECT * FROM workers');
-            $query->execute();
-            return $query->fetchAll();
-        }
-
-        /**
-         * Retourne le jour maximum du mois
-         */
-
-         private function getMaxDay() 
-         {
-            $query = $this->getPdo()
-            ->query('SELECT max FROM maxday WHERE id = 1');
-            $query->execute();
-            return $query->fetch();
-         }
-
-         /**
-          * Calcule et met à jour la salaire réel du mois 
-          */
-         public function calculateRealSalaire()
-         {
-            foreach($this->getAllUser() as $user){
-                $max_day = $this->getMaxDay()['max'];
-                $salaire_by_day = $user['salaire_base'] / $max_day;
-                $day_valide =$max_day- $user['nbr_absence'];
-                $avance = $this->sumOfNatureSalary($user['w_id'])['nature'] + $this->sumOfEspeceSalary($user['w_id'])['espece'];
-                $salaire_reel = ($salaire_by_day * $day_valide) - $avance;
-                $query = $this->getPdo()
-                ->prepare('UPDATE workers SET salaire_reel = ? WHERE w_id = ?');
-                $query->execute([$salaire_reel, $user['w_id']]);
-            }
-         }
-
-         /** Verification si le calcul du salaire  par ID*/
-         public function showSalaryReel() 
-         {
-            $query = $this->getPdo()
-            ->prepare('SELECT salaire_reel FROM workers WHERE w_id = 23');
-            $query->execute();
-            return $query->fetch();
-         }
-
-         /**
-          * Somme total du salaire du mois
-          */
-
-          public function AllSum() {
-            $query = $this->getPdo()
-            ->prepare('SELECT SUM(salaire_reel) as total FROM workers');
-            $query->execute();
-            return $query->fetchAll();
-          }
-
-
-
 }

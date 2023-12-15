@@ -8,5 +8,13 @@ class Pointage extends Workers {
         return $query->fetchAll();
     }
 
+    public function nbrOfAbsence()
+     {
+        $date= date('Y-m');
+        $query = Parent::getPdo()
+        ->prepare("SELECT COUNT(id_ab) as nbr_absence FROM absences WHERE id_worker = ? AND status = 'non justifié' AND date_ab LIKE '{$date}%'");
+        $query->execute([Parent::getWorkerID()]);
+        return $query->fetch();
+    }
   
 }

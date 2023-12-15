@@ -1,8 +1,9 @@
 <?php
 session_start();
 require '../class/Workers.php';
+require '../class/Pointage.php';
 $wrkrs = new Workers();
-
+$ptg = new Pointage();
 
 ?>
 
@@ -297,7 +298,7 @@ $wrkrs = new Workers();
                         <p>Teléphone: <?= $wrkrs->showWorkerInfo()['contact'] ?></p>
                         <p>Premier Responsable: <?= $wrkrs->showWorkerInfo()['responsable'] ?></p>
                         <p style="text-decoration:underline red;">Nombre d'absence ce mois:
-                            <?= $wrkrs->showWorkerInfo()['nbr_absence'] ?></p>
+                            <?= $ptg->nbrOfAbsence()['nbr_absence'] ?></p>
                     </div>
                 </div>
             </div>
