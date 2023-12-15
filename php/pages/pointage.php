@@ -234,7 +234,7 @@ $workers->newPointage(new Pointage);
         </div>
     </div>
     <form method="post">
-        <div class="container w-50 bg-light shadow rounded">
+        <div class="container w-50 bg-light shadow rounded pt-1">
             <h3 class="text-center mt-5">pointer un employé</h3>
             <div class="row mt-3 justify-content-center">
                 <div class="col-6" style="position: relative;">
