@@ -554,7 +554,7 @@ class Workers
          */
         public function getSalarReelById() {
             $query = $this->getPdo()
-            ->prepare("SELECT salaire_reel FROM salaires WHERE sa_id=1 AND date_s LIKE '2023-12' ");
+            ->prepare("SELECT salaire_reel FROM salaires WHERE sa_id=2 AND date_s LIKE '2023-12' ");
             $query->execute();
             return $query->fetch();
         }

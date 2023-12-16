@@ -337,6 +337,12 @@
                   </svg>DECONNEXION</a>
             </div>
         </nav>
+        <ul class="list-group" style="max-width:250px;">
+            <li class="list-group-item">STE TAVARATRA: 13131313 Ar</li>
+            <li class="list-group-item">ANNEXE SHOP: 12356165 Ar</li>
+            <li class="list-group-item">MAHAMBOLO: 1231313123Ar</li>
+            <li class="list-group-item">TOTAL:  564651351313 Ar</li>
+        </ul>
     
     <script src="../../assets/js/jquery.min.js"></script>
     <script>

@@ -312,6 +312,8 @@ $ptg = new Pointage();
         position: relative;
         top: -5px;
     }
+
+
 </style>
 
 <body>
