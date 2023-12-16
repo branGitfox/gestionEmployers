@@ -12,4 +12,5 @@ $data = $query->fetchAll();
 // }
 
 
-echo $test->sommeOfAllSalary();
+// echo $test->sommeOfAllSalary();
+echo @$test->getSalarReelById()['salaire_reel'];

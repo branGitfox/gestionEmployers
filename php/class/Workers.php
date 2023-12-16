@@ -285,7 +285,7 @@ class Workers
                 $a_date = $_POST['a_date'];
                 $a_nature = (int) ($_POST['a_nature']);
                 $a_espece = (int) ($_POST['a_espece']);
-                $a_desc = htmlentities(htmlspecialchars($_POST['a_desc']));
+                $a_desc = $_POST['a_desc'];
                 if(($a_nature + $a_espece) <= $this->getWorkerSalary()['salaire_base']){
                
                         $this->insertAvance($a_date, $a_nature, $a_espece, $a_desc, $this->sessionID());
@@ -362,7 +362,7 @@ class Workers
     /**
      * La somme des avances d'un employé
      */
-    private function sumofAvance($id_worker) 
+    protected function sumofAvance($id_worker) 
     {
         $date = date('Y-m');
         $query = $this->getPdo()
@@ -402,7 +402,7 @@ class Workers
     /**
      * Recupere le salaire  de base d'un employé
      */
-    private function salarybase($id_worker)
+    protected function salarybase($id_worker)
     {
         $query = $this->getPdo()
         ->prepare('SELECT salaire_base FROM workers WHERE w_id = ?');
@@ -454,9 +454,35 @@ class Workers
 
      public function deletePointageAndUpdateNumberOfAbsence()
      {
-        $query= $this->getPdo()
+          //recuperation de l'id de l'employé à qui appartient l'avance à supprimé
+          $query = $this->getPdo()
+          ->prepare('SELECT * FROM absences  WHERE id_ab = ?');
+          $query->execute([$this->getPointageId()]);
+          $data = $query->fetch();
+          $id_worker = $data['id_worker'];
+
+           //suppression de l'avance
+        $delete = $this->getPdo()
         ->prepare('DELETE FROM absences WHERE id_ab = ?');
-        $query->execute([$this->getPointageId()]);
+        $delete->execute([$this->getPointageId()]);
+
+        //recuperation du nombre d'absence
+        $date= date('Y-m');
+        $query2 = $this->getPdo()
+        ->prepare("SELECT COUNT(id_ab) as nbr_absence FROM absences WHERE id_worker = ? AND status = 'non justifié' AND date_ab LIKE '{$date}%'");
+        $query2->execute([$id_worker]);
+        $nbr_absence = $query2->fetch()['nbr_absence'];
+
+
+        //salaire de base
+        $salaire_base = $this->salarybase($id_worker)['salaire_base'];
+
+        //mise à  jour du salaire
+        $avances = $this->sumofAvance($id_worker);
+        $salaire_reel = (($salaire_base / 30) * (30-$nbr_absence)) - $avances;
+        $update = $this->getPdo()
+        ->prepare('UPDATE salaires SET avances = ? ,salaire_reel = ?, nbr_absence = ? WHERE id_worker = ?');
+        $update->execute([$avances, $salaire_reel, $nbr_absence, $id_worker]);
         $_SESSION['succes']='Succès !!';
         header('location:afficherPointage.php');
      }
@@ -522,4 +548,16 @@ class Workers
 
             return $salaire_total;
         }
+
+        /**
+         * Teste d'affichage d'un salaire d'un employé par son id
+         */
+        public function getSalarReelById() {
+            $query = $this->getPdo()
+            ->prepare("SELECT salaire_reel FROM salaires WHERE sa_id=1 AND date_s LIKE '2023-12' ");
+            $query->execute();
+            return $query->fetch();
+        }
+
+       
 }
