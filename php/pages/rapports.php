@@ -86,7 +86,7 @@
     }
 
     .nav-links a {
-        padding: 15px;
+        padding:18.5px 15px;
         background-color: blue;
         text-decoration: none;
         color: white;
@@ -140,7 +140,7 @@
     }
 
     .btn-w {
-        padding: 15px 5px;
+        padding: 17.5px 5px;
         background-color: blue;
         border: none;
         font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -173,6 +173,8 @@
         font-weight: bold;
         font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         color: whitesmoke;
+        font-size: 2.5rem;
+        line-height: 5px;
     }
 
     #active-a {
@@ -192,7 +194,7 @@
 <body>
     <nav>
         <div class="nav-logo">
-            <h1>STE TAV<svg class="logo" xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
+            <h1>STE TAV<svg class="logo" xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="currentColor"
                     class="bi bi-buildings" viewBox="0 0 16 16">
                     <path
                         d="M14.763.075A.5.5 0 0 1 15 .5v15a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5V14h-1v1.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V10a.5.5 0 0 1 .342-.474L6 7.64V4.5a.5.5 0 0 1 .276-.447l8-4a.5.5 0 0 1 .487.022ZM6 8.694 1 10.36V15h5zM7 15h2v-1.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5V15h2V1.309l-7 3.5z" />

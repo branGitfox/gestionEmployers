@@ -49,7 +49,7 @@ $ptg = new Pointage();
     }
 
     .nav-links a {
-        padding: 15px;
+        padding:17.5px 15px;
         background-color: blue;
         text-decoration: none;
         color: white;
@@ -104,7 +104,7 @@ $ptg = new Pointage();
     }
 
     .btn-w {
-        padding: 15px 5px;
+        padding: 17.5px 5px;
         background-color: blue;
         border: none;
         font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -135,6 +135,7 @@ $ptg = new Pointage();
         font-weight: bold;
         font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         color: whitesmoke;
+        /* line-height: 5px; */
     }
 
     .list {
@@ -204,6 +205,8 @@ $ptg = new Pointage();
         padding: 20px;
         grid-template-rows: 1fr 1fr;
         font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            /* -webkit-backdrop-filter:blur(15px) ;
+            backdrop-filter: blur(15px) grayscale(0.9) opacity(0.1); */
     }
 
     .header {
@@ -298,19 +301,27 @@ $ptg = new Pointage();
         overflow: hidden;
         overflow: hidden;
     }
+    .active-a {
+        background-color: blueviolet;
+    }
     #active-a {
         background-color: blueviolet;
+    }
+
+    .logo {
+        position: relative;
+        top: -5px;
     }
 </style>
 
 <body>
 <nav>
-            <div class="nav-logo"><h1>STE TAV<svg class="logo"  xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-buildings" viewBox="0 0 16 16">
+            <div class="nav-logo"><h1>STE TAV<svg class="logo"  xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="currentColor" class="bi bi-buildings" viewBox="0 0 16 16">
                 <path d="M14.763.075A.5.5 0 0 1 15 .5v15a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5V14h-1v1.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V10a.5.5 0 0 1 .342-.474L6 7.64V4.5a.5.5 0 0 1 .276-.447l8-4a.5.5 0 0 1 .487.022ZM6 8.694 1 10.36V15h5zM7 15h2v-1.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5V15h2V1.309l-7 3.5z"/>
                 <path d="M2 11h1v1H2zm2 0h1v1H4zm-2 2h1v1H2zm2 0h1v1H4zm4-4h1v1H8zm2 0h1v1h-1zm-2 2h1v1H8zm2 0h1v1h-1zm2-2h1v1h-1zm0 2h1v1h-1zM8 7h1v1H8zm2 0h1v1h-1zm2 0h1v1h-1zM8 5h1v1H8zm2 0h1v1h-1zm2 0h1v1h-1zm0-2h1v1h-1z"/>
               </svg>RATRA</h1></div>
             <div class="nav-links">
-                <button class="btn-w"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-square" viewBox="0 0 16 16">
+                <button class="btn-w active-a"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-square" viewBox="0 0 16 16">
                     <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
                     <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1v-1c0-1-1-4-6-4s-6 3-6 4v1a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"/>
                   </svg>EMPLOYER</button>
