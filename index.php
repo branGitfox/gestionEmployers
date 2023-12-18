@@ -1,3 +1,11 @@
+<?php 
+session_start();
+require './php/class/Security.php';
+$security = new Security();
+$security->redirect();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,7 +26,7 @@
 </style>
 <body>
   
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary" aria-label="Offcanvas navbar large">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow" aria-label="Offcanvas navbar large">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">STE TAVARATRA</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar2" aria-controls="offcanvasNavbar2" aria-label="Toggle navigation">

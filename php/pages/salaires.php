@@ -140,6 +140,10 @@ td a {
 .none {
     display: none;
 }
+
+.little{
+    width: 7rem;
+}
 </style>
 
 <body>
@@ -239,8 +243,8 @@ td a {
             const date =document.querySelector('.date')
         const card = document.querySelector('.card')
             printBtn.classList.add('none')
-            date.classList.add('none')
-            card.classList.add('none')
+            date.classList.add('little')
+            card.classList.add('little')
             window.print()
       
         })
@@ -249,8 +253,8 @@ td a {
             const date =document.querySelector('.date')
         const card = document.querySelector('.card')
             printBtn.classList.remove('none')
-            date.classList.remove('none')
-            card.classList.remove('none')
+            date.classList.remove('little')
+            card.classList.remove('little')
         })
     </script>
 </body>
