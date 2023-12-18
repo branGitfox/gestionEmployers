@@ -6,7 +6,7 @@ $outPut = "";
 $value = $_POST['date'];
 
 $query = $pointage->getPdo()
-->prepare("SELECT * FROM absences JOIN workers ON workers.w_id=absences.id_worker WHERE absences.date_ab LIKE '%{$value}%'");
+->prepare("SELECT * FROM absences JOIN workers ON workers.w_id=absences.id_worker WHERE absences.date_ab LIKE '{$value}%'");
 $query->execute();
 
 if($query->rowCount() > 0){

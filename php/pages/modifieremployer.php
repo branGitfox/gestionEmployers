@@ -171,7 +171,6 @@ $wrkrs->changeWorker();
             <div class="succes"><?= $wrkrs->succes() ?></div>
         <?php endif ?>
     </div>
-    <script src="../../assets/js/bootstrap.min.js"></script>
     <script>
         const succes = document.querySelector('.succes')
         setTimeout(() => {

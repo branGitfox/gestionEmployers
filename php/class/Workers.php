@@ -513,32 +513,57 @@ class Workers
        /**
         * Cette fonctions va creer automatiquement la salaire d'un employé qui n'a été ni pointé ni avancé
         */
-       public function createSalaire() {
-            $query = $this->getPdo()
-            ->prepare('SELECT * FROM workers');
-            $query->execute();
-            $workers= $query->fetchAll();
+       public function createSalaire() 
+       {
             $date = date('Y-m');
-            foreach($workers as $worker){
+            if($this->getLastDate()['last'] != $date){
                 $query = $this->getPdo()
-                ->prepare('SELECT * FROM salaires WHERE id_worker = ? AND date_s = ?');
-                $query->execute([$worker['w_id'], $date]);
-                if($query->rowCount() == 0){
-                    $insert = $this->getPdo()
-                    ->prepare('INSERT INTO salaires (`id_worker`, `date_s`, `salaire_base`, `salaire_reel`) VALUES (?, ?, ?, ?)');
-                    $insert->execute([$worker['w_id'], $date, $this->salarybase($worker['w_id'])['salaire_base'], $this->salarybase($worker['w_id'])['salaire_base']]);
+                ->prepare('SELECT * FROM workers');
+                $query->execute();
+                $workers= $query->fetchAll();
+                foreach($workers as $worker){
+                    $query = $this->getPdo()
+                    ->prepare('SELECT * FROM salaires WHERE id_worker = ? AND date_s = ?');
+                    $query->execute([$worker['w_id'], $date]);
+                    if($query->rowCount() == 0){
+                        $insert = $this->getPdo()
+                        ->prepare('INSERT INTO salaires (`id_worker`, `date_s`, `salaire_base`, `salaire_reel`) VALUES (?, ?, ?, ?)');
+                        $insert->execute([$worker['w_id'], $date, $this->salarybase($worker['w_id'])['salaire_base'], $this->salarybase($worker['w_id'])['salaire_base']]);
+                    }
+                    
                 }
-                
+                $upd = $this->getPdo()
+                ->prepare('UPDATE lastsalary SET last = ? WHERE id = 1');
+                $upd->execute([$date]);
+            }else {
+                $query = $this->getPdo()
+                ->prepare('SELECT * FROM workers');
+                $query->execute();
+                $workers= $query->fetchAll();
+                foreach($workers as $worker){
+                    $query = $this->getPdo()
+                    ->prepare('SELECT * FROM salaires WHERE id_worker = ? AND date_s = ?');
+                    $query->execute([$worker['w_id'], $date]);
+                    if($query->rowCount() == 0){
+                        $insert = $this->getPdo()
+                        ->prepare('INSERT INTO salaires (`id_worker`, `date_s`, `salaire_base`, `salaire_reel`) VALUES (?, ?, ?, ?)');
+                        $insert->execute([$worker['w_id'], $date, $this->salarybase($worker['w_id'])['salaire_base'], $this->salarybase($worker['w_id'])['salaire_base']]);
+                    }
+                    
+                }
             }
+           
        }
 
        /**
         * Calcule la somme totale de tout les salaires du mois courant
         */
 
-        public function sommeOfAllSalary() {
+        public function sommeOfAllSalary() 
+        {
+            $date = date('Y-m');
             $query = $this->getPdo()
-            ->prepare('SELECT * FROM salaires WHERE date_s = "2023-12"');
+            ->prepare("SELECT * FROM salaires WHERE date_s LIKE '{$date}%'");
             $query->execute();
             $data = $query->fetchAll();
             $salaire_total = 0;
@@ -549,15 +574,55 @@ class Workers
             return $salaire_total;
         }
 
+        public function getAllWorkersSalary() 
+        {
+            $date = date('Y-m');
+            $query = $this->getPdo()
+            ->prepare("SELECT * FROM salaires JOIN workers ON workers.w_id = salaires.id_worker WHERE date_s LIKE '{$date}%'");
+            $query->execute();
+            return $query->fetchAll();
+        }
         /**
          * Teste d'affichage d'un salaire d'un employé par son id
          */
-        public function getSalarReelById() {
+        public function getSalarReelById() 
+        {
             $query = $this->getPdo()
             ->prepare("SELECT salaire_reel FROM salaires WHERE sa_id=2 AND date_s LIKE '2023-12' ");
             $query->execute();
             return $query->fetch();
         }
+
+        public function getListOfDate() 
+        {
+            $query = $this->getPdo()
+            ->prepare('SELECT DISTINCT date_s FROM salaires ORDER BY date_s DESC');
+            $query->execute();
+            return $query->fetchAll();
+        }
+
+        public function getLastDate() 
+        {
+            $query = $this->getPdo()
+            ->prepare('SELECT last FROM lastsalary WHERE id=1');
+            $query->execute();
+            return $query->fetch();
+        }
+
+        public function getAbs() {
+            $query = $this->getPdo()
+            ->prepare("SELECT * FROM absences JOIN workers ON workers.w_id = absences.id_worker WHERE id_worker = ?  AND  date_ab LIKE '{$this->getD()}%' ");
+            $query->execute([$this->getWorkerId()]);
+            return $query->fetchAll();
+            
+        }
+
+        public function getD() {
+            if(isset($_GET['d'])){
+                return $_GET['d'];
+            }
+        }
+
 
        
 }

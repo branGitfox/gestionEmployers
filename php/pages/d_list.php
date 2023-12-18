@@ -5,8 +5,8 @@ $workers = new Workers();
 $value = $_POST['date'];
 $outPut = "";
 
-$query = $workers->getPdo()->prepare('SELECT * FROM avances JOIN workers ON workers.w_id=avances.id_worker WHERE avances.a_date= ? ');
-$query->execute([$value]);
+$query = $workers->getPdo()->prepare("SELECT * FROM avances JOIN workers ON workers.w_id=avances.id_worker WHERE avances.a_date LIKE '%{$value}%'  ");
+$query->execute();
 
 if($query->rowCount() > 0){
     while($data = $query->fetch()){

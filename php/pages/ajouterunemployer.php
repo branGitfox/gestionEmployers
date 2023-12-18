@@ -12,6 +12,7 @@ $wrkrs->newWorker();
 <html lang="en">
 
 <head>
+    <script src="../../assets/js/bootstrap.bundle.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
@@ -62,17 +63,18 @@ $wrkrs->newWorker();
         position: relative;
     } */
 
-    .close {
+    /* .close {
         position: absolute;
         top: 0;
         right: 0;
         fill: red;
-    }
+    } */
 </style>
 
 <body>
-    <div class="container-lg p-5 bg-light shadow rounded" style="position: relative;">
-        <h1 class="text-center mb-3">Modifier un employer</h1>
+    <?php include '../sections/navbars.php' ?>
+    <div class="container-lg p-5" style="position: relative;">
+        <h1 class="text-center mb-3">Ajouter un employer</h1>
         <form method="post" enctype="multipart/form-data">
             <div class="row justify-content-center mt-5">
                 <div class="col-4">
@@ -158,7 +160,7 @@ $wrkrs->newWorker();
                 </div>
             </div>
             <div class="row mt-3 justify-content-center">
-                <div class="col-8" style="position: relative;">
+                <div class="col-11" style="position: relative;">
                     <svg style="position: absolute;top:10px;left:40%;" xmlns="http://www.w3.org/2000/svg" width="20"
                         height="20" fill="white" class="bi bi-floppy" viewBox="0 0 16 16">
                         <path d="M11 2H9v3h2z" />
@@ -169,15 +171,14 @@ $wrkrs->newWorker();
                         style="border: none;" name="envoyer">
                 </div>
             </div>
-            <svg class="close" xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="currentColor" class="bi bi-x-square-fill" viewBox="0 0 16 16">
+            <!-- <svg class="close" xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="currentColor" class="bi bi-x-square-fill" viewBox="0 0 16 16">
                  <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm3.354 4.646L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708"/>
-            </svg>
+            </svg> -->
         </form>
         <?php if (!empty($wrkrs->succes())): ?>
             <div class="succes"><?= $wrkrs->succes() ?></div>
         <?php endif ?>
     </div>
-    <script src="../../assets/js/bootstrap.min.js"></script>
     <script>
         const succes = document.querySelector('.succes')
         setTimeout(() => {
@@ -188,10 +189,10 @@ $wrkrs->newWorker();
             succes.remove()
         }, 3000)
 
-        const close =document.querySelector('.close')
-        close.addEventListener('click', () => {
-            location.href = 'listeemployer.php'
-        })
+        // const close =document.querySelector('.close')
+        // close.addEventListener('click', () => {
+        //     location.href = 'listeemployer.php'
+        // })
     </script>
 </body>
 
