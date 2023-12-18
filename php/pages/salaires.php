@@ -132,6 +132,14 @@ td a {
     flex-direction: column;
 }
 
+.impression {
+    position: absolute;
+    top: 13rem;
+    padding: 10px;
+}
+.none {
+    display: none;
+}
 </style>
 
 <body>
@@ -181,6 +189,12 @@ td a {
         </select>
     </div>
         </div>
+    <div class="impression">
+        <button class="btn btn-primary" id="print"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="currentColor" class="bi bi-printer" viewBox="0 0 16 16">
+  <path d="M2.5 8a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1"/>
+  <path d="M5 1a2 2 0 0 0-2 2v2H2a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h1v1a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-1h1a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-1V3a2 2 0 0 0-2-2zM4 3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2H4zm1 5a2 2 0 0 0-2 2v1H2a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v-1a2 2 0 0 0-2-2zm7 2v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1"/>
+</svg> Imprimer</button>
+    </div>
        
     <script src="../../assets/js/jquery.min.js"></script>
     <script>
@@ -218,6 +232,26 @@ td a {
                 location.href = 'suppremployer.php?worker_id=' + id
             }
         }
+
+        
+        const printBtn =document.getElementById('print')
+        printBtn.addEventListener('click', ()=> {
+            const date =document.querySelector('.date')
+        const card = document.querySelector('.card')
+            printBtn.classList.add('none')
+            date.classList.add('none')
+            card.classList.add('none')
+            window.print()
+      
+        })
+
+        window.addEventListener('mousemove', () => {
+            const date =document.querySelector('.date')
+        const card = document.querySelector('.card')
+            printBtn.classList.remove('none')
+            date.classList.remove('none')
+            card.classList.remove('none')
+        })
     </script>
 </body>
 

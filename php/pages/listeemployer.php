@@ -193,6 +193,11 @@ $ptg = new Pointage();
         overflow: hidden;
     }
 
+    .card {
+        position: absolute;
+        top: 4.2rem;
+        right: 5px;
+    }
 
 </style>
 
@@ -309,7 +314,7 @@ $ptg = new Pointage();
                     </div>
                 </div>
             </div>
-        </div>
+        
     <?php endif ?>
     <?php if (!empty($_SESSION['succes'])): ?>
         <div class="succes">
@@ -317,6 +322,13 @@ $ptg = new Pointage();
         </div>
     <?php endif ?>
     <?php unset($_SESSION['succes']); ?>
+    <div class="card text-center" style="width: 12rem;">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item bg-light">Nombre d'employé</li>
+                    <li class="list-group-item"><?=$wrkrs->getNumberOfWorkers()['nbrW']?></li>
+                </ul>
+                </div>
+        </div>
     </div>
     <script src="../../assets/js/jquery.min.js"></script>
     <script>

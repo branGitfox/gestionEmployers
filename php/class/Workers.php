@@ -609,7 +609,11 @@ class Workers
             return $query->fetch();
         }
 
-        public function getAbs() {
+        /**
+         * Retourne la liste detaillé d'absence d'un employé
+         */
+        public function getAbs() 
+        {
             $query = $this->getPdo()
             ->prepare("SELECT * FROM absences JOIN workers ON workers.w_id = absences.id_worker WHERE id_worker = ?  AND  date_ab LIKE '{$this->getD()}%' ");
             $query->execute([$this->getWorkerId()]);
@@ -617,10 +621,18 @@ class Workers
             
         }
 
-        public function getD() {
+        public function getD() 
+        {
             if(isset($_GET['d'])){
                 return $_GET['d'];
             }
+        }
+
+        public function getNumberOfWorkers() {
+            $query = $this->getPdo()
+            ->prepare('SELECT COUNT(w_id) as nbrW FROM workers');
+            $query->execute();
+            return $query->fetch();
         }
 
 
