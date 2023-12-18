@@ -52,7 +52,7 @@ class Avance extends Workers {
         $update = Parent::getPdo()
         ->prepare('UPDATE salaires SET avances = ? ,salaire_reel = ?, nbr_absence = ? WHERE id_worker = ?');
         $update->execute([$avances, $salaire_reel, $nbr_absence, $id_worker]);
-        $_SESSION['succes']='Succès !!';
+        $_SESSION['succes']='Suppression reussi';
         header('location:afficherAvance.php');
      }
 

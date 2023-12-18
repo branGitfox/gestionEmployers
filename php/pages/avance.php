@@ -32,7 +32,7 @@ $workers->newAvance(new Pointage());
         position: absolute;
         bottom: 05rem;
         right: -20rem;
-        width: 200px;
+        width: auto;
         height: 50px;
         border-radius: 10px;
         display: flex;

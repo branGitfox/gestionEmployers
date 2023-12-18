@@ -35,9 +35,7 @@ $ptg = new Pointage();
         margin: auto;
     }
 
-    body {
-        background-color: #f0f8ff;
-    }
+
 
 
     /* tbody {

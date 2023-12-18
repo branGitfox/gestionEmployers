@@ -46,7 +46,7 @@ class Workers
                 if ($_FILES['image']['name'] == '') {
                     $new_image_name = 'default.png';
                     $this->insertWorker($name, $firstname, $fonction, $cin, $adresse, $origine, $salaire, $responsable, $contact, $new_image_name, $departement, $date_entree, $sexe);
-                    $this->getSucces('Succèss');
+                    $this->getSucces('Employé bien ajouté');
 
                 }
 
@@ -61,7 +61,7 @@ class Workers
                         $new_image_name = time() . '.' . $image_ext;
                         if (move_uploaded_file($image_tmp, '../images/' . $new_image_name)) {
                             $this->insertWorker($name, $firstname, $fonction, $cin, $adresse, $origine, $salaire, $responsable, $contact, $new_image_name, $departement, $date_entree, $sexe);
-                            $this->getSucces('Succès');
+                            $this->getSucces('Employé bien ajouté');
                         }
 
                     }
@@ -204,7 +204,7 @@ class Workers
                 $sexe = htmlentities(htmlspecialchars($_POST['sexe']));
                 if ($_FILES['image']['name'] == '') {
                     $this->updateWorker($name, $firstname, $fonction, $cin, $adresse, $origine, $salaire, $responsable, $contact, null, $departement, $date_entree, $sexe, $this->getWorkerId());
-                    $this->getSucces('Succèss');
+                    $this->getSucces('Employé bien modifié');
 
                 }
 
@@ -219,7 +219,7 @@ class Workers
                         $new_image_name = time() . '.' . $image_ext;
                         if (move_uploaded_file($image_tmp, '../images/' . $new_image_name)) {
                             $this->updateWorker($name, $firstname, $fonction, $cin, $adresse, $origine, $salaire, $responsable, $contact, $new_image_name, $departement, $date_entree, $sexe, $this->getWorkerId());
-                            $this->getSucces('Succès');
+                            $this->getSucces('Employé bien modifié');
                         }
 
                     }
@@ -290,9 +290,9 @@ class Workers
                
                         $this->insertAvance($a_date, $a_nature, $a_espece, $a_desc, $this->sessionID());
                         $this->insertInfotoSalaryTable($this->sessionID(), $pointage->nbrOfAbsence()['nbr_absence'], $this->sumofAvance($this->sessionID()),$this->salarybase($this->sessionID())['salaire_base']);
-                        $this->getSucces('success');
+                        $this->getSucces('Avance reussi');
                 }else{
-                    $this->getError('Erreur !!');
+                    $this->getError('Les avances ne doiveent pas depasser le salaire de base');
                 }
               
             }
@@ -328,7 +328,7 @@ class Workers
             $ab_desc = $_POST['ab_desc'];
             $this->insertPointage($date_ab, $this->sessionID(), $status, $anomalie, $ab_desc);
             $this->insertInfotoSalaryTable($this->sessionID(), $pointage->nbrOfAbsence()['nbr_absence'], $this->sumofAvance($this->sessionID()),$this->salarybase($this->sessionID())['salaire_base']);
-            $this->getSucces('Succès !!');
+            $this->getSucces('Pointage reussi');
         }
     }
 
@@ -483,7 +483,7 @@ class Workers
         $update = $this->getPdo()
         ->prepare('UPDATE salaires SET avances = ? ,salaire_reel = ?, nbr_absence = ? WHERE id_worker = ?');
         $update->execute([$avances, $salaire_reel, $nbr_absence, $id_worker]);
-        $_SESSION['succes']='Succès !!';
+        $_SESSION['succes']='Suppression reussi';
         header('location:afficherPointage.php');
      }
 

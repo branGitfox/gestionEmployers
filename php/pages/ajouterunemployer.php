@@ -20,7 +20,6 @@ $wrkrs->newWorker();
 </head>
 <style>
     body {
-        background-color: #f0f8ff;
         overflow: hidden;
     }
 
@@ -29,8 +28,8 @@ $wrkrs->newWorker();
         bottom: 05rem;
         right: -20rem;
         width: 200px;
-        height: 50px;
-        border-radius: 10px;
+        height: 50px; 
+         border-radius: 10px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -176,9 +175,8 @@ $wrkrs->newWorker();
             </svg> -->
         </form>
         <?php if (!empty($wrkrs->succes())): ?>
-            <div class="succes"><?= $wrkrs->succes() ?></div>
+            <div class="succes"><?= $wrkrs->succes()?></div>
         <?php endif ?>
-    </div>
     <script>
         const succes = document.querySelector('.succes')
         setTimeout(() => {

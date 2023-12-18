@@ -157,7 +157,7 @@ $pointages = new Pointage();
         })
      
         function confirmer(id_ab,id_worker) {
-            if (confirm('Vous voulez vraiment supprimer cet employé ?')) {
+            if (confirm('Vous voulez vraiment annuler ce pointage ?')) {
                 location.href = 'supprpointage.php?id_ab=' + id_ab+'&id_worker='+id_worker
             }
         }

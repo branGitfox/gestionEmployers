@@ -179,7 +179,7 @@ $avances = new Avance();
         })
      
         function confirmer(id) {
-            if (confirm('Vous voulez vraiment supprimer cet employé ?')) {
+            if (confirm('Vous voulez vraiment annuler cette avance ?')) {
                 location.href = 'suppravance.php?a_id=' + id
             }
         }

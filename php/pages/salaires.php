@@ -103,28 +103,10 @@ $salaire->createSalaire();
         width: 200px;
         height: 50px;
         top: 4rem;
-        display: grid;
-        grid-template-rows: 1fr 1fr;
-        /* grid-template-columns: 1fr; */
-        border-radius: 3px;
     }
-.total div {
-    border: solid grey .1px;
-    padding: 10px;
-    /* background-color: red; */
-    display: flex;
-    justify-content: center;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-}
 
-.header {
-    letter-spacing: 2px;
-    font-weight: bold;
-    border-top-left-radius: 3px;
-    border-top-right-radius: 3px;
-    background-color: blueviolet;
-    color: goldenrod;
-}
+
+
 td a {
     color: red;
     
@@ -152,7 +134,7 @@ td a {
            <?php include '../sections/navbars.php';?>
         <div class="body">
         <div class="container mt-1" style="position:relative;left:7%; height:92vh;overflow:auto;">
-            <table class="table">
+            <table class="table table-striped">
                 <thead >
                     <tr>
                     <th>Nom</th>
@@ -179,9 +161,11 @@ td a {
                 </tbody>
             </table>
         </div>
-    <div class="total">
-        <div class="header">TOTAL</div>
-        <div class="prix" id="total"><?= number_format($salaire->sommeOfAllSalary())?> AR</div>
+    <div class="card text-center total">
+        <div class="card-header">TOTAL</div>
+        <ul class="list-group">
+            <li class="list-group-item" id="total"><?= number_format($salaire->sommeOfAllSalary())?> AR</li>
+        </ul>
     </div>
 
     <div class="date">

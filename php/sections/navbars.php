@@ -41,12 +41,15 @@ $link = new DynamicLinks();
               </ul>
             </li>
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle <?php if($link->matchLink('afficherAvance.php') || $link->matchLink('afficherPointage.php')){echo 'active';}?>" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <a class="nav-link dropdown-toggle <?php if($link->matchLink('afficherAvance.php') || $link->matchLink('afficherPointage.php') || $link->matchLink('abs.php')){echo 'active';}?>" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Accessibilités
               </a>
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item <?php if($link->matchLink('afficherAvance.php')){echo 'active';}?>" href="../pages/afficherAvance.php">Rapport des Avances</a></li>
                 <li><a class="dropdown-item <?php if($link->matchLink('afficherPointage.php')){echo 'active';}?>" href="../pages/afficherPointage.php">Rapport des Pointages</a></li>
+                <?php if($link->matchLink('abs.php')) :?>
+                <li><a class="dropdown-item <?php if($link->matchLink('abs.php')){echo 'active';}?>" href="../pages/abs.php">Absences</a></li>
+                    <?php endif ?>
                 <li>
                   <hr class="dropdown-divider">
                 </li>
