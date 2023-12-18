@@ -87,7 +87,7 @@ $wrkrs->newWorker();
                 </div>
                 <div class="col-4">
                     <label for="Prenom">Prenom</label>
-                    <input type="text" class="form-control" id="Prenom" placeholder="Prenom" name="firstname" required>
+                    <input type="text" class="form-control" id="Prenom" placeholder="Prenom" name="firstname" >
                 </div>
                 <div class="col-3">
                     <label for="fonctions">Fonctions</label>
