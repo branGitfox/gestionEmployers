@@ -7,6 +7,15 @@
     <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
     <title>Document</title>
 </head> 
+<style>
+    body {
+        overflow: hidden;
+    }
+    img {
+        width: 100%;
+        /* height: 100vh; */
+    }
+</style>
 <body>
   
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary" aria-label="Offcanvas navbar large">
@@ -23,7 +32,7 @@
         <div class="offcanvas-body">
           <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="">Home</a>
+              <a class="nav-link active" aria-current="page" href="">Acceuil</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="./php/pages/salaires.php">Salaires</a>
@@ -57,13 +66,26 @@
               </ul>
             </li>
             <li class="nav-item">
-              <a class="nav-link btn btn-danger" href="#">Deconnexion</a>
+              <a class="nav-link btn btn-danger" href="./php/pages/deconnexion.php" onclick="return confirm('Vous voulez vraiment vous deconnecter ?')">Deconnexion</a>
             </li>
           </ul>
         </div>
       </div>
     </div>
   </nav>
+  <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="./assets/fond/1-thessaloniciens-5-11.jpg" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="./assets/fond/actes-4-12-2.jpg" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="./assets/fond/marc-11-24.jpg" class="d-block w-100" alt="...">
+    </div>
+  </div>
+</div>
 </main>
 </body>
 </html>

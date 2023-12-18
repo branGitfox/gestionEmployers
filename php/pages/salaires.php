@@ -1,5 +1,10 @@
 <?php 
+session_start();
 require '../class/Workers.php';
+require '../class/Security.php';
+$security = new Security();
+// $security->disconnect();
+$security->redirect();
 $salaire = new Workers();
 $salaire->createSalaire();
 
@@ -91,7 +96,7 @@ $salaire->createSalaire();
     thead {
         position: sticky;
         top:0;
-        background-color: blueviolet;
+        background-color: #E8E9EB;
         color: white;
 
       
@@ -121,7 +126,7 @@ td a {
     height: auto;
     /* border: solid; */
     position: absolute;
-    top: 13rem;
+    top: 10rem;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -169,7 +174,6 @@ td a {
     </div>
 
     <div class="date">
-        <h3 class="text-center pt-1">Date</h3>
         <select  class="form-select bg-primary text-light" id="searchField">
             <?php foreach($salaire->getListOfDate() as $date):?>
                 <option value="<?= $date['date_s']?>"><?= $date['date_s']?></option>

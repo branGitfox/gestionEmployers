@@ -1,4 +1,9 @@
 <?php
+session_start();
+require '../class/Security.php';
+$security = new Security();
+// $security->disconnect();
+$security->redirect();
 require '../class/Workers.php';
 require '../class/Fonctions.php';
 require '../class/Departements.php';

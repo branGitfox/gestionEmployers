@@ -1,7 +1,12 @@
 <?php
+session_start();
 require '../class/Workers.php';
 require '../class/Fonctions.php';
 require '../class/Departements.php';
+require '../class/Security.php';
+$security = new Security();
+// $security->disconnect();
+$security->redirect();
 $fct = new Fonctions();
 $dpt = new Departements();
 $wrkrs = new Workers();
@@ -12,6 +17,7 @@ $wrkrs->changeWorker();
 <html lang="en">
 
 <head>
+    <script src="../../assets/js/bootstrap.bundle.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
@@ -19,7 +25,6 @@ $wrkrs->changeWorker();
 </head>
 <style>
     body {
-        background-color: #f0f8ff;
         overflow: hidden;
     }
 
@@ -60,7 +65,8 @@ $wrkrs->changeWorker();
 </style>
 
 <body>
-    <div class="container-lg p-5 bg-light shadow rounded">
+    <?php include '../sections/navbars.php'?>
+    <div class="container-lg p-5">
         <h1 class="text-center mb-3">Modifier un employer</h1>
         <form method="post" enctype="multipart/form-data">
             <div class="row justify-content-center mt-5">

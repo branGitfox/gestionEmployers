@@ -6,7 +6,7 @@ require '../class/DynamicLinks.php';
 $link = new DynamicLinks();
 
 ?>
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary" aria-label="Offcanvas navbar large">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow" aria-label="Offcanvas navbar large">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">STE TAVARATRA</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar2" aria-controls="offcanvasNavbar2" aria-label="Toggle navigation">
@@ -20,19 +20,22 @@ $link = new DynamicLinks();
         <div class="offcanvas-body">
           <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="../../index.php">Home</a>
+              <a class="nav-link" aria-current="page" href="../../index.php">Acceuil</a>
             </li>
             <li class="nav-item">
               <a class="nav-link <?php if($link->matchLink('salaires.php')){echo 'active';}?>" href="../pages/salaires.php">Salaires</a>
             </li>
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle <?php if($link->matchLink('avance.php') || $link->matchLink('pointage.php') || $link->matchLink('listeemployer.php') || $link->matchLink('ajouterunemployer.php')){echo 'active';}?>" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <a class="nav-link dropdown-toggle <?php if($link->matchLink('avance.php') || $link->matchLink('pointage.php') || $link->matchLink('listeemployer.php') || $link->matchLink('modifieremployer.php') || $link->matchLink('ajouterunemployer.php')){echo 'active';}?>" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Employés
               </a>
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item <?php if($link->matchLink('ajouterunemployer.php')){echo 'active';}?>" href="../pages/ajouterunemployer.php">Ajouter un Employé</a></li>
                 <li><a class="dropdown-item <?php if($link->matchLink('avance.php')){echo 'active';}?>" href="../pages/avance.php">Donner une Avance</a></li>
                 <li><a class="dropdown-item <?php if($link->matchLink('pointage.php')){echo 'active';}?>" href="../pages/pointage.php">Pointer un Employé</a></li>
+                <?php if($link->matchLink('modifieremployer.php')) :?>
+                <li><a class="dropdown-item <?php if($link->matchLink('modifieremployer.php')){echo 'active';}?>" href="../pages/abs.php">Modifier un employé</a></li>
+                    <?php endif ?>
                 <li>
                   <hr class="dropdown-divider">
                 </li>
@@ -58,7 +61,7 @@ $link = new DynamicLinks();
               </ul>
             </li>
             <li class="nav-item">
-              <a class="nav-link btn btn-danger" href="#">Deconnexion</a>
+              <a class="nav-link btn btn-danger" onclick="return confirm('Vous voulez vraiment vous deconnecter ?')" href="../pages/deconnexion.php">Deconnexion</a>
             </li>
           </ul>
         </div>

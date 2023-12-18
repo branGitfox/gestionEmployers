@@ -2,6 +2,10 @@
 session_start();
 require '../class/Workers.php';
 require '../class/Pointage.php';
+require '../class/Security.php';
+$security = new Security();
+// $security->disconnect();
+$security->redirect();
 $workers = new Workers();
 $workers->newAvance(new Pointage());
 ?>

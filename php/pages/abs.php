@@ -1,5 +1,10 @@
 <?php 
+session_start();
 require '../class/Workers.php';
+require '../class/Security.php';
+$security = new Security();
+// $security->disconnect();
+$security->redirect();
 $abs = new Workers();
 
 ?>
