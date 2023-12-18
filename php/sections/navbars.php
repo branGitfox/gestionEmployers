@@ -41,7 +41,7 @@ $link = new DynamicLinks();
               </ul>
             </li>
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <a class="nav-link dropdown-toggle <?php if($link->matchLink('afficherAvance.php') || $link->matchLink('afficherPointage.php')){echo 'active';}?>" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Accessibilités
               </a>
               <ul class="dropdown-menu">

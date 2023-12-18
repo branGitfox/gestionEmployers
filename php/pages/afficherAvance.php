@@ -8,15 +8,14 @@ $avances = new Avance();
 <html lang="en">
 
 <head>
+    <script src="../../assets/js/bootstrap.bundle.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
     <title>Afficher les avances</title>
 </head>
 <style>
-    .btn-danger {
-        font-size:12px;
-    }
+
 
     body {
         overflow-x: hidden;
@@ -57,14 +56,15 @@ $avances = new Avance();
         }
     }
 
-    .close {
+    /* .close {
         position: absolute;
         top: 0;
         right: 0;
         fill: red;
-    }
+    } */
 </style>
 <body>
+    <?php include '../sections/navbars.php' ?>
     <div class="container w-50">
         <div class="row">
             <div class="col-2">
@@ -74,7 +74,7 @@ $avances = new Avance();
                 <input type="date" class="form-control" id="date-field">
             </div>
             <div class="col-3 mx-2 mt-1">
-                <button class="btn btn-primary"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                <button class="btn btn-primary printBtn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                         fill="currentColor" class="bi bi-printer" viewBox="0 0 16 16">
                         <path d="M2.5 8a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1" />
                         <path
@@ -130,7 +130,7 @@ $avances = new Avance();
                         <td>
                             <?= $avance['a_date'] ?>
                         </td>
-                        <td><span class="btn btn-danger p-1" onclick="confirmer(<?= $avance['a_id'] ?>)">Annuler</span></td>
+                        <td><span class="btn btn-danger p-1 danger" onclick="confirmer(<?= $avance['a_id'] ?>)">Annuler</span></td>
                     </tr>
                 <?php endforeach ?>
             </tbody>
@@ -141,9 +141,6 @@ $avances = new Avance();
         </div>
     <?php endif ?>
     <?php unset($_SESSION['succes']); ?>
-    <svg class="close" xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="currentColor" class="bi bi-x-square-fill" viewBox="0 0 16 16">
-                 <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm3.354 4.646L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708"/>
-    </svg>
     </div>
     <script src="../../assets/js/jquery.min.js"></script>
     <script>
@@ -162,9 +159,9 @@ $avances = new Avance();
         })
     </script>
     <script>
-        const printBtn = document.querySelector('button')
+        const printBtn = document.querySelector('.printBtn')
         printBtn.addEventListener('click', () => {  
-            document.querySelectorAll('.btn-danger').forEach(a=>{
+            document.querySelectorAll('.danger').forEach(a=>{
                 a.style.display = 'none'
                 
             })    
@@ -172,8 +169,10 @@ $avances = new Avance();
             window.print()
         })
 
-        window.addEventListener('mousemove', () => {
-            document.querySelectorAll('.btn-danger').forEach(a=>{
+        const container =document.querySelector('.container')
+
+        container.addEventListener('mousemove', () => {
+            document.querySelectorAll('.danger').forEach(a=>{
                 a.style.display = 'inline'
             })
             printBtn.style.display='block'
@@ -194,10 +193,10 @@ $avances = new Avance();
             succes.remove()
         }, 3000)
 
-        const close =document.querySelector('.close')
-        close.addEventListener('click', () => {
-            location.href = 'rapports.php'
-        })
+        // const close =document.querySelector('.close')
+        // close.addEventListener('click', () => {
+        //     location.href = 'rapports.php'
+        // })
     </script>
 </body>
 
