@@ -81,13 +81,18 @@ $workers->newAvance(new Pointage());
     body{
         overflow-y: hidden;
     }
-
+    
+    .container {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
 </style>
 
 <body>
         <?php include '../sections/navbars.php';?>
            
-        <div class="body">
+    <div class="body">
         <div class="search-container shadow">
         <div class="search-header">
             <h4>Rechercher un employé</h4>

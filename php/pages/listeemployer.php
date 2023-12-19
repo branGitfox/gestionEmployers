@@ -60,9 +60,12 @@ $ptg = new Pointage();
         background-color: hsl(0, 0%,
                 95%);
     }
+
+
     td > a  {
         padding: 0 30px 0 30px;
     }
+    
     /* .supbtn{
         border: none;
         background-color: transparent;

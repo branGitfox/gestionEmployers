@@ -574,6 +574,24 @@ class Workers
             return $salaire_total;
         }
 
+        /**
+         * Somme de tout les salaire de base
+         */
+
+         public function sommeOfAllSalaryBase() {
+            $date = date('Y-m');
+            $query = $this->getPdo()
+            ->prepare("SELECT * FROM salaires WHERE date_s LIKE '{$date}%'");
+            $query->execute();
+            $data = $query->fetchAll();
+            $salaire_total = 0;
+            foreach($data as $salaire){
+                $salaire_total += $salaire['salaire_base'];
+            }
+
+            return $salaire_total;
+         }
+
         public function getAllWorkersSalary() 
         {
             $date = date('Y-m');
@@ -627,13 +645,50 @@ class Workers
                 return $_GET['d'];
             }
         }
-
+        /**
+         *Retourne le nombre d'employé
+         */
         public function getNumberOfWorkers() {
             $query = $this->getPdo()
             ->prepare('SELECT COUNT(w_id) as nbrW FROM workers');
             $query->execute();
             return $query->fetch();
         }
+
+        /**
+         * Retourne le nombre tout les avances d'employé
+         */
+        public function sumOfAllAvances() {
+            $date = date('Y-m');
+            $query = $this->getPdo()
+            ->prepare("SELECT * FROM salaires WHERE date_s LIKE '{$date}%'");
+            $query->execute();
+            $data = $query->fetchAll();
+            $avance_total = 0;
+            foreach($data as $salaire){
+                $avance_total += $salaire['avances'];
+            }
+
+            return $avance_total;
+        }
+
+        /**
+         * Retourne le nombre d'absences total du mois selectionné
+         */
+
+         public function sumOfAllAbsences () {
+            $date = date('Y-m');
+            $query = $this->getPdo()
+            ->prepare("SELECT * FROM salaires WHERE date_s LIKE '{$date}%'");
+            $query->execute();
+            $data = $query->fetchAll();
+            $absence_total = 0;
+            foreach($data as $salaire){
+                $absence_total += $salaire['nbr_absence'];
+            }
+
+            return $absence_total;
+         }
 
 
        

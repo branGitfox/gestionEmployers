@@ -22,6 +22,11 @@ $workers->newPointage(new Pointage);
     <title>STE TAVARATRA</title>
 </head>
 <style>
+      .container {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
     body {
         overflow-x: hidden;
     }

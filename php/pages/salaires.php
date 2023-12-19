@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 require '../class/Workers.php';
 require '../class/Security.php';
@@ -22,13 +22,13 @@ $salaire->createSalaire();
     <title>STE TAVARATRA</title>
 </head>
 <style>
-
-    *{
+    * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
     }
 
+    
     #table-container thead th {
         position: sticky;
         top: 0;
@@ -42,7 +42,7 @@ $salaire->createSalaire();
         background-color: transparent;
         padding: 0  10px 0 20px;
     } */
-   
+
 
     .succes {
         position: absolute;
@@ -83,9 +83,11 @@ $salaire->createSalaire();
         overflow: hidden;
         overflow: hidden;
     }
+
     .active-a {
         background-color: blueviolet;
     }
+
     #active-a {
         background-color: blueviolet;
     }
@@ -94,170 +96,345 @@ $salaire->createSalaire();
         position: relative;
         top: -5px;
     }
+
     thead {
         position: sticky;
-        top:0;
-        background-color: #E8E9EB;
-        color: white;
+        top: 0;
+        /* background-color: #E8E9EB; */
+        color: black;
 
-      
+
     }
 
-    .total{
+
+
+
+    td a {
+        color: red;
+
+    }
+
+    .prix {
+        border-bottom-left-radius: 3px;
+        border-bottom-right-radius: 3px;
+    }
+
+    .date {
+        width: 110px;
+        height: auto;
+        /* border: solid; */
         position: absolute;
-        /* border: solid grey .1px; */
-        width: 200px;
-        height: 50px;
-        top: 4rem;
+        top: -5.5rem;
+        right: 5rem;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .impression {
+        position: absolute;
+        top: 2.5rem;
+        /* padding: 10px; */
+        right: 3rem;
+    }
+
+    .none {
+        display: none;
+    }
+
+    .little {
+        width: 7rem;
+    }
+
+    .body {
+        position: absolute;
+        top: 8rem;
+        right: 6rem;
+        width: 84%;
+
+    }
+</style>
+<style>
+    .radius-10 {
+        border-radius: 10px !important;
+    }
+
+    .border-info {
+        border-left: 5px solid #0dcaf0 !important;
+    }
+
+    .border-danger {
+        border-left: 5px solid #fd3550 !important;
+    }
+
+    .border-success {
+        border-left: 5px solid #15ca20 !important;
+    }
+
+    .border-warning {
+        border-left: 5px solid #ffc107 !important;
     }
 
 
+    .card {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        width: 200px;
+        word-wrap: break-word;
+        background-color: #fff;
+        background-clip: border-box;
+        border: 0px solid rgba(0, 0, 0, 0);
+        border-radius: .25rem;
+        margin-bottom: 1.5rem;
+        box-shadow: 0 2px 6px 0 rgb(218 218 253 / 65%), 0 2px 6px 0 rgb(206 206 238 / 54%);
+        height: 100px;
+    }
 
-td a {
-    color: red;
-    
-}
-.prix {
-    border-bottom-left-radius: 3px;
-    border-bottom-right-radius: 3px;
-}
+    .bg-gradient-scooter {
+        background: #17ead9;
+        background: -webkit-linear-gradient(45deg, #17ead9, #6078ea) !important;
+        background: linear-gradient(45deg, #17ead9, #6078ea) !important;
+    }
 
-.date {
-    width: 200px;
-    height: auto;
-    /* border: solid; */
-    position: absolute;
-    top: 10rem;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-}
+    .widgets-icons-2 {
+        width: 56px;
+        height: 56px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #ededed;
+        font-size: 27px;
+        border-radius: 10px;
+    }
 
-.impression {
-    position: absolute;
-    top: 13rem;
-    padding: 10px;
-}
-.none {
-    display: none;
-}
+    .rounded-circle {
+        border-radius: 50% !important;
+    }
 
-.little{
-    width: 7rem;
-}
+    .text-white {
+        color: #fff !important;
+    }
+
+    .ms-auto {
+        margin-left: auto !important;
+    }
+
+    .bg-gradient-bloody {
+        background: #f54ea2;
+        background: -webkit-linear-gradient(45deg, #f54ea2, #ff7676) !important;
+        background: linear-gradient(45deg, #f54ea2, #ff7676) !important;
+    }
+
+    .bg-gradient-ohhappiness {
+        background: #00b09b;
+        background: -webkit-linear-gradient(45deg, #00b09b, #96c93d) !important;
+        background: linear-gradient(45deg, #00b09b, #96c93d) !important;
+    }
+
+    .bg-gradient-blooker {
+        background: #ffdf40;
+        background: -webkit-linear-gradient(45deg, #ffdf40, #ff8359) !important;
+        background: linear-gradient(45deg, #ffdf40, #ff8359) !important;
+    }
+
+    #container {
+        width: 65%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+
+
 </style>
 
 <body>
-<nav>
-           <?php include '../sections/navbars.php';?>
+    <nav>
+        <?php include '../sections/navbars.php'; ?>
+        <div id="container" class="container">
+            <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4">
+                <div class="col">
+                    <div class="card radius-10 border-start border-0 border-3 border-info">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center">
+                                <div>
+                                    <p class="mb-0 text-secondary">Total Salaires </p>
+                                    <h4 class="my-1 text-info"><?= number_format($salaire->sommeOfAllSalaryBase())?> Ar</h4>
+                                    <p class="mb-0 font-13"><?= date('Y-m')?></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card radius-10 border-start border-0 border-3 border-danger">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center">
+                                <div>
+                                    <p class="mb-0 text-secondary">Total Avances</p>
+                                    <h4 class="my-1 text-danger"><?= number_format($salaire->sumOfAllAvances())?> Ar</h4>
+                                    <p class="mb-0 font-13"><?= date('Y-m')?></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card radius-10 border-start border-0 border-3 border-success">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center">
+                                <div>
+                                    <p class="mb-0 text-secondary">Reste à Payer</p>
+                                    <h4 class="my-1 text-success" id="total"><?= number_format($salaire->sommeOfAllSalary()) ?> Ar</h4>
+                                    <p class="mb-0 font-13"><?= date('Y-m')?></p>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card radius-10 border-start border-0 border-3 border-warning">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center">
+                                <div>
+                                    <p class="mb-0 text-secondary">Total Absences</p>
+                                    <h4 class="my-1 text-warning"><?= number_format($salaire->sumOfAllAbsences()) ?></h4>
+                                    <p class="mb-0 font-13"><?= date('Y-m')?></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="body">
-        <div class="container mt-1" style="position:relative;left:7%; height:92vh;overflow:auto;">
-            <table class="table table-striped">
-                <thead >
-                    <tr>
-                    <th>Nom</th>
-                    <th>Prenom</th>
-                    <th>Salaire Base</th>
-                    <th>Avances</th>
-                    <th>Absences</th>
-                    <th>Salaire Reel</th>
-                    </tr>
-               
-                </thead>
-                <tbody id="salaryList">
-                    <?php foreach($salaire->getAllWorkersSalary() as $sal) :?>
+            <div class="container mt-1" style="position:relative;left:7%; height:92vh;overflow:auto;">
+                <table class="table ">
+                    <thead class="bg-light">
                         <tr>
-                            <td><?= $sal['name']?></td>
-                            <td><?= $sal['firstname']?></td>
-                            <td><?= $sal['salaire_base']?></td>
-                            <td><?= $sal['avances']?></td>
-                            <td><a href="abs.php?worker_id=<?=$sal['w_id']?>&d=<?=$sal['date_s']?>"><?= $sal['nbr_absence']?></a></td>
-                            <td><?= $sal['salaire_reel']?></td>
+                            <th>Nom</th>
+                            <th>Prenom</th>
+                            <th>Salaire Base</th>
+                            <th>Avances</th>
+                            <th>Absences</th>
+                            <th>Salaire Reel</th>
                         </tr>
-                     <?php endforeach ?>   
 
-                </tbody>
-            </table>
-        </div>
-    <div class="card text-center total">
-        <div class="card-header">TOTAL</div>
-        <ul class="list-group">
-            <li class="list-group-item" id="total"><?= number_format($salaire->sommeOfAllSalary())?> AR</li>
-        </ul>
-    </div>
+                    </thead>
+                    <tbody id="salaryList">
+                        <?php foreach ($salaire->getAllWorkersSalary() as $sal): ?>
+                            <tr>
+                                <td>
+                                    <?= $sal['name'] ?>
+                                </td>
+                                <td>
+                                    <?= $sal['firstname'] ?>
+                                </td>
+                                <td>
+                                    <?= $sal['salaire_base'] ?>
+                                </td>
+                                <td>
+                                    <?= $sal['avances'] ?>
+                                </td>
+                                <td><a href="abs.php?worker_id=<?= $sal['w_id'] ?>&d=<?= $sal['date_s'] ?>" title="Voir">
+                                        <?= $sal['nbr_absence'] ?>
+                                    </a></td>
+                                <td>
+                                    <?= $sal['salaire_reel'] ?>
+                                </td>
+                            </tr>
+                        <?php endforeach ?>
 
-    <div class="date">
-        <select  class="form-select bg-primary text-light" id="searchField">
-            <?php foreach($salaire->getListOfDate() as $date):?>
-                <option value="<?= $date['date_s']?>"><?= $date['date_s']?></option>
-            <?php endforeach ?>    
-        </select>
-    </div>
+                    </tbody>
+                </table>
+            </div>
+            <!-- <div class="card text-center total">
+                <div class="card-header">TOTAL</div>
+                <ul class="list-group">
+                    <li class="list-group-item" id="total">
+                        
+                    </li>
+                </ul>
+            </div> -->
+
+            <div class="date">
+                <select class="form-select bg-primary text-light" id="searchField">
+                    <?php foreach ($salaire->getListOfDate() as $date): ?>
+                        <option value="<?= $date['date_s'] ?>">
+                            <?= $date['date_s'] ?>
+                        </option>
+                    <?php endforeach ?>
+                </select>
+            </div>
         </div>
-    <div class="impression">
-        <button class="btn btn-primary" id="print"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="currentColor" class="bi bi-printer" viewBox="0 0 16 16">
-  <path d="M2.5 8a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1"/>
-  <path d="M5 1a2 2 0 0 0-2 2v2H2a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h1v1a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-1h1a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-1V3a2 2 0 0 0-2-2zM4 3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2H4zm1 5a2 2 0 0 0-2 2v1H2a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v-1a2 2 0 0 0-2-2zm7 2v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1"/>
-</svg> Imprimer</button>
-    </div>
-       
-    <script src="../../assets/js/jquery.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $('#searchField').change(function () {
-                let date = $('#searchField').val()
-                //  alert(date)
-                if (date != '') {
+        <div class="impression">
+            <button class="btn btn-primary" id="print"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17"
+                    fill="currentColor" class="bi bi-printer" viewBox="0 0 16 16">
+                    <path d="M2.5 8a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1" />
+                    <path
+                        d="M5 1a2 2 0 0 0-2 2v2H2a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h1v1a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-1h1a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-1V3a2 2 0 0 0-2-2zM4 3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2H4zm1 5a2 2 0 0 0-2 2v1H2a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v-1a2 2 0 0 0-2-2zm7 2v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1" />
+                </svg> Imprimer</button>
+        </div>
+
+        <script src="../../assets/js/jquery.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('#searchField').change(function () {
+                    let date = $('#searchField').val()
+                    //  alert(date)
+                    if (date != '') {
+                        $.ajax({
+                            url: 'live_salaire_1.php',
+                            type: 'POST',
+                            data: { date: date },
+                            success: function (data) {
+                                $('#salaryList').html(data)
+                            }
+
+                        })
+                    }
+
                     $.ajax({
-                        url: 'live_salaire_1.php',
-                        type: 'POST',
-                        data: { date: date },
-                        success: function (data) {
-                            $('#salaryList').html(data)
-                        }
-
-                    })
-                }
-
-                $.ajax({
-                    url: 'live_salaire_2.php',
+                        url: 'live_salaire_2.php',
                         type: 'POST',
                         data: { date: date },
                         success: function (data) {
                             $('#total').html(data)
                         }
+                    })
                 })
+
+            })
+        </script>
+        <script>
+            function confirmer(id) {
+                if (confirm('Vous voulez vraiment supprimer cet employé ?')) {
+                    location.href = 'suppremployer.php?worker_id=' + id
+                }
+            }
+
+
+            const printBtn = document.getElementById('print')
+            printBtn.addEventListener('click', () => {
+                const date = document.querySelector('.date')
+                const card = document.querySelector('.card')
+                printBtn.classList.add('none')
+                date.classList.add('little')
+                card.classList.add('little')
+                window.print()
+
             })
 
-        })
-    </script>
-    <script>
-        function confirmer(id) {
-            if (confirm('Vous voulez vraiment supprimer cet employé ?')) {
-                location.href = 'suppremployer.php?worker_id=' + id
-            }
-        }
-
-        
-        const printBtn =document.getElementById('print')
-        printBtn.addEventListener('click', ()=> {
-            const date =document.querySelector('.date')
-        const card = document.querySelector('.card')
-            printBtn.classList.add('none')
-            date.classList.add('little')
-            card.classList.add('little')
-            window.print()
-      
-        })
-
-        window.addEventListener('mousemove', () => {
-            const date =document.querySelector('.date')
-        const card = document.querySelector('.card')
-            printBtn.classList.remove('none')
-            date.classList.remove('little')
-            card.classList.remove('little')
-        })
-    </script>
+            window.addEventListener('mousemove', () => {
+                const date = document.querySelector('.date')
+                const card = document.querySelector('.card')
+                printBtn.classList.remove('none')
+                date.classList.remove('little')
+                card.classList.remove('little')
+            })
+        </script>
 </body>
 
 </html>
