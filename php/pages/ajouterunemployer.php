@@ -21,7 +21,8 @@ $wrkrs->newWorker();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
-    <title>Modifier un employer</title>
+    <link rel="shortcut icon" href="../../assets/imgs/5343441.png" type="image/x-icon">
+    <title>STE TAVARATRA</title>
 </head>
 <style>
     body {
@@ -73,11 +74,17 @@ $wrkrs->newWorker();
         right: 0;
         fill: red;
     } */
+
+    .container-lg{
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
 </style>
 
 <body>
     <?php include '../sections/navbars.php' ?>
-    <div class="container-lg p-5" style="position: relative;">
+    <div class="container-lg p-5">
         <h1 class="text-center mb-3">Ajouter un employer</h1>
         <form method="post" enctype="multipart/form-data">
             <div class="row justify-content-center mt-5">

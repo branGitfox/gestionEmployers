@@ -18,7 +18,8 @@ $workers->newPointage(new Pointage);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../assets/css/avance.css">
-    <title>Pointage</title>
+    <link rel="shortcut icon" href="../../assets/imgs/5343441.png" type="image/x-icon">
+    <title>STE TAVARATRA</title>
 </head>
 <style>
     body {
