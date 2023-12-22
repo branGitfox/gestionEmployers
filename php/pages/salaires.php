@@ -21,11 +21,14 @@ $salaire->createSalaire();
     <link rel="shortcut icon" href="../../assets/imgs/5343441.png" type="image/x-icon">
     <title>STE TAVARATRA</title>
 </head>
+<?php include '../sections/font.php'?>
 <style>
+
     * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
+       
     }
 
     

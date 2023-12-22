@@ -19,6 +19,7 @@ $avances = new Avance();
     <link rel="shortcut icon" href="../../assets/imgs/5343441.png" type="image/x-icon">
     <title>STE TAVARATRA</title>
 </head>
+<?php include '../sections/font.php'?>
 <style>
     body {
         overflow-x: hidden;
@@ -75,15 +76,19 @@ $avances = new Avance();
     .ls {
         letter-spacing: 1px;
     }
+
+    .c {
+        color: #3A0CA3;
+    }
 </style>
 
 <body>
     <?php include '../sections/navbars.php' ?>
-    <div class="plaque bg-light shadow d-flex align-items-center justify-content-left p-3"><svg class="me-1  text-primary" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-journal-bookmark" viewBox="0 0 16 16">
+    <div class="plaque bg-light shadow d-flex align-items-center justify-content-left p-3"><svg class="me-1" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#3A0CA3" class="bi bi-journal-bookmark" viewBox="0 0 16 16">
             <path fill-rule="evenodd" d="M6 8V1h1v6.117L8.743 6.07a.5.5 0 0 1 .514 0L11 7.117V1h1v7a.5.5 0 0 1-.757.429L9 7.083 6.757 8.43A.5.5 0 0 1 6 8"/>
             <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2"/>
             <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1z"/>
-          </svg><h5 class="fs-6 mt-2 fw-bold text-primary ls" >RAPPORT AVANCES</h5>
+          </svg><h5 class="fs-6 mt-2  ls c" >RAPPORT AVANCES</h5>
     </div>  
     <div class="body">
         <div class="container w-50">

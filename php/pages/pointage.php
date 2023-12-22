@@ -21,13 +21,19 @@ $workers->newPointage(new Pointage);
     <link rel="shortcut icon" href="../../assets/imgs/5343441.png" type="image/x-icon">
     <title>STE TAVARATRA</title>
 </head>
+<?php include '../sections/font.php'?>
 <style>
+
+
     .container {
         position: absolute;
         top: 5rem;
         right: 0;
     }
 
+    .c {
+        color: #3A0CA3;
+    }
     body {
         overflow-x: hidden;
     }
@@ -38,6 +44,7 @@ $workers->newPointage(new Pointage);
         position: absolute;
         top: 0;
         right: 0;
+        font-family: 'Poppins', sans-serif;
     }
 
     .succes {
@@ -140,15 +147,15 @@ $workers->newPointage(new Pointage);
 
                 </div>
             </div>
-            <div class="plaque bg-light shadow d-flex align-items-center justify-content-left   p-3 "><svg class="me-1  text-primary"
-                    xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+            <div class="plaque shadow d-flex align-items-center justify-content-left bg-light   p-3 " ><svg class="me-1  text-primary"
+                    xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#3A0CA3"
                     class="bi bi-calendar-date" viewBox="0 0 16 16">
                     <path
                         d="M6.445 11.688V6.354h-.633A12.6 12.6 0 0 0 4.5 7.16v.695c.375-.257.969-.62 1.258-.777h.012v4.61h.675zm1.188-1.305c.047.64.594 1.406 1.703 1.406 1.258 0 2-1.066 2-2.871 0-1.934-.781-2.668-1.953-2.668-.926 0-1.797.672-1.797 1.809 0 1.16.824 1.77 1.676 1.77.746 0 1.23-.376 1.383-.79h.027c-.004 1.316-.461 2.164-1.305 2.164-.664 0-1.008-.45-1.05-.82h-.684zm2.953-2.317c0 .696-.559 1.18-1.184 1.18-.601 0-1.144-.383-1.144-1.2 0-.823.582-1.21 1.168-1.21.633 0 1.16.398 1.16 1.23" />
                     <path
                         d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z" />
                 </svg>
-                <h5 class="fs-6 mt-2 text-primary fw-bold ls">POINTAGES</h5>
+                <h5 class="fs-6 mt-2  c ls">POINTAGES</h5>
                 <a href="pointage.php" class="moreAdd" title="Nouvelle fenetre" target="_blank"><svg
                         xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="blue" class="bi bi-plus-circle"
                         viewBox="0 0 16 16">
@@ -160,7 +167,7 @@ $workers->newPointage(new Pointage);
             </div>
             <form method="post">
                 <div class="container  pt-1">
-                    <h3 class="text-center mt-5">pointer un employé</h3>
+                    <h3 class="text-center mt-5">Pointer un Employé</h3>
                     <div class="row mt-3 justify-content-center">
                         <div class="col-6" style="position: relative;">
                             <svg id="search-icon" xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="blue"
@@ -179,7 +186,7 @@ $workers->newPointage(new Pointage);
                     </div>
                     <div class="row mt-3 justify-content-center">
                         <div class="col-9">
-                            <label for="anomalie">Anomalies</label>
+                            <label for="anomalie">Motifs</label>
                             <select name="anomalie" id="anomalie" class="form-select">
                                 <option value="maladie">Maladies</option>
                                 <option value="congés">Congés</option>

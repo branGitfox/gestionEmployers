@@ -378,7 +378,7 @@ class Workers
             $avance_espece += $data['a_espece'];
         }
         $somme_des_avances = $avance_espece + $avance_nature;
-        echo $somme_des_avances;
+      
         return $somme_des_avances;
     }
     
@@ -580,7 +580,8 @@ class Workers
          * Somme de tout les salaire de base
          */
 
-         public function sommeOfAllSalaryBase() {
+         public function sommeOfAllSalaryBase() 
+         {
             $date = date('Y-m');
             $query = $this->getPdo()
             ->prepare("SELECT * FROM salaires WHERE date_s LIKE '{$date}%'");
@@ -660,7 +661,8 @@ class Workers
         /**
          * Retourne le nombre tout les avances d'employé
          */
-        public function sumOfAllAvances() {
+        public function sumOfAllAvances() 
+        {
             $date = date('Y-m');
             $query = $this->getPdo()
             ->prepare("SELECT * FROM salaires WHERE date_s LIKE '{$date}%'");
@@ -678,7 +680,8 @@ class Workers
          * Retourne le nombre d'absences total du mois selectionné
          */
 
-         public function sumOfAllAbsences () {
+         public function sumOfAllAbsences () 
+         {
             $date = date('Y-m');
             $query = $this->getPdo()
             ->prepare("SELECT * FROM salaires WHERE date_s LIKE '{$date}%'");
@@ -692,6 +695,265 @@ class Workers
             return $absence_total;
          }
 
+         /**
+          * Somme totoal des salaires de base depuis l'utitilisation de l'application
+          */
+         public function totalSalaireBase () 
+         {
+            $salaire_base = 0;
+            $query= $this->getPdo()
+            ->prepare('SELECT salaire_base FROM salaires');
+            $query->execute();
+            $data = $query->fetchAll();
+            foreach($data as $salaire){
+                $salaire_base += $salaire['salaire_base'];
+            }
 
+            return number_format($salaire_base).' Ar';
+
+            
+         }
+
+         /**
+          * Somme total des avances deouis l'utilisation de l'application
+          */
+         public function totalAvance () 
+         {
+            $avances = 0;
+            $query= $this->getPdo()
+            ->prepare('SELECT avances FROM salaires');
+            $query->execute();
+            $data = $query->fetchAll();
+            foreach($data as $avance){
+                $avances += $avance['avances'];
+            }
+
+            return $avances;
+
+            
+         }
+
+         /**
+          * Somme totale des salaires reel depuis l'utilisation de l'application
+          */
+         public function totalSalairereel () 
+         {
+            $salaire_reel = 0;
+            $query= $this->getPdo()
+            ->prepare('SELECT salaire_reel FROM salaires');
+            $query->execute();
+            $data = $query->fetchAll();
+            foreach($data as $salaire){
+                $salaire_reel += $salaire['salaire_reel'];
+            }
+
+            return $salaire_reel;
+         }
+
+         /**
+          * Somme totale des absences depuis l'utilisation de l'application
+          */
+         public function totalAbsence () 
+         {
+            $absences = 0;
+            $query= $this->getPdo()
+            ->prepare('SELECT nbr_absence FROM salaires');
+            $query->execute();
+            $data = $query->fetchAll();
+            foreach($data as $absence){
+                $absences += $absence['nbr_absence'];
+            }
+
+            return $absences;
+         }
+
+         /**
+          * Salaire du departement tavaratra depuis l'utilisation de l'application
+          */
+
+         public function salaireT () 
+         {
+            $total = 0;
+            $query = $this->getPdo()
+            ->prepare('SELECT * FROM Workers WHERE id_depart = 1');
+            $query->execute();
+            $workers = $query->fetchAll();
+            foreach($workers as $worker){
+               
+                $salaire = $this->getPdo()
+                ->prepare('SELECT * FROM salaires WHERE id_worker = ?');
+                $salaire->execute([$worker['w_id']]);
+                $data = $salaire->fetchAll();
+                
+                foreach($data as $salaires){
+                   $total += $salaires['salaire_reel'];
+                }
+
+
+            }
+
+            return $total;
+         }
+
+         /**
+          * Pourcentage par rapport au salaire reeel total pour tavaratra
+          */
+         public function pourcentT() 
+         {
+            $prctg = round(($this->salaireT() * 100 ) / $this->totalSalairereel(), 2);
+            return $prctg;
+         }
+
+         /**
+          * Salaire du departement annexe shop depuis l'utilisation de l'application
+          */
+
+         public function salaireS () 
+         {
+            $total = 0;
+            $query = $this->getPdo()
+            ->prepare('SELECT * FROM Workers WHERE id_depart = 2');
+            $query->execute();
+            $workers = $query->fetchAll();
+            foreach($workers as $worker){
+               
+                $salaire = $this->getPdo()
+                ->prepare('SELECT * FROM salaires WHERE id_worker = ?');
+                $salaire->execute([$worker['w_id']]);
+                $data = $salaire->fetchAll();
+                
+                foreach($data as $salaires){
+                   $total += $salaires['salaire_reel'];
+                }
+
+
+            }
+
+            return $total;
+         }
+
+          /**
+          * Pourcentage par rapport au salaire reeel total pour annexe shop
+          */
+         public function pourcentS() {
+            $prctg = round(($this->salaireS() * 100 ) / $this->totalSalairereel(), 2);
+            return $prctg;
+         }
+
+
+         /**
+          * Pourcentage par rapport au salaire reel total pour mahambolo
+          */
+         public function salaireM ()
+          {
+            $total = 0;
+            $query = $this->getPdo()
+            ->prepare('SELECT * FROM Workers WHERE id_depart = 3');
+            $query->execute();
+            $workers = $query->fetchAll();
+            foreach($workers as $worker){
+               
+                $salaire = $this->getPdo()
+                ->prepare('SELECT * FROM salaires WHERE id_worker = ?');
+                $salaire->execute([$worker['w_id']]);
+                $data = $salaire->fetchAll();
+                
+                foreach($data as $salaires){
+                   $total += $salaires['salaire_reel'];
+                }
+
+
+            }
+
+            return $total;
+         }
+
+
+           /**
+          * Salaire du departement annexe shop depuis l'utilisation de l'application
+          */
+         public function pourcentM() 
+         {
+            $prctg = round(($this->salaireM() * 100 ) / $this->totalSalairereel(), 2);
+            return $prctg;
+         }
+
+       /**
+        * Pourcentage des avance par departement
+        */
+         public function pourcentAvance($id_depart) 
+         {
+            
+                $total = 0;
+                $query = $this->getPdo()
+                ->prepare('SELECT * FROM Workers WHERE id_depart = ?');
+                $query->execute([$id_depart]);
+                $workers = $query->fetchAll();
+                foreach($workers as $worker){
+                   
+                    $salaire = $this->getPdo()
+                    ->prepare('SELECT * FROM salaires WHERE id_worker = ?');
+                    $salaire->execute([$worker['w_id']]);
+                    $data = $salaire->fetchAll();
+                    
+                    foreach($data as $salaires){
+                       $total += $salaires['avances'];
+                    }
+    
+    
+                }
+    
+                $prctg = round(($total * 100) / $this->totalAvance(), 2);
+                return $prctg;
+            
+         }
+
+           /**
+        * Pourcentage des absences par departement
+        */
+         public function pourcentAbsence($id_depart)  
+         {
+            
+            $total = 0;
+            $query = $this->getPdo()
+            ->prepare('SELECT * FROM Workers WHERE id_depart = ?');
+            $query->execute([$id_depart]);
+            $workers = $query->fetchAll();
+            foreach($workers as $worker){
+               
+                $salaire = $this->getPdo()
+                ->prepare('SELECT * FROM salaires WHERE id_worker = ?');
+                $salaire->execute([$worker['w_id']]);
+                $data = $salaire->fetchAll();
+                
+                foreach($data as $salaires){
+                   $total += $salaires['nbr_absence'];
+                }
+
+
+            }
+
+            $prctg = round(($total * 100) / $this->totalAbsence(), 2);
+            return $prctg;
+        
+     }
+
+     /**
+      * Retourne le nombre de sexe
+      */
+
+      public function nbrHomme($sexe) {
+        $query = $this->getPdo()
+        ->prepare("SELECT COUNT(w_id) as ? FROM workers WHERE sexe = ?");
+        $query->execute([$sexe,$sexe]);
+
+        return $query->fetch();
+      }
+     
+
+      
+
+
+         
        
 }

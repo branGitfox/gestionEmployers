@@ -1,2 +1,6 @@
 
-<a href="exporter.php">Exporter la base de donnée</a>
+<?php 
+
+require '../class/Workers.php';
+$test = new Workers();
+echo $test->salaireM();
