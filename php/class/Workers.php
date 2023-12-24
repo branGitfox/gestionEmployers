@@ -113,7 +113,7 @@ class Workers
     /**
      * Prend les erreur en paramètre
      */
-    private function getSucces($succes)
+    protected function getSucces($succes)
     {
         $this->succes = $succes;
     }
@@ -437,7 +437,7 @@ class Workers
     /**
      * Capture les erreurs
      */
-    private function getError($error) 
+    protected function getError($error) 
     {
         $this->error = $error;
     }

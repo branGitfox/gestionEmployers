@@ -12,7 +12,7 @@ $link = new DynamicLinks();
   }
 </style>
 <main >
-  <div class="d-flex flex-column flex-shrink-0 p-3  shadow" style="width: 240px; height: 100vh;background-color:#3A0CA3;">
+  <div class="d-flex flex-column flex-shrink-0 p-3  shadow-lg" style="width: 240px; height: 100vh;background-color:#3A0CA3;">
     <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
         <svg xmlns="http://www.w3.org/2000/svg" width="40" height="32" fill="white" class="bi bi-buildings" viewBox="0 0 16 16">
       <path d="M14.763.075A.5.5 0 0 1 15 .5v15a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5V14h-1v1.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V10a.5.5 0 0 1 .342-.474L6 7.64V4.5a.5.5 0 0 1 .276-.447l8-4a.5.5 0 0 1 .487.022ZM6 8.694 1 10.36V15h5zM7 15h2v-1.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5V15h2V1.309l-7 3.5z"/>

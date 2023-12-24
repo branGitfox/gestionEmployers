@@ -183,7 +183,7 @@ $ptg = new Pointage();
     .refresh {
         position: absolute;
         top: 4.38rem;
-        right: 14.5rem;
+        right: 13.8rem;
     }
 
 
