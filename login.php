@@ -1,17 +1,9 @@
-
 <?php 
 session_start();
-if(isset($_POST['user'], $_POST['pw']) && !empty($_POST['user'] && !empty($_POST['pw']))){
-    $user = $_POST['user'];
-    $pw = $_POST['pw'];
-
-    if($user == 'Admin' && $pw == 'admin1234'){
-        $_SESSION['user'] = 'Admin';
-        header('location:index.php');
-    }else {
-        echo '<script>alert("Veuillez verifier vos informations")</script>';
-    }
-}
+require './php/class/Workers.php';
+require './php/class/Roles.php';
+$roles = new Roles();
+$roles->checkRoleForm();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -73,12 +65,27 @@ if(isset($_POST['user'], $_POST['pw']) && !empty($_POST['user'] && !empty($_POST
                     <path d="M3.35 5.47c-.18.16-.353.322-.518.487A13.134 13.134 0 0 0 1.172 8l.195.288c.335.48.83 1.12 1.465 1.755C4.121 11.332 5.881 12.5 8 12.5c.716 0 1.39-.133 2.02-.36l.77.772A7.029 7.029 0 0 1 8 13.5C3 13.5 0 8 0 8s.939-1.721 2.641-3.238l.708.709zm10.296 8.884-12-12 .708-.708 12 12-.708.708"/>
                 </svg>
             <label for="user" class="form-label">Nom d'utilisateur</label>
-            <input type="text" class="form-control" id="user" placeholder="Nom d'utilisateur" name="user">
+            <input type="text" class="form-control" id="user" placeholder="Nom d'utilisateur" name="name">
             <label for="" class="form-label">Mot de passe</label>
-            <input id="password" type="password" class="form-control mb-3" id="user" placeholder="Mot de passe" name="pw">
+            <input id="password" type="password" class="form-control mb-3" id="user" placeholder="Mot de passe" name="password">
             <input type="submit" value="Se connecter" class="form-control mt-1 bg-primary text-light">
         </form>
     </div>
+    <?php if (!empty($roles->error())): ?>
+            <div class="position-fixed bottom-0 end-0 p-3 succes" style="z-index: 11">
+        <div id="liveToast" class="toast show text-light bg-danger" role="alert" aria-live="assertive" aria-atomic="true">
+          <div class="toast-header">
+         
+            <strong class="me-auto"> Ste TAVARATRA</strong>
+            <small>Maintenant</small>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>
+          <div class="toast-body">
+            <?= $roles->error() ?>
+          </div>
+        </div>
+      </div>
+        <?php endif ?>
     <script>
         const look = document.querySelector('.look')
         const close = document.querySelector('.close')

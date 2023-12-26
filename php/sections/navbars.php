@@ -100,7 +100,7 @@ $link = new DynamicLinks();
         </a>
       </li>
       <li>
-        <a href="#" class="nav-link link-light">
+        <a href="fonction.php" class="nav-link link-light">
           <svg class="me-2" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-workspace" viewBox="0 0 16 16">
             <path d="M4 16s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-5.95a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5"/>
             <path d="M2 1a2 2 0 0 0-2 2v9.5A1.5 1.5 0 0 0 1.5 14h.653a5.373 5.373 0 0 1 1.066-2H1V3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v9h-2.219c.554.654.89 1.373 1.066 2h.653a1.5 1.5 0 0 0 1.5-1.5V3a2 2 0 0 0-2-2z"/>
@@ -140,11 +140,11 @@ $link = new DynamicLinks();
     <div class="dropdown">
       <a href="#" class="d-flex align-items-center text-light text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
         <img src="../images/default.png" alt="" width="32" height="32" class="rounded-circle me-2">
-        <strong>Brandon</strong>
+        <strong><?=$_SESSION['user']['name']?></strong>
       </a>
       <ul class="dropdown-menu dropdown-menu-light text-small shadow " aria-labelledby="dropdownUser1">
         <li><a class="dropdown-item" href="#">Informations</a></li>
-        <li><a class="dropdown-item" href="#">Pointeur<svg class="mx-2" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="blue" class="bi bi-patch-check-fill" viewBox="0 0 16 16">
+        <li><a class="dropdown-item" href="#"><?=$_SESSION['user']['role_name']?><svg class="mx-2" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="blue" class="bi bi-patch-check-fill" viewBox="0 0 16 16">
           <path d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01-.622-.636zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708z"/>
         </svg></a></li>
         <li><hr class="dropdown-divider"></li>
