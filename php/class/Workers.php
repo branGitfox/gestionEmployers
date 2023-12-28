@@ -942,18 +942,77 @@ class Workers
       * Retourne le nombre de sexe
       */
 
-      public function nbrHomme($sexe) {
+      public function nbrHomme($sexe) 
+      {
         $query = $this->getPdo()
         ->prepare("SELECT COUNT(w_id) as ? FROM workers WHERE sexe = ?");
         $query->execute([$sexe,$sexe]);
 
         return $query->fetch();
       }
+
+      public function impressionDate() 
+      {
+        if(isset($_GET['date']))
+        {
+            $date = $_GET['date'];
+            return $date;
+        }
+      }
+
+      public function sommeOfAllSalaryImpression() 
+      {
+          $date = $this->impressionDate();
+          $query = $this->getPdo()
+          ->prepare("SELECT * FROM salaires WHERE date_s LIKE '{$date}%'");
+          $query->execute();
+          $data = $query->fetchAll();
+          $salaire_total = 0;
+          foreach($data as $salaire){
+              $salaire_total += $salaire['salaire_reel'];
+          }
+
+          return $salaire_total;
+      }
      
 
+      public function sumOfAllAvancesImpression() 
+      {
+          $date = $this->impressionDate();
+          $query = $this->getPdo()
+          ->prepare("SELECT * FROM salaires WHERE date_s LIKE '{$date}%'");
+          $query->execute();
+          $data = $query->fetchAll();
+          $avance_total = 0;
+          foreach($data as $salaire){
+              $avance_total += $salaire['avances'];
+          }
+
+          return $avance_total;
+      }
       
 
+      public function sommeOfAllSalaryBaseImpression() 
+      {
+         $date = $this->impressionDate();
+         $query = $this->getPdo()
+         ->prepare("SELECT * FROM salaires WHERE date_s LIKE '{$date}%'");
+         $query->execute();
+         $data = $query->fetchAll();
+         $salaire_total = 0;
+         foreach($data as $salaire){
+             $salaire_total += $salaire['salaire_base'];
+         }
 
+         return $salaire_total;
+      }
          
-       
+      public function getAllWorkersSalaryImpression() 
+      {
+          $date = $this->impressionDate();
+          $query = $this->getPdo()
+          ->prepare("SELECT * FROM salaires JOIN workers ON workers.w_id = salaires.id_worker WHERE date_s LIKE '{$date}%'");
+          $query->execute();
+          return $query->fetchAll();
+      }     
 }

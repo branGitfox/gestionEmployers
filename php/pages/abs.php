@@ -50,6 +50,14 @@ $abs = new Workers();
         top:1rem;
     }
 </style>
+
+<style>
+    /* @media screen and (max-width:992px) {
+        /* .container {
+            width: 70%;
+        } */
+    } */
+</style>
 <body>
     <?php include '../sections/navbars.php' ?>
     <div class="plaque bg-light shadow d-flex align-items-center justify-content-left   p-3 "><svg class="me-1  text-primary"

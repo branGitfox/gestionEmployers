@@ -1,5 +1,8 @@
 <?php 
-
+session_start();
+require '../class/Security.php';
+$security = new Security();
+$security->redirect();
 $connection = mysqli_connect('127.0.0.1','root','','tavaratra');
 $tables = array();
 $result = mysqli_query($connection,"SHOW TABLES");
@@ -30,29 +33,11 @@ foreach($tables as $table){
   $return .= "\n\n\n";
 }
 
-$db_name = date('Y-m-d').'.sql';
+$db_name ='../../databases/'. date('Y-m-d').'.sql';
 //save file
 $handle = fopen($db_name,"w+");
 fwrite($handle,$return);
 fclose($handle);
-echo "Successfully backed up";
 
-// /**IMPORTATION D"UNE BASE DE DONNEE */
-// <?php
-// $connection = mysqli_connect('localhost','root','','test');
-// $filename = 'backup.sql';
-// $handle = fopen($filename,"r+");
-// $contents = fread($handle,filesize($filename));
-// $sql = explode(';',$contents);
-// foreach($sql as $query){
-//   $result = mysqli_query($connection,$query);
-//   if($result){
-//       echo '<tr><td><br></td></tr>';
-//       echo '<tr><td>'.$query.' <b>SUCCESS</b></td></tr>';
-//       echo '<tr><td><br></td></tr>';
-//   }
-// }
-// fclose($handle);
-// echo 'Successfully imported';
-?>
-
+$_SESSION['succes']= 'Exportation reussi';
+header('location:database.php');

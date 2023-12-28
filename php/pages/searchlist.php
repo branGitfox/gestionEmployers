@@ -1,5 +1,9 @@
 <?php 
+session_start();
 require '../class/Workers.php';
+require '../class/Security.php';
+$security = new Security();
+$security->redirect();
 $wrkrs = new Workers();
 // echo $_POST['worker']; 
 // $sql = "SELECT * FROM workers JOIN fonctions ON fonctions.id=workers.id_fonction JOIN departements ON departements.id=workers.id_depart";   
