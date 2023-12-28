@@ -133,7 +133,7 @@ $pointages = new Pointage();
         </table>
         <?php if (!empty($_SESSION['succes'])): ?>
             <div class="position-fixed bottom-0 end-0 p-3 succes" style="z-index: 11">
-        <div id="liveToast" class="toast show text-success" role="alert" aria-live="assertive" aria-atomic="true">
+        <div id="liveToast" class="toast show text-light bg-success" role="alert" aria-live="assertive" aria-atomic="true">
           <div class="toast-header">
          
             <strong class="me-auto"> Ste TAVARATRA</strong>

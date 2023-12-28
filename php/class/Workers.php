@@ -1015,4 +1015,39 @@ class Workers
           $query->execute();
           return $query->fetchAll();
       }     
+
+
+      public function changeUserInfo() 
+      {
+        if(isset($_POST['infoN'], $_POST['infoF'], $_POST['current_password'], $_POST['mdp']))
+        {
+            $name= htmlspecialchars($_POST['infoN']);
+            $firstname = htmlspecialchars($_POST['infoF']);
+            $new_password =password_hash(htmlspecialchars($_POST['mdp']), PASSWORD_DEFAULT);
+            $current_passowrd = htmlspecialchars($_POST['current_password']);
+            if(!empty($new_password) && !empty($current_passowrd)){
+                $getCurrentPassword = $this->getPdo()
+                ->prepare('SELECT password FROM roles WHERE id = ?');
+                $getCurrentPassword->execute([$_SESSION['user']['id']]);
+                $password = $getCurrentPassword->fetch()['password'];
+                if(password_verify($current_passowrd, $password))
+                {
+                    $query = $this->getPdo()
+                    ->prepare('UPDATE roles SET password = ?, name = ?, firstname= ? WHERE id = ?');
+                    $query->execute([$new_password,$name, $firstname, $_SESSION['user']['id']]);
+                    $this->getSucces('Informations modifiés');
+                }else {
+                    $this->getError(' les mots de passe ne corresponde pas');
+                }
+            }else{
+                $query = $this->getPdo()
+                ->prepare('UPDATE roles SET name = ?, firstname= ? WHERE id = ?');
+                $query->execute([$name, $firstname, $_SESSION['user']['id']]);
+                $this->getSucces('Informations modifiés');
+            }
+          
+
+            
+        }
+      }
 }

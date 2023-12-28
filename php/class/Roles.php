@@ -259,6 +259,7 @@ class Roles extends Workers
             if ($data['status'] != 'Bloqué') {
                 if (password_verify($password, $data['password'])) {
                     $_SESSION['user'] = [
+                        'id' => $data['id'],
                         'name' => $data['name'],
                         'firstname' => $data['firstname'],
                         'role_name' => $data['role_name']

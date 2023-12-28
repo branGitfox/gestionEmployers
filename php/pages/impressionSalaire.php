@@ -8,6 +8,8 @@ $salaire = new Workers();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <?php include '../sections/icone.php'?>
+
     <title>IMPRESSION | SALAIRES</title>
 </head>
 <style> 

@@ -16,6 +16,7 @@ $abs = new Workers();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
     <link rel="shortcut icon" href="../../assets/imgs/5343441.png" type="image/x-icon">
+    <?php include '../sections/icone.php'?>
     <title>STE TAVARATRA</title>
 </head>
 <style>
@@ -51,13 +52,7 @@ $abs = new Workers();
     }
 </style>
 
-<style>
-    /* @media screen and (max-width:992px) {
-        /* .container {
-            width: 70%;
-        } */
-    } */
-</style>
+
 <body>
     <?php include '../sections/navbars.php' ?>
     <div class="plaque bg-light shadow d-flex align-items-center justify-content-left   p-3 "><svg class="me-1  text-primary"

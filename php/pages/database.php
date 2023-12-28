@@ -14,6 +14,7 @@ if(isset($_FILES['bd'])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
+    <?php include '../sections/icone.php'?>
     <title>Document</title>
 </head>
 <?php include '../sections/font.php'?>
@@ -91,8 +92,15 @@ if(isset($_FILES['bd'])){
                 <div class="mt-3 mb-1">
                         <label for="bd" class="form-label">Inserer la base de donnée ici</label>
                         <input type="file" name="bd" id="bd" class="form-control mb-2">
-                        <button onclick="return confirm('Vous voulez vraiment restaurer la base de donnée ?')"  class="form-control bg-primary text-light mb-1" id="imp">Importer</button>
-                        <a href="exporterBd.php" class="form-control text-light bg-success mb-5">Exporter</a>
+                        <button onclick="return confirm('Vous voulez vraiment restaurer la base de donnée ?')"  class="form-control bg-primary text-light mb-1" id="imp">
+                        <svg class="me-2" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cloud-arrow-up-fill" viewBox="0 0 16 16">
+                        <path d="M8 2a5.53 5.53 0 0 0-3.594 1.342c-.766.66-1.321 1.52-1.464 2.383C1.266 6.095 0 7.555 0 9.318 0 11.366 1.708 13 3.781 13h8.906C14.502 13 16 11.57 16 9.773c0-1.636-1.242-2.969-2.834-3.194C12.923 3.999 10.69 2 8 2m2.354 5.146a.5.5 0 0 1-.708.708L8.5 6.707V10.5a.5.5 0 0 1-1 0V6.707L6.354 7.854a.5.5 0 1 1-.708-.708l2-2a.5.5 0 0 1 .708 0z"/>
+                        </svg>Importer</button>
+                        <a href="exporterBd.php" class="form-control text-light bg-success mb-5">
+                            <svg class="me-2" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-down" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M3.5 6a.5.5 0 0 0-.5.5v8a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5v-8a.5.5 0 0 0-.5-.5h-2a.5.5 0 0 1 0-1h2A1.5 1.5 0 0 1 14 6.5v8a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 14.5v-8A1.5 1.5 0 0 1 3.5 5h2a.5.5 0 0 1 0 1z"/>
+                        <path fill-rule="evenodd" d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+                        </svg>Exporter</a>
                 </div>
                
 

@@ -7,6 +7,7 @@ $security = new Security();
 // $security->disconnect();
 $security->redirect();
 $workers = new Workers();
+$workers->changeUserInfo();
 $workers->newAvance(new Pointage());
 ?>
 
@@ -20,6 +21,8 @@ $workers->newAvance(new Pointage());
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../assets/css/avance.css">
+    <?php include '../sections/icone.php'?>
+
     <title>Avance</title>
 </head>
 <?php include '../sections/font.php' ?>
