@@ -93,7 +93,7 @@ $wrkrs->changeWorker();
                 </div>
                 <div class="col-4">
                     <label for="Prenom">Prenom</label>
-                    <input type="text" class="form-control" id="Prenom" placeholder="Prenom" name="firstname" required
+                    <input type="text" class="form-control" id="Prenom" placeholder="Prenom" name="firstname" 
                         value="<?= $wrkrs->autoCompleteInputByWorkerId()['firstname'] ?>">
                 </div>
                 <div class="col-3">

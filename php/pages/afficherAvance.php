@@ -204,6 +204,8 @@ $avances = new Avance();
 
                 })
                 printBtn.style.display = 'none'
+                // document.querySelector('main').style.display='none'
+                // document.querySelector('.d-flex').style.display='none'
                 window.print()
             })
 
@@ -214,6 +216,8 @@ $avances = new Avance();
                     a.style.display = 'inline'
                 })
                 printBtn.style.display = 'block'
+                // document.querySelector('main').style.display='block'
+
             })
 
             function confirmer(id) {

@@ -1,0 +1,286 @@
+DROP TABLE absences;
+
+CREATE TABLE `absences` (
+  `id_ab` int(11) NOT NULL AUTO_INCREMENT,
+  `date_ab` varchar(50) NOT NULL,
+  `id_worker` int(11) NOT NULL,
+  `status` varchar(50) NOT NULL,
+  `anomalie` varchar(50) NOT NULL,
+  `ab_desc` text NOT NULL,
+  PRIMARY KEY (`id_ab`)
+) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+INSERT INTO absences VALUES("1","2023-12-15","49","non justifié","autre","TARA NIDITRA NIASA");
+INSERT INTO absences VALUES("2","2023-12-15","49","non justifié","autre","TARA NIDITRA NIASA");
+INSERT INTO absences VALUES("3","2023-12-15","49","non justifié","autre","TARA NIDITRA NIASA");
+INSERT INTO absences VALUES("4","2023-12-15","49","non justifié","autre","TARA NIDITRA NIASA");
+INSERT INTO absences VALUES("5","2023-12-15","49","non justifié","autre","TARA NIDITRA NIASA");
+INSERT INTO absences VALUES("6","2023-12-15","49","non justifié","autre","TARA NIDITRA NIASA");
+INSERT INTO absences VALUES("7","2023-12-15","49","non justifié","autre","TARA NIDITRA NIASA");
+INSERT INTO absences VALUES("8","2023-12-15","49","non justifié","autre","TARA NIDITRA NIASA");
+INSERT INTO absences VALUES("9","2023-12-15","49","non justifié","autre","TARA NIDITRA NIASA");
+INSERT INTO absences VALUES("10","2023-12-15","49","non justifié","autre","TARA NIDITRA NIASA");
+INSERT INTO absences VALUES("11","2023-12-15","49","non justifié","autre","TARA NIDITRA NIASA");
+INSERT INTO absences VALUES("12","2023-12-15","49","non justifié","autre","TARA NIDITRA NIASA");
+INSERT INTO absences VALUES("13","2023-12-15","49","non justifié","autre","TARA NIDITRA NIASA");
+INSERT INTO absences VALUES("14","2023-12-15","49","non justifié","autre","TARA NIDITRA NIASA");
+INSERT INTO absences VALUES("15","2023-12-15","49","non justifié","autre","TARA NIDITRA NIASA");
+INSERT INTO absences VALUES("16","2023-12-15","49","non justifié","autre","TARA NIDITRA NIASA");
+INSERT INTO absences VALUES("17","2023-12-15","49","non justifié","autre","TARA NIDITRA NIASA");
+INSERT INTO absences VALUES("18","2023-12-15","49","non justifié","autre","TARA NIDITRA NIASA");
+INSERT INTO absences VALUES("19","2023-12-15","49","non justifié","autre","TARA NIDITRA NIASA");
+INSERT INTO absences VALUES("20","2023-12-15","49","non justifié","autre","TARA NIDITRA NIASA");
+INSERT INTO absences VALUES("21","2023-12-15","49","non justifié","autre","TARA NIDITRA NIASA");
+INSERT INTO absences VALUES("22","2023-12-15","76","non justifié","autre","TSY DEBUT DU MOIS NIDITRA");
+INSERT INTO absences VALUES("23","2023-12-15","76","non justifié","autre","TSY DEBUT DU MOIS NIDITRA");
+INSERT INTO absences VALUES("24","2023-12-15","76","non justifié","autre","TSY DEBUT DU MOIS NIDITRA");
+INSERT INTO absences VALUES("25","2023-12-15","76","non justifié","autre","TSY DEBUT DU MOIS NIDITRA");
+INSERT INTO absences VALUES("26","2023-12-15","76","non justifié","autre","TSY DEBUT DU MOIS NIDITRA");
+INSERT INTO absences VALUES("27","2023-12-15","76","non justifié","autre","TSY DEBUT DU MOIS NIDITRA");
+INSERT INTO absences VALUES("28","2023-12-15","76","non justifié","autre","TSY DEBUT DU MOIS NIDITRA");
+INSERT INTO absences VALUES("29","2023-12-15","76","non justifié","autre","TSY DEBUT DU MOIS NIDITRA");
+INSERT INTO absences VALUES("30","2023-12-15","76","non justifié","autre","TSY DEBUT DU MOIS NIDITRA");
+INSERT INTO absences VALUES("31","2023-12-15","76","non justifié","autre","TSY DEBUT DU MOIS NIDITRA");
+INSERT INTO absences VALUES("32","2023-12-15","76","non justifié","autre","TSY DEBUT DU MOIS NIDITRA");
+INSERT INTO absences VALUES("33","2023-12-15","76","non justifié","autre","TSY DEBUT DU MOIS NIDITRA");
+INSERT INTO absences VALUES("34","2023-12-15","76","non justifié","autre","TSY DEBUT DU MOIS NIDITRA");
+INSERT INTO absences VALUES("35","2023-12-15","76","non justifié","autre","TSY DEBUT DU MOIS NIDITRA");
+INSERT INTO absences VALUES("36","2023-12-15","76","non justifié","autre","TSY DEBUT DU MOIS NIDITRA");
+INSERT INTO absences VALUES("37","2023-12-15","76","non justifié","autre","TSY DEBUT DU MOIS NIDITRA");
+INSERT INTO absences VALUES("38","2023-12-15","76","non justifié","autre","TSY DEBUT DU MOIS NIDITRA");
+INSERT INTO absences VALUES("39","2023-12-15","76","non justifié","autre","TSY DEBUT DU MOIS NIDITRA");
+INSERT INTO absences VALUES("40","2023-12-15","76","non justifié","autre","TSY DEBUT DU MOIS NIDITRA");
+INSERT INTO absences VALUES("41","2023-12-15","76","non justifié","autre","TSY DEBUT DU MOIS NIDITRA");
+INSERT INTO absences VALUES("42","2023-12-15","76","non justifié","autre","TSY DEBUT DU MOIS NIDITRA");
+INSERT INTO absences VALUES("43","2023-12-15","76","non justifié","autre","TSY DEBUT DU MOIS NIDITRA");
+INSERT INTO absences VALUES("44","2023-12-15","76","non justifié","autre","TSY DEBUT DU MOIS NIDITRA");
+INSERT INTO absences VALUES("45","2023-12-15","76","non justifié","autre","TSY DEBUT DU MOIS NIDITRA");
+INSERT INTO absences VALUES("46","2023-12-15","76","non justifié","autre","TSY DEBUT DU MOIS NIDITRA");
+
+
+
+DROP TABLE avances;
+
+CREATE TABLE `avances` (
+  `a_id` int(11) NOT NULL AUTO_INCREMENT,
+  `a_date` varchar(50) NOT NULL,
+  `a_nature` int(255) NOT NULL,
+  `a_espece` int(255) NOT NULL,
+  `id_worker` int(11) NOT NULL,
+  `a_desc` text NOT NULL,
+  PRIMARY KEY (`a_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+INSERT INTO avances VALUES("1","2023-12-15","0","200000","3","fety");
+INSERT INTO avances VALUES("2","2023-12-15","0","100000","25","fety");
+INSERT INTO avances VALUES("3","2023-12-15","0","150000","19","fety");
+INSERT INTO avances VALUES("4","2023-12-15","0","100000","10","fety");
+INSERT INTO avances VALUES("5","2023-12-15","0","100000","14","fety");
+INSERT INTO avances VALUES("6","2023-12-15","0","100000","6","fety");
+INSERT INTO avances VALUES("7","2023-12-15","0","150000","5","fety");
+INSERT INTO avances VALUES("8","2023-12-15","0","100000","30","fety");
+INSERT INTO avances VALUES("9","2023-12-15","0","30000","20","fety");
+INSERT INTO avances VALUES("10","2023-12-15","0","15000","2","fety");
+INSERT INTO avances VALUES("11","2023-12-15","0","90000","64","fety");
+INSERT INTO avances VALUES("12","2023-12-15","0","50000","7","fety");
+INSERT INTO avances VALUES("13","2023-12-15","0","50000","45","fety");
+INSERT INTO avances VALUES("14","2023-12-15","0","100000","56","FETY");
+INSERT INTO avances VALUES("15","2023-12-15","0","100000","37","FETY");
+INSERT INTO avances VALUES("16","2023-12-15","0","50000","15","FETY");
+INSERT INTO avances VALUES("17","2023-12-15","0","50000","22","FETY");
+INSERT INTO avances VALUES("18","2023-12-15","0","100000","33","FETY");
+INSERT INTO avances VALUES("19","2023-12-15","0","225000","13","FETY");
+INSERT INTO avances VALUES("20","2023-12-15","0","100000","48","FETY");
+INSERT INTO avances VALUES("21","2023-12-15","0","70000","68","FETY");
+INSERT INTO avances VALUES("22","2023-12-15","0","80000","66","FETY");
+INSERT INTO avances VALUES("23","2023-12-15","0","50000","69","FETY");
+INSERT INTO avances VALUES("24","2023-12-15","0","25000","42","FETY");
+INSERT INTO avances VALUES("25","2023-12-15","0","95000","11","FETY");
+INSERT INTO avances VALUES("26","2023-12-15","0","100000","46","FETY");
+INSERT INTO avances VALUES("27","2023-12-15","0","50000","72","FETY");
+INSERT INTO avances VALUES("28","2023-12-15","0","60000","27","FETY");
+INSERT INTO avances VALUES("29","2023-12-15","0","150000","38","FETY");
+INSERT INTO avances VALUES("30","2023-12-15","0","60000","74","FETY");
+INSERT INTO avances VALUES("31","2023-12-15","0","144000","12","FETY");
+
+
+
+DROP TABLE departements;
+
+CREATE TABLE `departements` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name_depart` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+INSERT INTO departements VALUES("1","ste tavaratra");
+INSERT INTO departements VALUES("2","annex shop");
+INSERT INTO departements VALUES("3","mahambolo");
+
+
+
+DROP TABLE fonctions;
+
+CREATE TABLE `fonctions` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name_fonction` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+INSERT INTO fonctions VALUES("1","facturier");
+INSERT INTO fonctions VALUES("2","magasinier");
+INSERT INTO fonctions VALUES("3","superviseur");
+INSERT INTO fonctions VALUES("4","controleur");
+INSERT INTO fonctions VALUES("5","caissier(e)");
+INSERT INTO fonctions VALUES("6","aide magasinier");
+INSERT INTO fonctions VALUES("7","docker");
+INSERT INTO fonctions VALUES("8","chauffeur");
+INSERT INTO fonctions VALUES("9","cuisinière");
+INSERT INTO fonctions VALUES("10","gardien");
+INSERT INTO fonctions VALUES("24","stagiaire");
+
+
+
+DROP TABLE lastsalary;
+
+CREATE TABLE `lastsalary` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `last` varchar(20) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+INSERT INTO lastsalary VALUES("1","2023-12");
+
+
+
+DROP TABLE roles;
+
+CREATE TABLE `roles` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL,
+  `firstname` varchar(50) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `role_name` varchar(50) NOT NULL,
+  `status` varchar(50) NOT NULL,
+  `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+INSERT INTO roles VALUES("18","Vixfgit@gmail.com","Brangitfox","$2y$10$qpwB0XU.VtfC9M3cF4Mnh.efPn5B.Jxkq3Y7DgmYddpp6E3vgCr1G","Admin","Activé","2023-12-25 17:55:07");
+
+
+
+DROP TABLE salaires;
+
+CREATE TABLE `salaires` (
+  `sa_id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_worker` int(11) NOT NULL,
+  `salaire_reel` int(11) NOT NULL,
+  `date_s` varchar(50) NOT NULL,
+  `nbr_absence` int(11) NOT NULL,
+  `avances` int(11) NOT NULL,
+  `salaire_base` int(11) NOT NULL,
+  PRIMARY KEY (`sa_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=150 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+INSERT INTO salaires VALUES("76","1","350000","2023-12","0","0","350000");
+INSERT INTO salaires VALUES("77","2","235000","2023-12","0","15000","250000");
+INSERT INTO salaires VALUES("78","3","350000","2023-12","0","200000","550000");
+INSERT INTO salaires VALUES("79","4","350000","2023-12","0","0","350000");
+INSERT INTO salaires VALUES("80","5","300000","2023-12","0","150000","450000");
+INSERT INTO salaires VALUES("81","6","250000","2023-12","0","100000","350000");
+INSERT INTO salaires VALUES("82","7","250000","2023-12","0","50000","300000");
+INSERT INTO salaires VALUES("83","8","350000","2023-12","0","0","350000");
+INSERT INTO salaires VALUES("84","9","550000","2023-12","0","0","550000");
+INSERT INTO salaires VALUES("85","10","250000","2023-12","0","100000","350000");
+INSERT INTO salaires VALUES("86","11","105000","2023-12","0","95000","200000");
+INSERT INTO salaires VALUES("87","12","256000","2023-12","0","144000","400000");
+INSERT INTO salaires VALUES("88","13","125000","2023-12","0","225000","350000");
+INSERT INTO salaires VALUES("89","14","250000","2023-12","0","100000","350000");
+INSERT INTO salaires VALUES("90","15","150000","2023-12","0","50000","200000");
+INSERT INTO salaires VALUES("91","16","200000","2023-12","0","0","200000");
+INSERT INTO salaires VALUES("92","17","200000","2023-12","0","0","200000");
+INSERT INTO salaires VALUES("93","18","350000","2023-12","0","0","350000");
+INSERT INTO salaires VALUES("94","19","400000","2023-12","0","150000","550000");
+INSERT INTO salaires VALUES("95","20","220000","2023-12","0","30000","250000");
+INSERT INTO salaires VALUES("96","21","200000","2023-12","0","0","200000");
+INSERT INTO salaires VALUES("97","22","150000","2023-12","0","50000","200000");
+INSERT INTO salaires VALUES("98","23","200000","2023-12","0","0","200000");
+INSERT INTO salaires VALUES("99","24","200000","2023-12","0","0","200000");
+INSERT INTO salaires VALUES("100","25","250000","2023-12","0","100000","350000");
+INSERT INTO salaires VALUES("101","26","500000","2023-12","0","0","500000");
+INSERT INTO salaires VALUES("102","27","140000","2023-12","0","60000","200000");
+INSERT INTO salaires VALUES("103","28","1100000","2023-12","0","0","1100000");
+INSERT INTO salaires VALUES("104","29","200000","2023-12","0","0","200000");
+INSERT INTO salaires VALUES("105","30","350000","2023-12","0","100000","450000");
+INSERT INTO salaires VALUES("106","31","300000","2023-12","0","0","300000");
+INSERT INTO salaires VALUES("107","32","700000","2023-12","0","0","700000");
+INSERT INTO salaires VALUES("108","33","500000","2023-12","0","100000","600000");
+INSERT INTO salaires VALUES("109","34","350000","2023-12","0","0","350000");
+INSERT INTO salaires VALUES("110","35","200000","2023-12","0","0","200000");
+INSERT INTO salaires VALUES("111","36","200000","2023-12","0","0","200000");
+INSERT INTO salaires VALUES("112","37","150000","2023-12","0","100000","250000");
+INSERT INTO salaires VALUES("113","38","150000","2023-12","0","150000","300000");
+INSERT INTO salaires VALUES("114","39","200000","2023-12","0","0","200000");
+INSERT INTO salaires VALUES("115","40","200000","2023-12","0","0","200000");
+INSERT INTO salaires VALUES("116","41","250000","2023-12","0","0","250000");
+INSERT INTO salaires VALUES("117","42","325000","2023-12","0","25000","350000");
+INSERT INTO salaires VALUES("118","43","200000","2023-12","0","0","200000");
+INSERT INTO salaires VALUES("119","44","200000","2023-12","0","0","200000");
+INSERT INTO salaires VALUES("120","45","150000","2023-12","0","50000","200000");
+INSERT INTO salaires VALUES("121","46","100000","2023-12","0","100000","200000");
+INSERT INTO salaires VALUES("122","48","200000","2023-12","0","100000","300000");
+INSERT INTO salaires VALUES("123","49","60000","2023-12","21","0","200000");
+INSERT INTO salaires VALUES("124","50","500000","2023-12","0","0","500000");
+INSERT INTO salaires VALUES("125","52","300000","2023-12","0","0","300000");
+INSERT INTO salaires VALUES("126","53","200000","2023-12","0","0","200000");
+INSERT INTO salaires VALUES("127","54","500000","2023-12","0","0","500000");
+INSERT INTO salaires VALUES("128","55","500000","2023-12","0","0","500000");
+INSERT INTO salaires VALUES("129","56","150000","2023-12","0","100000","250000");
+INSERT INTO salaires VALUES("130","57","200000","2023-12","0","0","200000");
+INSERT INTO salaires VALUES("131","58","200000","2023-12","0","0","200000");
+INSERT INTO salaires VALUES("132","59","250000","2023-12","0","0","250000");
+INSERT INTO salaires VALUES("133","60","200000","2023-12","0","0","200000");
+INSERT INTO salaires VALUES("134","61","350000","2023-12","0","0","350000");
+INSERT INTO salaires VALUES("135","62","350000","2023-12","0","0","350000");
+INSERT INTO salaires VALUES("136","63","300000","2023-12","0","0","300000");
+INSERT INTO salaires VALUES("137","64","110000","2023-12","0","90000","200000");
+INSERT INTO salaires VALUES("138","65","200000","2023-12","0","0","200000");
+INSERT INTO salaires VALUES("139","66","120000","2023-12","0","80000","200000");
+INSERT INTO salaires VALUES("140","67","400000","2023-12","0","0","400000");
+INSERT INTO salaires VALUES("141","68","180000","2023-12","0","70000","250000");
+INSERT INTO salaires VALUES("142","69","250000","2023-12","0","50000","300000");
+INSERT INTO salaires VALUES("143","70","200000","2023-12","0","0","200000");
+INSERT INTO salaires VALUES("144","71","50000","2023-12","0","0","50000");
+INSERT INTO salaires VALUES("145","72","150000","2023-12","0","50000","200000");
+INSERT INTO salaires VALUES("146","73","200000","2023-12","0","0","200000");
+INSERT INTO salaires VALUES("147","74","200000","2023-12","0","60000","260000");
+INSERT INTO salaires VALUES("148","75","300000","2023-12","0","0","300000");
+INSERT INTO salaires VALUES("149","76","33333","2023-12","25","0","200000");
+
+
+
+DROP TABLE workers;
+
+CREATE TABLE `workers` (
+  `w_id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `firstname` varchar(100) NOT NULL,
+  `id_fonction` varchar(100) NOT NULL,
+  `cin` varchar(255) NOT NULL,
+  `adresse` varchar(100) NOT NULL,
+  `origine` varchar(100) NOT NULL,
+  `responsable` varchar(100) NOT NULL,
+  `contact` varchar(100) NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `id_depart` int(255) NOT NULL,
+  `date_entree` varchar(100) NOT NULL,
+  `sexe` varchar(50) NOT NULL,
+  `date_ajout` varchar(50) NOT NULL,
+  `salaire_base` int(11) NOT NULL,
+  PRIMARY KEY (`w_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=77 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
+
+

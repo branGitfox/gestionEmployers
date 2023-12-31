@@ -172,15 +172,25 @@ class Workers
             $query = $this->getPdo()
                 ->prepare('UPDATE workers SET name= ?,  firstname =?, id_fonction =?,  cin = ?, adresse = ?, origine = ?, salaire_base = ?, responsable = ?, contact = ?, id_depart = ?, date_entree = ?, sexe = ? WHERE w_id = ?');
             $query->execute([$name, $firstname, $id_fonction, $cin, $adresse, $origine, $salaire_base, $responsable, $contact, $id_depart, $date_entree, $sexe, $w_id]);
+            //modifier directement la tablew salaires
+            $updateSalaryBase = $this->getPdo() 
+            ->prepare('UPDATE salaires SET salaire_base = ? WHERE id_worker = ?');
+            $updateSalaryBase->execute([$salaire_base, $w_id]);
         } else {
             $query = $this->getPdo()
                 ->prepare('UPDATE workers SET name= ?,  firstname =?, id_fonction =?,  cin = ?, adresse = ?, origine = ?, salaire_base = ?, responsable = ?, contact = ?, image = ?, id_depart = ?, date_entree = ?, sexe = ? WHERE w_id = ?');
             $query->execute([$name, $firstname, $id_fonction, $cin, $adresse, $origine, $salaire_base, $responsable, $contact, $image, $id_depart, $date_entree, $sexe, $w_id]);
+            //modifier directement la table salaire
+            $updateSalaryBase = $this->getPdo() 
+            ->prepare('UPDATE salaires SET salaire_base = ? WHERE id_worker = ?');
+            $updateSalaryBase->execute([$salaire_base, $w_id]);
         }
 
 
 
     }
+
+
 
     /**
      * Gere le processus de modification

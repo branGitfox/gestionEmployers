@@ -83,6 +83,9 @@ $fonc->newFonction();
 
     }
 
+.status {
+    pointer-events: none;
+}
 </style>
 <body>
     <?php include '../sections/navbars.php' ?>
@@ -105,7 +108,7 @@ $fonc->newFonction();
                                
                                 <div class="mt-4 mb-1">
                                     <label for="nom" class="form-label">Nom du nouveau fonctions</label>
-                                    <input type="text" class="form-control" id="nom" name="name_fonction" required>
+                                    <input type="text" class="form-control <?php if($_SESSION['user']['role_name'] == 'Utilisateur'){echo 'status';}?> " id="nom" name="name_fonction" required >
                                 </div>
                                 <div class="mt-4 mb-1">
                                     <?php if($_SESSION['user']['role_name'] != 'Utilisateur'):?>
@@ -160,13 +163,14 @@ $fonc->newFonction();
             <?php unset($_SESSION['succes']); ?>
 
             <script>
+                <?php if($_SESSION['user']['role_name'] != 'Utilisateur'):?>
                 function deleteF(id) {
                     if(confirm('vous voules vraiment supprimer ce fonction'))
                     {
                         location.href = 'deleteFonction.php?id='+id
                     }
                 }
-
+            <?php endif ?>
                 const succes = document.querySelector('.succes')
 
 

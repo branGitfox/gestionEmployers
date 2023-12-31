@@ -14,7 +14,7 @@ foreach($tables as $table){
   $result = mysqli_query($connection,"SELECT * FROM ".$table);
   $num_fields = mysqli_num_fields($result);
   
-  $return .= 'DROP TABLE '.$table.';';
+  $return .= 'DROP TABLE IF EXISTS '.$table.';';
   $row2 = mysqli_fetch_row(mysqli_query($connection,"SHOW CREATE TABLE ".$table));
   $return .= "\n\n".$row2[1].";\n\n";
   

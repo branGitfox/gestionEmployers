@@ -102,6 +102,19 @@ $roles->changeRole();
         /* background-color: red; */
         
     }
+
+    .bloquer {
+        position: absolute;
+        top: 30%;
+        left: 50%;
+        
+    }
+    .a {
+        position: absolute;
+        top: 20%;
+        left: 42%;
+        font-size: 40px;
+    }
 </style>
 <body>
     <?php include '../sections/navbars.php' ?>
@@ -113,7 +126,7 @@ $roles->changeRole();
                
                 </svg>
             </div>
-
+            <?php if($_SESSION['user']['role_name'] != 'Utilisateur'):?>
             <div class="container">
                 <div class="row">
                         <div class="col-4  shadow p-3">
@@ -223,6 +236,11 @@ $roles->changeRole();
                         </div>
                 </div>
             </div>
+            <?php else :?>
+                <h5 class="text-center text-danger a">Vous n'avez pas acces !!</h5>
+                <img class="bloquer" src="../../assets/imgs/téléchargement.png" alt="">
+        <?php endif ?>
+             
             <?php if (!empty($roles->succes())): ?>
             <div class="position-fixed bottom-0 end-0 p-3 succes" style="z-index: 11">
         <div id="liveToast" class="toast show text-light bg-success" role="alert" aria-live="assertive" aria-atomic="true">

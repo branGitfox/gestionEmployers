@@ -1,23 +1,33 @@
 <?php 
-require '../class/Workers.php';
-$worker = new Workers();
+$conn = mysqli_connect('127.0.0.1', 'root', '', 'tavaratra');
 $bd = '../../databases/'.substr($_POST['bd'], 12, strlen($_POST['bd']));
-$q="";
-/**IMPORTATION D"UNE BASE DE DONNEE */
-
-// /**IMPORTATION D"UNE BASE DE DONNEE */
-
-$connection = mysqli_connect('localhost','root','','tavaratra');
-$filename = $bd;
-$handle = fopen($filename,"r+");
-$contents = fread($handle,filesize($filename));
-$sql = explode(';',$contents);
-foreach($sql as $query){
-  $result = mysqli_query($connection,$query);
-  if($result){
-      echo '<tr style="display:none;"><td><br></td></tr>';
-      echo '<tr style="display:none;"><td>'.$query.' <b>SUCCESS</b></td></tr>';
-      echo '<tr style="display:none;"><td><br></td></tr>';
-  }
+function restore($bd, $conn){
+    $sql = '';
+    $error = '';
+    if(file_exists($bd)){
+        $lines = file($bd);
+        foreach ($lines as $line){
+            if(substr($line,0,2)== '-' || $line == ''){
+                continue;
+            }
+            $sql.=$line;
+            if(substr(trim($line), -1,1)==';'){
+                $result=mysqli_query($conn, $sql);
+                if(!$result){
+                    $error.=mysqli_error($conn)."\n";
+                }
+                $sql="";
+            }
+        }
+        if($error){
+            $response = ['type'=>"error", "message"=>$error];
+        }else{
+            $response = ['type'=>'success','message'=>'reussi'];
+        }
+    }
+    return $response;
 }
-fclose($handle);
+ restore($bd, $conn);
+
+
+

@@ -110,6 +110,20 @@ $salaire->createSalaire();
 
     }
 
+    .bloquer {
+        position: absolute;
+    top: 30%;
+    left: 50%;
+
+    }
+
+    .a {
+        position: absolute;
+        top: 20%;
+        left: 42%;
+        font-size: 40px;
+    }
+
 
 
 
@@ -262,6 +276,7 @@ $salaire->createSalaire();
 <body>
     <nav>
         <?php include '../sections/navbars.php'; ?>
+        <?php if ($_SESSION['user']['role_name'] != 'Utilisateur'):?>
         <div id="container" class="container">
             <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4">
                 <div class="col">
@@ -360,6 +375,7 @@ $salaire->createSalaire();
                     </tbody>
                 </table>
             </div>
+
             <!-- <div class="card text-center total">
                 <div class="card-header">TOTAL</div>
                 <ul class="list-group">
@@ -387,7 +403,10 @@ $salaire->createSalaire();
                         d="M5 1a2 2 0 0 0-2 2v2H2a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h1v1a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-1h1a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-1V3a2 2 0 0 0-2-2zM4 3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2H4zm1 5a2 2 0 0 0-2 2v1H2a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v-1a2 2 0 0 0-2-2zm7 2v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1" />
                 </svg> Imprimer</a>
         </div>
-
+        <?php else :?>
+                <h5 class="text-center text-danger a">Vous n'avez pas acces !!</h5>
+                <img class="bloquer" src="../../assets/imgs/téléchargement.png" alt="">
+        <?php endif ?>
         <script src="../../assets/js/jquery.min.js"></script>
         <script>
             $(document).ready(function () {
@@ -461,18 +480,6 @@ $salaire->createSalaire();
                     location.href = 'suppremployer.php?worker_id=' + id
                 }
             }
-
-
-            const printBtn = document.getElementById('print')
-            printBtn.addEventListener('click', () => {
-                const date = document.querySelector('.date')
-                const card = document.querySelector('.card')
-                printBtn.classList.add('none')
-                date.classList.add('little')
-                card.classList.add('little')
-                window.print()
-
-            })
 
             window.addEventListener('mousemove', () => {
                 const date = document.querySelector('.date')
