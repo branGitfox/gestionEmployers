@@ -143,7 +143,7 @@ $salaire->createSalaire();
         /* border: solid; */
         position: absolute;
         top: -5.5rem;
-        right: 5rem;
+        right: 2.4rem;
         display: flex;
         align-items: center;
         flex-direction: column;
@@ -153,7 +153,7 @@ $salaire->createSalaire();
         position: absolute;
         top: 2.5rem;
         /* padding: 10px; */
-        right: 3rem;
+        right: 1rem;
     }
 
     .none {
@@ -396,7 +396,7 @@ $salaire->createSalaire();
             </div>
         </div>
         <div class="impression">
-            <a class="btn btn-primary" id="print"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17"
+            <a target="_blank" class="btn btn-primary" id="print"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17"
                     fill="currentColor" class="bi bi-printer" viewBox="0 0 16 16">
                     <path d="M2.5 8a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1" />
                     <path
@@ -492,7 +492,9 @@ $salaire->createSalaire();
 
                 document.querySelector('#print').href ='impressionSalaire.php?date='+document.querySelector('.form-select').value
             }
-
+	document.querySelector('.form-select').addEventListener('change', () => {	
+		 impressionSalaire()		
+	})
             impressionSalaire()
 
         </script>

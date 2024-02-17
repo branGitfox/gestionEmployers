@@ -8,6 +8,8 @@ $security = new Security();
 $security->redirect();
 $wrkrs = new Workers();
 $ptg = new Pointage();
+// var_dump($ptg->newNbrOfAbsence()['nbr_absence']) ;
+// die();
 
 ?>
 
@@ -207,6 +209,10 @@ $ptg = new Pointage();
     .c {
         color: #3A0CA3;
     }
+
+.body{
+	width:87%;
+}
 </style>
 
 <body>
@@ -372,7 +378,7 @@ $ptg = new Pointage();
                                 <?= $wrkrs->showWorkerInfo()['responsable'] ?>
                             </p>
                             <p style="text-decoration:underline red;">Nombre d'absence ce mois:
-                                <?= $ptg->nbrOfAbsence()['nbr_absence'] ?>
+                                <?=$ptg->newNbrOfAbsence()?>
                             </p>
                         </div>
                     </div>

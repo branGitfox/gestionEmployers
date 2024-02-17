@@ -25,7 +25,7 @@ $pointages = new Pointage();
         color: #3A0CA3;
     }
     body {
-        overflow-x: hidden;
+        overflow: hidden;
     }
 
     .body {
@@ -97,7 +97,7 @@ $pointages = new Pointage();
                 <tr>
                     <th>Nom</th>
                     <th>Prenom</th>
-                    <th>Status</th>
+                    <th>Nombre</th>
                     <th>Motifs</th>
                     <th>Description</th>
                     <th>Date</th>
@@ -113,7 +113,7 @@ $pointages = new Pointage();
                             <?= $pointage['firstname'] ?>
                         </td>
                         <td>
-                            <?=$pointage['status']?>
+                            <?=$pointage['nbr_absence']?>
                         </td>
                         <td>
                             <?=$pointage['anomalie']?>

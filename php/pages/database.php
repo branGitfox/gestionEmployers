@@ -15,7 +15,7 @@ if(isset($_FILES['bd'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
     <?php include '../sections/icone.php'?>
-    <title>Document</title>
+    <title>STE TAVARATRA</title>
 </head>
 <?php include '../sections/font.php'?>
 <style>

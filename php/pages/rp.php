@@ -22,7 +22,7 @@ if($query->rowCount() > 0){
                             {$data['firstname']}
                         </td>
                         <td>
-                            {$data['status']}
+                            {$data['nbr_absence']}
                         </td>
                         <td>
                             {$data['anomalie']}

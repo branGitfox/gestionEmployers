@@ -1,4 +1,4 @@
-<?php 
+﻿<?php 
 session_start();
 require './php/class/Workers.php';
 require './php/class/Security.php';
@@ -33,6 +33,14 @@ $fonctions = new Fonctions();
     hr {
         color: white;
     }
+		body{
+overflow:hidden;
+}
+
+main{
+position:relative;
+top:-1.5rem;
+}
 
     .ls {
         letter-spacing: 1px;
@@ -109,6 +117,23 @@ $fonctions = new Fonctions();
       /* border: solid; */
     }
 
+    .succes {
+        animation-name: fade;
+        animation-duration: 15s;
+        transition: .5s;
+    }
+
+    @keyframes fade {
+        from {
+            opacity: 1;
+        }
+
+        to {
+
+            opacity: 0;
+        }
+    }
+
     .container {
       position: absolute;
       top: 4.5rem;
@@ -120,7 +145,7 @@ $fonctions = new Fonctions();
 </style>
 <body>
 <main >
-  <div class="d-flex flex-column flex-shrink-0 p-3  shadow" style="width: 240px; height: 100vh;background-color:#3A0CA3;">
+  <div class="d-flex flex-column flex-shrink-0 p-3  shadow" style="width: 15.5%; height: 100vh;background-color:#3A0CA3;">
     <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-light text-decoration-none">
         <svg xmlns="http://www.w3.org/2000/svg" width="40" height="32" fill="currentColor" class="bi bi-buildings" viewBox="0 0 16 16">
       <path d="M14.763.075A.5.5 0 0 1 15 .5v15a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5V14h-1v1.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V10a.5.5 0 0 1 .342-.474L6 7.64V4.5a.5.5 0 0 1 .276-.447l8-4a.5.5 0 0 1 .487.022ZM6 8.694 1 10.36V15h5zM7 15h2v-1.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5V15h2V1.309l-7 3.5z"/>
@@ -165,7 +190,7 @@ $fonctions = new Fonctions();
             <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2"/>
             <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1z"/>
           </svg>
-          Rapport avances
+          Rapport A
         </a>
       </li>
       <li>
@@ -184,7 +209,7 @@ $fonctions = new Fonctions();
             <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2"/>
             <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1z"/>
           </svg>
-          Rapport pointage
+          Rapport P
         </a>
       </li>
       <li>
@@ -220,11 +245,11 @@ $fonctions = new Fonctions();
         <svg class="me-2" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-database" viewBox="0 0 16 16">
         <path d="M4.318 2.687C5.234 2.271 6.536 2 8 2s2.766.27 3.682.687C12.644 3.125 13 3.627 13 4c0 .374-.356.875-1.318 1.313C10.766 5.729 9.464 6 8 6s-2.766-.27-3.682-.687C3.356 4.875 3 4.373 3 4c0-.374.356-.875 1.318-1.313ZM13 5.698V7c0 .374-.356.875-1.318 1.313C10.766 8.729 9.464 9 8 9s-2.766-.27-3.682-.687C3.356 7.875 3 7.373 3 7V5.698c.271.202.58.378.904.525C4.978 6.711 6.427 7 8 7s3.022-.289 4.096-.777A4.92 4.92 0 0 0 13 5.698M14 4c0-1.007-.875-1.755-1.904-2.223C11.022 1.289 9.573 1 8 1s-3.022.289-4.096.777C2.875 2.245 2 2.993 2 4v9c0 1.007.875 1.755 1.904 2.223C4.978 15.71 6.427 16 8 16s3.022-.289 4.096-.777C13.125 14.755 14 14.007 14 13zm-1 4.698V10c0 .374-.356.875-1.318 1.313C10.766 11.729 9.464 12 8 12s-2.766-.27-3.682-.687C3.356 10.875 3 10.373 3 10V8.698c.271.202.58.378.904.525C4.978 9.71 6.427 10 8 10s3.022-.289 4.096-.777A4.92 4.92 0 0 0 13 8.698m0 3V13c0 .374-.356.875-1.318 1.313C10.766 14.729 9.464 15 8 15s-2.766-.27-3.682-.687C3.356 13.875 3 13.373 3 13v-1.302c.271.202.58.378.904.525C4.978 12.71 6.427 13 8 13s3.022-.289 4.096-.777c.324-.147.633-.323.904-.525"/>
       </svg>
-         Base de donnée
+         Base de D
         </a>
       </li>
       <li>
-        <a href="./php/pages/aides.php" class="nav-link link-light">
+        <a href="./php/pages/aides.php" target="_blank" class="nav-link link-light">
           <svg class="me-2" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-question-circle" viewBox="0 0 16 16">
             <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
             <path d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94"/>
@@ -475,7 +500,7 @@ $fonctions = new Fonctions();
                                 <h5 class="text-secondary">ROLES</h5>
                           </div>
                           <div class="corps  fs-1" style="color: orangered;">
-                                3
+                                <?= $statistic->getNumberOfRole()['nbrRole']?>
                           </div>
                           <div class="pieds text-secondary">
                               Depuis 2023.12
@@ -518,7 +543,22 @@ $fonctions = new Fonctions();
                       
                       <p class="text-center mt-3 text-secondary" style="text-shadow: 0px 0px 5px grey;">Copyright 2023 Ravomanana Brandon Fidelin.</p>
             </div>
+		<?php if (!empty($_SESSION['succes'])): ?>
+                <div class="position-fixed bottom-0 end-0 p-3 succes" style="z-index: 11">
+                    <div id="liveToast" class="toast show text-light bg-success" role="alert" aria-live="assertive"
+                        aria-atomic="true">
+                        <div class="toast-header">
 
+                            <strong class="me-auto"> Ste TAVARATRA</strong>
+                            <small>Maintenant</small>
+                            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                        </div>
+                        <div class="toast-body">
+                            <?= $_SESSION['succes'] ?>
+                        </div>
+                    </div>
+                </div>
+            <?php endif ?>
             <script>
               const heure = document.querySelector('#heureC')
               const date = document.querySelector('#dateC')
@@ -533,7 +573,10 @@ $fonctions = new Fonctions();
               let dates = new Date()
                 heure.textContent = dates.getHours() + ':'+ (dates.getMinutes()< 10?'0'+dates.getMinutes():dates.getMinutes()) + ':'+ dates.getSeconds()
               }, 1)
-
+	
+		setTimeout(() => {
+                succes.remove()
+            }, 8000)
 
             </script>
          

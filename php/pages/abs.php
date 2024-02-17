@@ -74,10 +74,10 @@ $abs = new Workers();
                 <tr>
                     <th>Nom</th>
                     <th>Prenom</th>
-                    <th>Date</th>
-                    <th>Status</th>
-                    <th>Anomalie</th>
+                    <th>Nombre de jour</th>
+                    <th>Motif</th>
                     <th>Details</th>
+                    <th>Date</th>
                 </tr>
             </thead>
             <tbody>
@@ -85,10 +85,10 @@ $abs = new Workers();
                     <tr>
                         <td><?= $abss['name']?></td>
                         <td><?= $abss['firstname']?></td>
-                        <td><?= $abss['date_ab']?></td>
-                        <td <?php if($abss['status']=='non justifié'):?> style="color:red;"<?php endif?>><?= $abss['status']?></td>
-                        <td><?= $abss['anomalie']?></td>
-                        <td><?= $abss['ab_desc']?></td>
+                        <td><?= $abss['nbr_absence']?> </td>
+                            <td><?= $abss['anomalie']?></td>
+                            <td><?= $abss['ab_desc']?></td>
+                            <td><?= $abss['date_ab']?></td>
                     </tr>
                     <?php endforeach ?>
             </tbody>

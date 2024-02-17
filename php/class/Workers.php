@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 class Workers
 {
@@ -301,7 +301,7 @@ class Workers
                 if(($a_nature + $a_espece) <= $this->getWorkerSalary()['salaire_base']){
                
                         $this->insertAvance($a_date, $a_nature, $a_espece, $a_desc, $this->sessionID());
-                        $this->insertInfotoSalaryTable($this->sessionID(), $pointage->nbrOfAbsence()['nbr_absence'], $this->sumofAvance($this->sessionID()),$this->salarybase($this->sessionID())['salaire_base']);
+                        $this->insertInfotoSalaryTable($this->sessionID(), $pointage->newNbrOfAbsence(), $this->sumofAvance($this->sessionID()),$this->salarybase($this->sessionID())['salaire_base']);
                         $this->getSucces('Avance reussi');
                 }else{
                     $this->getError('Les avances ne doivent pas depasser le salaire de base');
@@ -313,11 +313,11 @@ class Workers
     /**
      * Ajoute les information de pointage dans la base de donnée
      */
-    private function insertPointage($date_ab, $id_worker, $status, $anomalie, $ab_desc)
+    private function insertPointage($date_ab, $id_worker,$anomalie, $ab_desc,$nbr_absence)
     {
         $query = $this->getPdo()
-            ->prepare('INSERT INTO absences (`date_ab`, `id_worker`, `status`, `anomalie`, `ab_desc`) VALUES (?, ?, ?, ?, ?)');
-        $query->execute([$date_ab, $id_worker, $status, $anomalie, $ab_desc]);
+            ->prepare('INSERT INTO absences (`date_ab`, `id_worker`, `anomalie`, `ab_desc`, `nbr_absence`) VALUES (?, ?, ?, ?, ?)');
+        $query->execute([$date_ab, $id_worker, $anomalie, $ab_desc, $nbr_absence]);
     
     }
 
@@ -328,19 +328,24 @@ class Workers
     public function newPointage(Pointage $pointage)
     {
         if (
-            isset($_POST['date_ab'], $_POST['status'], $_POST['anomalie'], $_POST['ab_desc'])
-            && !empty($_POST['date_ab'])
-            && !empty($_POST['status'])
+            isset($_POST['nbr_absence'], $_POST['anomalie'], $_POST['ab_desc'])
+            && !empty($_POST['nbr_absence'])
+            // && !empty($_POST['status'])
             && !empty($_POST['anomalie'])
             && !empty($_POST['ab_desc'])
         ) {
-            $date_ab = $_POST['date_ab'];
-            $status = $_POST['status'];
+            $nbr_absence = $_POST['nbr_absence'];
+            // $status = $_POST['status'];
             $anomalie = $_POST['anomalie'];
             $ab_desc = $_POST['ab_desc'];
-            $this->insertPointage($date_ab, $this->sessionID(), $status, $anomalie, $ab_desc);
-            $this->insertInfotoSalaryTable($this->sessionID(), $pointage->nbrOfAbsence()['nbr_absence'], $this->sumofAvance($this->sessionID()),$this->salarybase($this->sessionID())['salaire_base']);
-            $this->getSucces('Pointage reussi');
+            $date_ab = date('Y-m-d');
+            if($nbr_absence <= 30){
+                $this->insertPointage($date_ab, $this->sessionID(), $anomalie, $ab_desc, $nbr_absence);
+                $this->insertInfotoSalaryTable($this->sessionID(), $pointage->newNbrOfAbsence(), $this->sumofAvance($this->sessionID()),$this->salarybase($this->sessionID())['salaire_base']);
+                $this->getSucces('Pointage reussi');
+            }else {
+                $this->getError('Le nombre d\'absence ne doit pas depasser 30');
+            }
         }
     }
 
@@ -472,18 +477,23 @@ class Workers
           $query->execute([$this->getPointageId()]);
           $data = $query->fetch();
           $id_worker = $data['id_worker'];
+	        $daty= $data['date_ab'];
 
            //suppression de l'avance
         $delete = $this->getPdo()
-        ->prepare('DELETE FROM absences WHERE id_ab = ?');
+        ->prepare("DELETE FROM absences WHERE id_ab = ? AND date_ab LIKE '{$daty}'");
         $delete->execute([$this->getPointageId()]);
 
         //recuperation du nombre d'absence
         $date= date('Y-m');
         $query2 = $this->getPdo()
-        ->prepare("SELECT COUNT(id_ab) as nbr_absence FROM absences WHERE id_worker = ? AND status = 'non justifié' AND date_ab LIKE '{$date}%'");
+        ->prepare("SELECT nbr_absence FROM absences WHERE id_worker = ? AND date_ab LIKE '{$date}%'");
         $query2->execute([$id_worker]);
-        $nbr_absence = $query2->fetch()['nbr_absence'];
+        $nbr_absence = 0;
+        if($query2->rowCount() > 0){
+
+            $nbr_absence = $query2->fetch()['nbr_absence'];
+        }
 
 
         //salaire de base
@@ -493,7 +503,7 @@ class Workers
         $avances = $this->sumofAvance($id_worker);
         $salaire_reel = (($salaire_base / 30) * (30-$nbr_absence)) - $avances;
         $update = $this->getPdo()
-        ->prepare('UPDATE salaires SET avances = ? ,salaire_reel = ?, nbr_absence = ? WHERE id_worker = ?');
+        ->prepare("UPDATE salaires SET avances = ? ,salaire_reel = ?, nbr_absence = ? WHERE id_worker = ? AND date_s LIKE '{$date}%'");
         $update->execute([$avances, $salaire_reel, $nbr_absence, $id_worker]);
         $_SESSION['succes']='Suppression reussi';
         header('location:afficherPointage.php');
@@ -943,6 +953,10 @@ class Workers
 
             }
 
+
+
+             
+
             $prctg = round(($total * 100) / $this->totalAbsence(), 2);
             return $prctg;
         
@@ -1021,7 +1035,7 @@ class Workers
       {
           $date = $this->impressionDate();
           $query = $this->getPdo()
-          ->prepare("SELECT * FROM salaires JOIN workers ON workers.w_id = salaires.id_worker WHERE date_s LIKE '{$date}%'");
+          ->prepare("SELECT * FROM salaires JOIN workers ON workers.w_id = salaires.id_worker JOIN fonctions ON fonctions.id = workers.id_fonction WHERE date_s LIKE '{$date}%'");
           $query->execute();
           return $query->fetchAll();
       }     
@@ -1060,4 +1074,55 @@ class Workers
             
         }
       }
+
+
+      /***
+       * Retourne le nombre de role dans la base de donnée
+       */
+      public function getNumberOfRole() 
+      {
+        $query = $this->getPdo()
+        ->prepare('SELECT COUNT(id) as nbrRole FROM roles');
+        $query->execute();
+        return $query->fetch();
+
+      }
+
+	public function nbrSabs(){
+
+	$daty = $this->impressionDate();
+	$query = $this->getPdo()->prepare("SELECT * FROM salaires WHERE date_s LIKE '{$daty}%'");
+	$query->execute();
+	$data = $query->fetchAll();
+	$abs=0;
+	foreach($data as $nbr){
+		$abs+=$nbr['nbr_absence'];
+	}
+	return $abs;
+	}
+/*
+*impression dynamique des avances par date
+*/
+
+	public function impressionAvance(){
+		$date = $this->impressionDate();
+		$query = $this->getPdo()
+		->prepare('SELECT * FROM avances JOIN workers ON workers.w_id = avances.id_worker JOIN fonctions ON fonctions.id = workers.id_fonction WHERE a_date = ?');
+		$query->execute([$date]);
+		return $query->fetchAll();
+	}
+
+	public function impressionAvanceTotal(){
+		$date = $this->impressionDate();
+		$query = $this->getPdo()
+		->prepare('SELECT * FROM avances JOIN workers ON workers.w_id = avances.id_worker JOIN fonctions ON fonctions.id = workers.id_fonction WHERE a_date = ?');
+		$query->execute([$date]);
+		$data =  $query->fetchAll();
+		$avanceTotal = 0;
+		foreach($data as $avance){
+		$avanceTotal+= $avance['a_nature'] + $avance['a_espece'];
+		}
+
+		return  $avanceTotal;
+	}
 }

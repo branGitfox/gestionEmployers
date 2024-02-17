@@ -35,7 +35,7 @@ $workers->newPointage(new Pointage);
         color: #3A0CA3;
     }
     body {
-        overflow-x: hidden;
+        overflow: hidden;
     }
 
     .plaque {
@@ -180,15 +180,15 @@ $workers->newPointage(new Pointage);
                                 value="<?= is_numeric($workers->sessionID()) ? $workers->nameFistname()['name'] . ' ' . $workers->nameFistname()['firstname'] : 'Aucun employé' ?>">
                         </div>
                         <div class="col-3">
-                            <label for="date" class="form-label">Date d'absence</label>
-                            <input type="date" class="form-control" name="date_ab" required>
+                            <label for="nbr_absence" class="form-label">Nombre d'absence</label>
+                            <input type="number" class="form-control" name="nbr_absence" required>
                         </div>
                     </div>
                     <div class="row mt-3 justify-content-center">
                         <div class="col-9">
                             <label for="anomalie">Motifs</label>
                             <select name="anomalie" id="anomalie" class="form-select">
-                                <option value="maladie">Maladies</option>
+                                <option value="maladies">Malade</option>
                                 <option value="congés">Congés</option>
                                 <option value="probleme personnel">Probleme Personnel</option>
                                 <option value="responsabilité familiale">responsabilité Familiale</option>
@@ -196,7 +196,7 @@ $workers->newPointage(new Pointage);
                             </select>
                         </div>
                     </div>
-
+<!-- 
                     <div class="row mt-4 justify-content-center ">
                         <div class="col-3">
                             <label class="form-label " for="justify">Justifié</label>
@@ -207,7 +207,7 @@ $workers->newPointage(new Pointage);
                                 id="nonJustify" required>
 
                         </div>
-                    </div>
+                    </div> -->
                     <div class="row mt-2 justify-content-center">
                         <div class="col-9">
                             <label for="description" class="form-label">Description de l'absence</label>

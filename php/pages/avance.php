@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 session_start();
 require '../class/Workers.php';
 require '../class/Pointage.php';
@@ -23,7 +23,7 @@ $workers->newAvance(new Pointage());
     <link rel="stylesheet" href="../../assets/css/avance.css">
     <?php include '../sections/icone.php'?>
 
-    <title>Avance</title>
+    <title>STE TAVARATRA</title>
 </head>
 <?php include '../sections/font.php' ?>
 <style>
@@ -96,6 +96,14 @@ $workers->newAvance(new Pointage());
     .ls {
         letter-spacing: 1px;
     }
+	body{
+overflow:hidden;
+}
+
+main{
+position:relative;
+top:-1.5rem;
+}
 </style>
 
 <body>
@@ -151,12 +159,12 @@ $workers->newAvance(new Pointage());
                     </svg>
                     <label for="employé" class="form-label">Employé</label>
                     <input type="text" class="form-control" disabled
-                        value="<?= is_numeric($workers->sessionID()) ? $workers->nameFistname()['name'] . ' ' . $workers->nameFistname()['firstname'] : 'Aucun employé' ?>">
+                        value="<?= is_numeric($workers->sessionID()) ? $workers->nameFistname()['name'] . ' ' . $workers->nameFistname()['firstname'] : 'Aucun employé' ?> ">
                 </div>
 
                 <div class="col-3">
                     <label for="date" class="form-label">Date d'avance</label>
-                    <input type="date" class="form-control" name="a_date">
+                    <input type="date" class="form-control" name="a_date" required>
                 </div>
             </div>
             <div class="row mt-2 mb-3 justify-content-center">

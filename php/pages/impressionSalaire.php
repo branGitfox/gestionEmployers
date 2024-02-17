@@ -1,4 +1,4 @@
-<?php 
+﻿<?php 
 require '../class/Workers.php';
 $salaire = new Workers();
 ?>
@@ -10,7 +10,7 @@ $salaire = new Workers();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php include '../sections/icone.php'?>
 
-    <title>IMPRESSION | SALAIRES</title>
+    <title>STE TAVARATRA</title>
 </head>
 <style> 
 .container {
@@ -25,21 +25,22 @@ table {
     border: solid;
     border-collapse: collapse;
 }
-thead {
-    position: sticky;
-    top: 0;
-}
+
 th, td{
     border: solid;
     padding: 10px;
 }
 .total-container {
-    width: 55.5%;
+    width: 100%;
     height: 7vh;
     border: solid;
     margin-bottom: 3px;
     display: grid;
     grid-template-columns: auto auto auto auto;
+}
+
+td {
+text-align:center;
 }
 
 .total-container > div {
@@ -51,6 +52,14 @@ th, td{
 .total-container > div >div {
     border: solid grey .5px;
     text-align: center;
+}
+
+button {
+
+position:absolute;
+top:2rem;
+left:-2rem;
+transform:rotate(90deg);
 }
 </style>
 <body>
@@ -66,7 +75,7 @@ th, td{
             </div>
             <div>
             <div>Total absences</div>
-                <div><?= $salaire->sumOfAllAbsences() ?></div>
+                <div><?= $salaire->nbrSabs() ?></div>
             </div>
             <div>
             <div>Reste à payer</div>
@@ -75,30 +84,30 @@ th, td{
         </div>
         <table>
             <thead>
-                <th>Nom</th>
-                <th>Prenoms</th>
-                <th>Salaire Base</th>
+                <th>Nom ou Prenoms</th>
+                <th>Fonction</th>
+                <th>Salaire B</th>
                 <th>Avances</th>
                 <th>Absences</th>
-                <th>Salaire reel</th>
+                <th>Salaire R</th>
                 <th>Signatures</th>
             </thead>
             <tbody>
                 <?php foreach($salaire->getAllWorkersSalaryImpression() as $sal):?>
                     <tr>
-                        <td><?= $sal['name']?></td>
-                        <td><?=$sal['firstname']?></td>
-                        <td><?=number_format($sal['salaire_base'])?></</td>
-                        <td><?=number_format( $sal['avances'])?></</td>
+                        <td><?php if(empty($sal['firstname'])){echo $sal['name'];}else{echo $sal['firstname'];}?></td>
+                        <td><?=$sal['name_fonction']?></td>
+                        <td><?=number_format($sal['salaire_base'],0,'',' ')?></</td>
+                        <td><?=number_format( $sal['avances'],0,'','')?></</td>
                         <td><?= $sal['nbr_absence']?></</td>
-                        <td><?=number_format($sal['salaire_reel'])?></</td>
+                        <td><?=number_format($sal['salaire_reel'],0,'',' ')?></</td>
                         <td></td>
                     </tr>
                     <?php endforeach ?>
             </tbody>
         </table>
     </div>
-    <button>print</button>
+    <button>IMPRIMER</button>
     <script>
         document.querySelector('button').addEventListener('click', () => {
             window.print()

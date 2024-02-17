@@ -7,6 +7,9 @@ $security = new Security();
 // $security->disconnect();
 $security->redirect();
 $avances = new Avance();
+$day = (string)date('d');
+$month = (string)date('m');
+$year = (string)date('Y');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,6 +27,14 @@ $avances = new Avance();
     body {
         overflow-x: hidden;
     }
+		body{
+overflow:hidden;
+}
+
+main{
+position:relative;
+top:-1.5rem;
+}
 
     .succes {
         animation-name: fade;
@@ -97,15 +108,15 @@ $avances = new Avance();
                     <h3 class="text-center">Date: </h3>
                 </div>
                 <div class="col-5 mt-1">
-                    <input type="date" class="form-control" id="date-field">
+                    <input type="date" class="form-control" id="date-field" >
                 </div>
                 <div class="col-3 mx-2 mt-1">
-                    <button class="btn btn-primary printBtn"><svg xmlns="http://www.w3.org/2000/svg" width="16"
+                    <a target="_blank" class="btn btn-primary" id="print"><svg xmlns="http://www.w3.org/2000/svg" width="16"
                             height="16" fill="currentColor" class="bi bi-printer" viewBox="0 0 16 16">
                             <path d="M2.5 8a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1" />
                             <path
                                 d="M5 1a2 2 0 0 0-2 2v2H2a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h1v1a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-1h1a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-1V3a2 2 0 0 0-2-2zM4 3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2H4zm1 5a2 2 0 0 0-2 2v1H2a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v-1a2 2 0 0 0-2-2zm7 2v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1" />
-                        </svg> Imprimer</button>
+                        </svg> Imprimer</a>
                 </div>
             </div>
         </div>
@@ -197,29 +208,6 @@ $avances = new Avance();
             })
         </script>
         <script>
-            const printBtn = document.querySelector('.printBtn')
-            printBtn.addEventListener('click', () => {
-                document.querySelectorAll('.danger').forEach(a => {
-                    a.style.display = 'none'
-
-                })
-                printBtn.style.display = 'none'
-                // document.querySelector('main').style.display='none'
-                // document.querySelector('.d-flex').style.display='none'
-                window.print()
-            })
-
-            const container = document.querySelector('.container')
-
-            container.addEventListener('mousemove', () => {
-                document.querySelectorAll('.danger').forEach(a => {
-                    a.style.display = 'inline'
-                })
-                printBtn.style.display = 'block'
-                // document.querySelector('main').style.display='block'
-
-            })
-
             function confirmer(id) {
                 if (confirm('Vous voulez vraiment annuler cette avance ?')) {
                     location.href = 'suppravance.php?a_id=' + id
@@ -237,6 +225,23 @@ $avances = new Avance();
             // close.addEventListener('click', () => {
             //     location.href = 'rapports.php'
             // })
+
+	//IMPRESSION DYNAMIQUE
+	function impressionSalaire(){
+
+                document.querySelector('#print').href ='impressionAvance.php?date='+document.querySelector('#date-field').value
+            }
+	document.querySelector('#date-field').addEventListener('change', () => {	
+		 impressionSalaire()		
+	})
+                document.querySelector('#print').href ='impressionAvance.php?date='+today(<?=$day ?>, <?=$month ?>, <?=$year ?>)
+	function today(day, month, year){
+		let jour = '-'+((day<10)?'0'+day:day)
+		let mois = (month<10)?'0'+month:month
+		let ans = year.toString()+'-'
+		return ans+mois+jour
+	}
+				
         </script>
 </body>
 
