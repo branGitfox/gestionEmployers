@@ -139,10 +139,16 @@ class Workers
     }
 
     /**
-     * Supprime un employé par son ID
+     * Supprime un employé par son ID et l'enregistrer dans un historique
      */
     public function deleteWorkerById()
     {
+
+        $archivage = $this->getPdo()
+                ->prepare('INSERT INTO archives (`arch_name`, `arch_firstname`, `arch_`,``,``) VALUES (?, ?, ?, ?, ?)');
+                $archivage->execute([]);
+
+        //derniere action 
         $query = $this->getPdo()
             ->prepare('DELETE FROM workers WHERE w_id = ?');
         $query->execute([$this->getWorkerId()]);
