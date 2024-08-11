@@ -3,6 +3,7 @@ Application Web de gestion d'employé et de calcul de salaire, avec un archivage
 
 ## Techos utilisé
 
-[`POO/PHP javascript ˋHTML/CSS ˋBootstrap Mysql`]
+[`POO/PHP javascript HTML/CSS Bootstrap Mysql`]
 
-ˋAuthor`:Brandon Fidelin Ravomanana(branGitFox)
+
+# ˋAuthor`:Brandon Fidelin Ravomanana(branGitFox)
