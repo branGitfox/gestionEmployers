@@ -1,4 +1,7 @@
-# gestionEmployers
-Application Web de gestion d'employé et de calcul de salaire, coder en POO PHP, Javascript, HTML/CSS, Bootstrap, MYSQL
+# Gestion d'employés
+Application Web de gestion d'employé et de calcul de salaire, avec un archivage automatique.coder en POO PHP, Javascript, HTML/CSS, Bootstrap, MYSQL
 
-Author:Brandon Fidelin Ravomanana(branGitFox)
+## Techos utilisé
+`POO/PHP`, ˋJavascript`, ˋHTML/CSS`, ˋBootstrap`, ˋMysql`.
+
+ˋAuthor`:Brandon Fidelin Ravomanana(branGitFox)
