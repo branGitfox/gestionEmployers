@@ -32,7 +32,7 @@ Application Web de gestion d'employé et de calcul de salaire, avec un archivage
 
 
 
-## Techos utilisé
+## Technos utilisé
 
 [`POO/PHP javascript Ajax HTML/CSS Bootstrap Mysql`]
 
