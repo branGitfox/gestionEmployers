@@ -7,8 +7,27 @@ Application Web de gestion d'employé et de calcul de salaire, avec un archivage
 `Modification d'un employé`
 <img src='' >
 
+ `Suppression d'un employé`
+<img src='' >
+
  `Pointage d'un employé`
 <img src='' >
+
+ `Donner un Avance à un employé`
+<img src='' >
+
+ `Calcul de Salaire`
+<img src='' >
+
+  `Sauvegarde de base de donnée`
+<img src='' >
+
+ `Archivage des données`
+<img src='' >
+
+ `Administration et Roles`
+<img src='' >
+
 
 
 
