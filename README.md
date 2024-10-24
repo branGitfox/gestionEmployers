@@ -1,5 +1,9 @@
 # Gestion d'employés
 Application Web de gestion d'employé et de calcul de salaire, avec un archivage automatique.coder en POO PHP, Javascript, HTML/CSS, Bootstrap, MYSQL
+
+## That's how it looks like
+<img src='./assets/screenshoot/project-gestion.png' >
+
 ### Fonctionnalités
 `Creation d'un employé`
 <img src='./assets/screenshoot/code1.png' >
