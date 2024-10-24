@@ -2,31 +2,26 @@
 Application Web de gestion d'employé et de calcul de salaire, avec un archivage automatique.coder en POO PHP, Javascript, HTML/CSS, Bootstrap, MYSQL
 ### Fonctionnalités
 `Creation d'un employé`
-<img src='' >
+<img src='./assets/screenshoot/code1.png' >
 
 `Modification d'un employé`
-<img src='' >
+<img src='./assets/screenshoot/code2.png' >
 
  `Suppression d'un employé`
-<img src='' >
+<img src='./assets/screenshoot/code3.png' >
 
  `Pointage d'un employé`
-<img src='' >
+<img src='./assets/screenshoot/code4.png' >
 
  `Donner un Avance à un employé`
-<img src='' >
+<img src='./assets/screenshoot/code5.png' >
 
  `Calcul de Salaire`
-<img src='' >
+<img src='./assets/screenshoot/code6.png' >
 
   `Sauvegarde de base de donnée`
-<img src='' >
+<img src='./assets/screenshoot/code7.png' >
 
- `Archivage des données`
-<img src='' >
-
- `Administration et Roles`
-<img src='' >
 
 
 
